@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tasks_app/core/domain/error/failure.dart';
 import 'package:tasks_app/core/domain/usecases/usecase.dart';
+import 'package:tasks_app/features/auth/domain/entities/register_entity.dart';
 import 'package:tasks_app/features/auth/domain/repositories/auth_repository.dart';
 
 @injectable
@@ -13,19 +14,19 @@ class Register implements UseCase<Unit, RegisterData> {
   @override
   Future<Either<Failure, Unit>> call(RegisterData registerData) async =>
       authRepository.register(
-        user: registerData.user,
+        registerEntity: registerData.registerEntitiy,
       );
 }
 
 class RegisterData extends Equatable {
-  final User user;
+  final RegisterEntity registerEntitiy;
 
   const RegisterData({
-    required this.user,
+    required this.registerEntitiy,
   });
 
   @override
   List<Object?> get props => [
-        user,
+        registerEntitiy,
       ];
 }

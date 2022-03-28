@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tasks_app/core/domain/usecases/usecase.dart';
 import 'package:tasks_app/features/auth/domain/entities/login_entity.dart';
+import 'package:tasks_app/features/auth/domain/entities/register_entity.dart';
 import 'package:tasks_app/features/auth/domain/usecases/login.dart';
 import 'package:tasks_app/features/auth/domain/usecases/logout.dart';
 import 'package:tasks_app/features/auth/domain/usecases/register.dart';
@@ -18,11 +19,11 @@ class AuthCubit extends Cubit<AuthState> {
   final Login _loginUseCase;
   final Logout _logout;
 
-  Future<void> register({required User user}) async {
+  Future<void> register({required RegisterEntity registerEntitiy}) async {
     emit(const AuthLoading());
     final result = await _registerUserCase(
       RegisterData(
-        user: user,
+        registerEntitiy: registerEntitiy,
       ),
     );
     emit(

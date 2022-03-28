@@ -3,8 +3,10 @@ import 'package:injectable/injectable.dart';
 import 'package:tasks_app/core/domain/datasources/local_datasource.dart';
 import 'package:tasks_app/core/domain/error/failure.dart';
 import 'package:tasks_app/features/auth/data/datasources/auth_service.dart';
-import 'package:tasks_app/features/auth/data/models/login_mapper.dart';
+import 'package:tasks_app/features/auth/data/models/login_model/login_mapper.dart';
+import 'package:tasks_app/features/auth/data/models/register_model/register_mapper.dart';
 import 'package:tasks_app/features/auth/domain/entities/login_entity.dart';
+import 'package:tasks_app/features/auth/domain/entities/register_entity.dart';
 import 'package:tasks_app/features/auth/domain/repositories/auth_repository.dart';
 
 @Injectable(as: AuthRepository)
@@ -18,10 +20,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, Unit>> register({
-    required User user,
+    required RegisterEntity registerEntity,
   }) async {
     try {
-      final token = await authService.register(userModel: user.toModel());
+      final token = await authService.register(registerModel: registerEntity.toModel());
       localDataSource.saveToken(token.token);
       return right(unit);
     } catch (error) {
