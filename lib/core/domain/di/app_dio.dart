@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 abstract class AppDio {
   Dio get getDio => Dio(
         BaseOptions(
-          baseUrl: 'https://api-sanctum-package.herokuapp.com/api/',
+          baseUrl: 'https://megatrustapi.herokuapp.com/api/',
           receiveDataWhenStatusError: true,
         ),
       );

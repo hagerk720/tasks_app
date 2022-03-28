@@ -5,6 +5,7 @@ import 'package:tasks_app/core/presentation/validation/validators.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_elevated_button.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_text_form_field.dart';
 import 'package:tasks_app/core/presentation/widgets/password_text_form_field.dart';
+import 'package:tasks_app/features/auth/domain/entities/register_entity.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_state.dart';
 
@@ -15,7 +16,6 @@ class RegisterScreen extends StatelessWidget {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -51,13 +51,7 @@ class RegisterScreen extends StatelessWidget {
                 validator: (value) => emailValidator(value),
               ),
               PasswordTextFormField(controller: passwordController),
-              CustomTextFormField(
-                controller: phoneController,
-                hintText: 'Phone number',
-                prefixIcon: Icons.phone_outlined,
-                keyboardType: TextInputType.phone,
-                validator: (value) => phoneValidator(value),
-              ),
+            
               const SizedBox(height: 16),
               BlocBuilder<AuthCubit, AuthState>(
                 builder: (context, state) {
@@ -73,14 +67,10 @@ class RegisterScreen extends StatelessWidget {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         BlocProvider.of<AuthCubit>(context).register(
-                          user: User(
+                          registerEntitiy: RegisterEntity(
                             name: nameController.text,
                             email: emailController.text,
                             password: passwordController.text,
-                            imageUrl: '',
-                            phone: phoneController.text,
-                            address: '',
-                            age: '',
                           ),
                         );
                       }
