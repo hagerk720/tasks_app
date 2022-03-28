@@ -8,7 +8,7 @@ class TasksApp extends StatelessWidget {
   const TasksApp();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       
     );
