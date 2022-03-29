@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tasks_app/core/data/models/response_model/response_model.dart';
 part 'token_model.g.dart';
 
 @JsonSerializable()
