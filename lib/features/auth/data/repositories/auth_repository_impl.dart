@@ -41,8 +41,6 @@ class AuthRepositoryImpl implements AuthRepository {
         loginModel: loginEntity.toModel(),
       );
       localDataSource.saveToken(token.data.token);
-      print("token" + token.data.token.toString());
-
       return right(unit);
     } catch (error) {
       return left(Failure(error));
