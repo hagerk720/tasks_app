@@ -23,8 +23,9 @@ class AuthRepositoryImpl implements AuthRepository {
     required RegisterEntity registerEntity,
   }) async {
     try {
-      final token = await authService.register(registerModel: registerEntity.toModel());
-      localDataSource.saveToken(token.token);
+      final token =
+          await authService.register(registerModel: registerEntity.toModel());
+      localDataSource.saveToken(token.data.token);
       return right(unit);
     } catch (error) {
       return left(Failure(error));
@@ -39,7 +40,9 @@ class AuthRepositoryImpl implements AuthRepository {
       final token = await authService.login(
         loginModel: loginEntity.toModel(),
       );
-      localDataSource.saveToken(token.token);
+      localDataSource.saveToken(token.data.token);
+      print("token" + token.data.token.toString());
+
       return right(unit);
     } catch (error) {
       return left(Failure(error));
