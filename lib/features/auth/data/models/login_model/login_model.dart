@@ -13,8 +13,7 @@ class LoginModel extends LoginEntity {
         );
 
   factory LoginModel.fromJson(Map<String, dynamic> json) =>
-      _$LoginModelFromJson(json); 
+      _$LoginModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$LoginModelToJson(this);
-
 }
