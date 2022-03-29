@@ -6,7 +6,7 @@ ThemeData myTheme = ThemeData(
     brightness: Brightness.light,
     primary: primaryColor,
     onPrimary: Colors.black,
-    secondary: Colors.black,
+    secondary: secondaryColor,
     onSecondary: Colors.black,
     error: Colors.black,
     onError: Colors.black,
@@ -63,6 +63,9 @@ ThemeData myTheme = ThemeData(
       fontSize: 24,
       color: Colors.black,
       fontWeight: FontWeight.bold,
+    ),
+    headline4: TextStyle(
+      fontSize:  12,
     ),
   ),
 );
