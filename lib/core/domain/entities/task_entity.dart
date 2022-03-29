@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Task extends Equatable {
+class TaskEntity extends Equatable {
   final String title;
   final String description;
   final String priority;
@@ -8,7 +8,7 @@ class Task extends Equatable {
   final String? attachementUrl;
   final String? period;
 
-  const Task({
+  const TaskEntity({
     required this.title,
     required this.description,
     required this.priority,

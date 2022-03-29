@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tasks_app/core/domain/entities/task.dart';
+import 'package:tasks_app/core/domain/entities/task_entity.dart';
 part 'task_model.g.dart';
 
 @JsonSerializable()
-class TaskModel extends Task {
+class TaskModel extends TaskEntity {
   const TaskModel({
     required String title,
     required String description,
