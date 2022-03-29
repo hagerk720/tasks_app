@@ -7,6 +7,7 @@ import 'package:tasks_app/core/presentation/widgets/custom_text_form_field.dart'
 import 'package:tasks_app/core/presentation/widgets/password_text_form_field.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_state.dart';
+import 'package:tasks_app/features/auth/presentation/screens/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen();
@@ -71,7 +72,8 @@ class LoginScreen extends StatelessWidget {
                     style: textTheme.headline2,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.of(context)
+                        .pushReplacementNamed(RegisterScreen.routeName),
                     child: const Text('REGISTER'),
                   ),
                 ],

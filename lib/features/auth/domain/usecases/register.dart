@@ -14,19 +14,19 @@ class Register implements UseCase<Unit, RegisterData> {
   @override
   Future<Either<Failure, Unit>> call(RegisterData registerData) async =>
       authRepository.register(
-        registerEntity: registerData.registerEntitiy,
+        registerEntity: registerData.registerEntity,
       );
 }
 
 class RegisterData extends Equatable {
-  final RegisterEntity registerEntitiy;
+  final RegisterEntity registerEntity;
 
   const RegisterData({
-    required this.registerEntitiy,
+    required this.registerEntity,
   });
 
   @override
   List<Object?> get props => [
-        registerEntitiy,
+        registerEntity,
       ];
 }

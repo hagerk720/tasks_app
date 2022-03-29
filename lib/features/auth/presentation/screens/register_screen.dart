@@ -8,6 +8,7 @@ import 'package:tasks_app/core/presentation/widgets/password_text_form_field.dar
 import 'package:tasks_app/features/auth/domain/entities/register_entity.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_state.dart';
+import 'package:tasks_app/features/auth/presentation/screens/login_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen();
@@ -51,7 +52,6 @@ class RegisterScreen extends StatelessWidget {
                 validator: (value) => emailValidator(value),
               ),
               PasswordTextFormField(controller: passwordController),
-            
               const SizedBox(height: 16),
               BlocBuilder<AuthCubit, AuthState>(
                 builder: (context, state) {
@@ -67,7 +67,7 @@ class RegisterScreen extends StatelessWidget {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         BlocProvider.of<AuthCubit>(context).register(
-                          registerEntitiy: RegisterEntity(
+                          registerEntity: RegisterEntity(
                             name: nameController.text,
                             email: emailController.text,
                             password: passwordController.text,
@@ -87,7 +87,8 @@ class RegisterScreen extends StatelessWidget {
                     style: textTheme.headline2,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.of(context)
+                        .pushReplacementNamed(LoginScreen.routeName),
                     child: const Text('LOGIN'),
                   ),
                 ],

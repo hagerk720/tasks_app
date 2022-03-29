@@ -8,15 +8,15 @@ class RegisterModel extends RegisterEntity {
   const RegisterModel({
     required String email,
     required String password,
-    required String name , 
+    required String name,
   }) : super(
           email: email,
           password: password,
-          name:  name , 
+          name: name,
         );
 
-  factory RegisterModel.fromJson(Map<String, dynamic> json) => _$RegisterModelFromJson(json);
+  factory RegisterModel.fromJson(Map<String, dynamic> json) =>
+      _$RegisterModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$RegisterModelToJson(this);
-
 }

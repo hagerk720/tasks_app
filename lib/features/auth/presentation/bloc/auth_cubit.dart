@@ -19,11 +19,11 @@ class AuthCubit extends Cubit<AuthState> {
   final Login _loginUseCase;
   final Logout _logout;
 
-  Future<void> register({required RegisterEntity registerEntitiy}) async {
+  Future<void> register({required RegisterEntity registerEntity}) async {
     emit(const AuthLoading());
     final result = await _registerUserCase(
       RegisterData(
-        registerEntitiy: registerEntitiy,
+        registerEntity: registerEntity,
       ),
     );
     emit(
