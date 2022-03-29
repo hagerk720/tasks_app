@@ -1,19 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:retrofit/retrofit.dart';
+import 'package:retrofit/http.dart';
 import 'package:tasks_app/core/data/models/response_model/response_model.dart';
 import 'package:tasks_app/core/data/models/task_model/task_model.dart';
-part 'create_task_service.g.dart';
+part 'get_tasks_service.g.dart';
 
 @lazySingleton
 @RestApi()
-abstract class CreateTaskService {
+abstract class GetTasksService {
   @factoryMethod
-  factory CreateTaskService(Dio dio) = _CreateTaskService;
+  factory GetTasksService(Dio dio) = _GetTasksService;
 
-  @POST('task/create')
-  Future<ResponseModel> createTask({
+  @GET('task/all')
+  Future<ResponseModel<List<TaskModel>>> getTasks({
     @Header('Authorization') required String token,
-    @Body() required TaskModel taskModel,
   });
 }

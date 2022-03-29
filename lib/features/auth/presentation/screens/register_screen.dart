@@ -9,6 +9,7 @@ import 'package:tasks_app/features/auth/domain/entities/register_entity.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_state.dart';
 import 'package:tasks_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:tasks_app/features/get_tasks/presentation/screens/task_list_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen();
@@ -59,7 +60,9 @@ class RegisterScreen extends StatelessWidget {
                   state.maybeWhen(
                     loading: () => isLoading = true,
                     error: (error) => showErrorToast(errorMessage: error),
-                    success: () {},
+                    success: () => Navigator.of(context).pushReplacementNamed(
+                      TaskListScreen.routeName,
+                    ),
                     orElse: () {},
                   );
                   return CustomElevatedButton(

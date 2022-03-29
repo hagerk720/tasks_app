@@ -8,7 +8,7 @@ class TaskModel extends TaskEntity {
     required String title,
     required String description,
     required String priority,
-    required int state,
+    required String state,
     String? attachementUrl,
     String? period,
   }) : super(

@@ -10,7 +10,7 @@ TaskModel _$TaskModelFromJson(Map<String, dynamic> json) => TaskModel(
       title: json['title'] as String,
       description: json['description'] as String,
       priority: json['priority'] as String,
-      state: json['state'] as int,
+      state: json['state'] as String,
       attachementUrl: json['attachementUrl'] as String?,
       period: json['period'] as String?,
     );

@@ -7,12 +7,12 @@ import 'package:tasks_app/core/domain/usecases/usecase.dart';
 import 'package:tasks_app/features/create_task/domain/repositories/create_task_repository.dart';
 
 @injectable
-class CreateTask implements UseCase<TaskEntity, CreateTaskData> {
+class CreateTask implements UseCase<Unit, CreateTaskData> {
   CreateTaskRepository createTaskRepository;
   CreateTask(this.createTaskRepository);
 
   @override
-  Future<Either<Failure, TaskEntity>> call(
+  Future<Either<Failure, Unit>> call(
     CreateTaskData createTaskData,
   ) async =>
       createTaskRepository.createTask(

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:tasks_app/core/data/models/task_model/task_mapper.dart';
 import 'package:tasks_app/core/domain/datasources/local_datasource.dart';
 import 'package:tasks_app/core/domain/entities/task_entity.dart';
 import 'package:tasks_app/core/domain/error/failure.dart';
@@ -15,11 +16,18 @@ class CreateTaskRepositoryImpl implements CreateTaskRepository {
     this.localDataSource,
   );
   @override
-  Future<Either<Failure, TaskEntity>> createTask({
+  Future<Either<Failure, Unit>> createTask({
     required TaskEntity taskEntity,
   }) async {
-    final token = localDataSource.getToken();
-    await createTaskService.createTask(
-        token: token!, taskModel: taskEntity.taskModel);
+    try {
+      final token = localDataSource.getToken()!;
+      await createTaskService.createTask(
+        token: 'Bearer $token',
+        taskModel: taskEntity.toModel(),
+      );
+      return right(unit);
+    } catch (error) {
+      return left(Failure(error));
+    }
   }
 }

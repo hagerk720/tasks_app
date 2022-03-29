@@ -34,7 +34,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
             onPressed: () => setState(() => isObscure = !isObscure),
           ),
           border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderRadius: BorderRadius.all(Radius.circular(16)),
           ),
         ),
         obscureText: isObscure,

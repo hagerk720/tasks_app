@@ -26,10 +26,8 @@ class _$CreateTaskStateTearOff {
     return const CreateTaskLoading();
   }
 
-  CreateTaskSuccess success(TaskEntity taskEntity) {
-    return CreateTaskSuccess(
-      taskEntity,
-    );
+  CreateTaskSuccess success() {
+    return const CreateTaskSuccess();
   }
 
   CreateTaskErrorDetails error(String error) {
@@ -48,7 +46,7 @@ mixin _$CreateTaskState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(TaskEntity taskEntity) success,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,7 +54,7 @@ mixin _$CreateTaskState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TaskEntity taskEntity)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +62,7 @@ mixin _$CreateTaskState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TaskEntity taskEntity)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -156,7 +154,7 @@ class _$CreateTaskInitial implements CreateTaskInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(TaskEntity taskEntity) success,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -167,7 +165,7 @@ class _$CreateTaskInitial implements CreateTaskInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TaskEntity taskEntity)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
   }) {
     return initial?.call();
@@ -178,7 +176,7 @@ class _$CreateTaskInitial implements CreateTaskInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TaskEntity taskEntity)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -273,7 +271,7 @@ class _$CreateTaskLoading implements CreateTaskLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(TaskEntity taskEntity) success,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -284,7 +282,7 @@ class _$CreateTaskLoading implements CreateTaskLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TaskEntity taskEntity)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
   }) {
     return loading?.call();
@@ -295,7 +293,7 @@ class _$CreateTaskLoading implements CreateTaskLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TaskEntity taskEntity)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -352,7 +350,6 @@ abstract class $CreateTaskSuccessCopyWith<$Res> {
   factory $CreateTaskSuccessCopyWith(
           CreateTaskSuccess value, $Res Function(CreateTaskSuccess) then) =
       _$CreateTaskSuccessCopyWithImpl<$Res>;
-  $Res call({TaskEntity taskEntity});
 }
 
 /// @nodoc
@@ -365,60 +362,36 @@ class _$CreateTaskSuccessCopyWithImpl<$Res>
 
   @override
   CreateTaskSuccess get _value => super._value as CreateTaskSuccess;
-
-  @override
-  $Res call({
-    Object? taskEntity = freezed,
-  }) {
-    return _then(CreateTaskSuccess(
-      taskEntity == freezed
-          ? _value.taskEntity
-          : taskEntity // ignore: cast_nullable_to_non_nullable
-              as TaskEntity,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$CreateTaskSuccess implements CreateTaskSuccess {
-  const _$CreateTaskSuccess(this.taskEntity);
-
-  @override
-  final TaskEntity taskEntity;
+  const _$CreateTaskSuccess();
 
   @override
   String toString() {
-    return 'CreateTaskState.success(taskEntity: $taskEntity)';
+    return 'CreateTaskState.success()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is CreateTaskSuccess &&
-            const DeepCollectionEquality()
-                .equals(other.taskEntity, taskEntity));
+        (other.runtimeType == runtimeType && other is CreateTaskSuccess);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(taskEntity));
-
-  @JsonKey(ignore: true)
-  @override
-  $CreateTaskSuccessCopyWith<CreateTaskSuccess> get copyWith =>
-      _$CreateTaskSuccessCopyWithImpl<CreateTaskSuccess>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(TaskEntity taskEntity) success,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) {
-    return success(taskEntity);
+    return success();
   }
 
   @override
@@ -426,10 +399,10 @@ class _$CreateTaskSuccess implements CreateTaskSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TaskEntity taskEntity)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
   }) {
-    return success?.call(taskEntity);
+    return success?.call();
   }
 
   @override
@@ -437,12 +410,12 @@ class _$CreateTaskSuccess implements CreateTaskSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TaskEntity taskEntity)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(taskEntity);
+      return success();
     }
     return orElse();
   }
@@ -486,12 +459,7 @@ class _$CreateTaskSuccess implements CreateTaskSuccess {
 }
 
 abstract class CreateTaskSuccess implements CreateTaskState {
-  const factory CreateTaskSuccess(TaskEntity taskEntity) = _$CreateTaskSuccess;
-
-  TaskEntity get taskEntity;
-  @JsonKey(ignore: true)
-  $CreateTaskSuccessCopyWith<CreateTaskSuccess> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory CreateTaskSuccess() = _$CreateTaskSuccess;
 }
 
 /// @nodoc
@@ -562,7 +530,7 @@ class _$CreateTaskErrorDetails implements CreateTaskErrorDetails {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(TaskEntity taskEntity) success,
+    required TResult Function() success,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -573,7 +541,7 @@ class _$CreateTaskErrorDetails implements CreateTaskErrorDetails {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TaskEntity taskEntity)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -584,7 +552,7 @@ class _$CreateTaskErrorDetails implements CreateTaskErrorDetails {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TaskEntity taskEntity)? success,
+    TResult Function()? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {

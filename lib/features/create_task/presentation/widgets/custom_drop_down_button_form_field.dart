@@ -1,40 +1,49 @@
 import 'package:flutter/material.dart';
 
-class CustomDropDownButtonFormField extends StatefulWidget {
+class CustomDropDownButtonFormField extends StatelessWidget {
   const CustomDropDownButtonFormField({
     required this.itemsNames,
+    required this.value,
     required this.onChanged,
     required this.hintText,
   });
   final List<String> itemsNames;
+  final String? value;
   final Function(String?)? onChanged;
   final String hintText;
-  @override
-  State<CustomDropDownButtonFormField> createState() =>
-      _CustomDropDownButtonFormFieldState();
-}
-
-class _CustomDropDownButtonFormFieldState
-    extends State<CustomDropDownButtonFormField> {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
       items: List.generate(
-        widget.itemsNames.length,
+        itemsNames.length,
         (index) => DropdownMenuItem(
-          value: widget.itemsNames[index],
-          child: Text(widget.itemsNames[index]),
+          value: itemsNames[index],
+          child: Text(itemsNames[index]),
         ),
       ),
-      onChanged: widget.onChanged,
+      onChanged: onChanged,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return "Can't empty";
+          return "$hintText can't be empty";
         } else {
           return null;
         }
       },
-      hint: Text(widget.hintText),
+      hint: Row(
+        children: [
+          const Icon(
+            Icons.priority_high_rounded,
+            color: Color.fromARGB(255, 129, 129, 129),
+          ),
+          Text(hintText),
+        ],
+      ),
+      value: value,
+      decoration: const InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16)),
+        ),
+      ),
     );
   }
 }

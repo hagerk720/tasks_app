@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  flutter_time_picker_spinner: ^2.0.0
   fluttertoast: ^8.0.9
   freezed: ^1.1.1
   freezed_annotation: ^1.1.0

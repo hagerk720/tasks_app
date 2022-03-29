@@ -8,6 +8,7 @@ import 'package:tasks_app/core/presentation/widgets/password_text_form_field.dar
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_state.dart';
 import 'package:tasks_app/features/auth/presentation/screens/register_screen.dart';
+import 'package:tasks_app/features/get_tasks/presentation/screens/task_list_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen();
@@ -47,7 +48,12 @@ class LoginScreen extends StatelessWidget {
                   state.maybeWhen(
                     loading: () => isLoading = true,
                     error: (error) => showErrorToast(errorMessage: error),
-                    success: () {},
+                    success: () =>
+                        WidgetsBinding.instance!.addPostFrameCallback(
+                      (_) => Navigator.of(context).pushReplacementNamed(
+                        TaskListScreen.routeName,
+                      ),
+                    ),
                     orElse: () {},
                   );
                   return CustomElevatedButton(
