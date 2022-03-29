@@ -5,6 +5,7 @@ import 'package:tasks_app/core/presentation/bloc/bloc_observer.dart';
 import 'package:tasks_app/core/presentation/router/app_router.dart';
 import 'package:tasks_app/core/presentation/theme/my_theme.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
+import 'package:tasks_app/features/create_task/presentation/screens/create_task_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +28,7 @@ class TasksApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: myTheme,
         onGenerateRoute: AppRouter.onGenerateRoute,
+        home: CreateTaskScreen(),
       ),
     );
   }

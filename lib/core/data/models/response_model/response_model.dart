@@ -6,13 +6,17 @@ class ResponseModel<Data> {
   final int status;
   final String message;
   final dynamic errors;
-   final Data data;
-  ResponseModel(
-      {required this.status,
-      required this.message,
-      required this.errors,
-      required this.data,});
+  final Data data;
+  ResponseModel({
+    required this.status,
+    required this.message,
+    required this.errors,
+    required this.data,
+  });
 
-  factory ResponseModel.fromJson(Map<String, dynamic> json ,Data Function(Object? object) fromJsonData) =>
+  factory ResponseModel.fromJson(
+    Map<String, dynamic> json,
+    Data Function(Object? object) fromJsonData,
+  ) =>
       _$ResponseModelFromJson(json, fromJsonData);
 }
