@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasks_app/core/domain/datasources/local_datasource.dart';
 
-@Injectable(as: LocalDataSource)
+@LazySingleton(as: LocalDataSource)
 class LocalDataSourceImpl implements LocalDataSource {
   SharedPreferences sharedPreferences;
   LocalDataSourceImpl(this.sharedPreferences);

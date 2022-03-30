@@ -65,7 +65,12 @@ ThemeData myTheme = ThemeData(
       fontWeight: FontWeight.bold,
     ),
     headline4: TextStyle(
-      fontSize:  12,
+      fontSize: 12,
+    ),
+    headline5: TextStyle(
+      fontSize: 16,
+      color: Color.fromARGB(255, 124, 124, 124),
+      fontWeight: FontWeight.bold,
     ),
   ),
 );

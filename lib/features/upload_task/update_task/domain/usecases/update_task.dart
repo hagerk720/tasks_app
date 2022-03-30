@@ -16,15 +16,22 @@ class UpdateTask implements UseCase<Unit, UpdateTaskData> {
     UpdateTaskData updateTaskData,
   ) =>
       updateTaskRepository.updateTask(
+        taskId: updateTaskData.taskId,
         uploadTaskEntity: updateTaskData.uploadTaskEntity,
       );
 }
 
 class UpdateTaskData extends Equatable {
+  final int taskId;
   final UploadTaskEntity uploadTaskEntity;
-  const UpdateTaskData({required this.uploadTaskEntity});
+
+  const UpdateTaskData({
+    required this.taskId,
+    required this.uploadTaskEntity,
+  });
   @override
   List<Object?> get props => [
+        taskId,
         uploadTaskEntity,
       ];
 }

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'create_task_state.dart';
+part of 'upload_task_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,33 +15,33 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$CreateTaskStateTearOff {
-  const _$CreateTaskStateTearOff();
+class _$UploadTaskStateTearOff {
+  const _$UploadTaskStateTearOff();
 
-  CreateTaskInitial initial() {
-    return const CreateTaskInitial();
+  UploadTaskInitial initial() {
+    return const UploadTaskInitial();
   }
 
-  CreateTaskLoading loading() {
-    return const CreateTaskLoading();
+  UploadTaskLoading loading() {
+    return const UploadTaskLoading();
   }
 
-  CreateTaskSuccess success() {
-    return const CreateTaskSuccess();
+  UploadTaskSuccess success() {
+    return const UploadTaskSuccess();
   }
 
-  CreateTaskErrorDetails error(String error) {
-    return CreateTaskErrorDetails(
+  UploadTaskErrorDetails error(String error) {
+    return UploadTaskErrorDetails(
       error,
     );
   }
 }
 
 /// @nodoc
-const $CreateTaskState = _$CreateTaskStateTearOff();
+const $UploadTaskState = _$UploadTaskStateTearOff();
 
 /// @nodoc
-mixin _$CreateTaskState {
+mixin _$UploadTaskState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -69,81 +69,81 @@ mixin _$CreateTaskState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CreateTaskInitial value) initial,
-    required TResult Function(CreateTaskLoading value) loading,
-    required TResult Function(CreateTaskSuccess value) success,
-    required TResult Function(CreateTaskErrorDetails value) error,
+    required TResult Function(UploadTaskInitial value) initial,
+    required TResult Function(UploadTaskLoading value) loading,
+    required TResult Function(UploadTaskSuccess value) success,
+    required TResult Function(UploadTaskErrorDetails value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CreateTaskInitial value)? initial,
-    TResult Function(CreateTaskLoading value)? loading,
-    TResult Function(CreateTaskSuccess value)? success,
-    TResult Function(CreateTaskErrorDetails value)? error,
+    TResult Function(UploadTaskInitial value)? initial,
+    TResult Function(UploadTaskLoading value)? loading,
+    TResult Function(UploadTaskSuccess value)? success,
+    TResult Function(UploadTaskErrorDetails value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CreateTaskInitial value)? initial,
-    TResult Function(CreateTaskLoading value)? loading,
-    TResult Function(CreateTaskSuccess value)? success,
-    TResult Function(CreateTaskErrorDetails value)? error,
+    TResult Function(UploadTaskInitial value)? initial,
+    TResult Function(UploadTaskLoading value)? loading,
+    TResult Function(UploadTaskSuccess value)? success,
+    TResult Function(UploadTaskErrorDetails value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CreateTaskStateCopyWith<$Res> {
-  factory $CreateTaskStateCopyWith(
-          CreateTaskState value, $Res Function(CreateTaskState) then) =
-      _$CreateTaskStateCopyWithImpl<$Res>;
+abstract class $UploadTaskStateCopyWith<$Res> {
+  factory $UploadTaskStateCopyWith(
+          UploadTaskState value, $Res Function(UploadTaskState) then) =
+      _$UploadTaskStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CreateTaskStateCopyWithImpl<$Res>
-    implements $CreateTaskStateCopyWith<$Res> {
-  _$CreateTaskStateCopyWithImpl(this._value, this._then);
+class _$UploadTaskStateCopyWithImpl<$Res>
+    implements $UploadTaskStateCopyWith<$Res> {
+  _$UploadTaskStateCopyWithImpl(this._value, this._then);
 
-  final CreateTaskState _value;
+  final UploadTaskState _value;
   // ignore: unused_field
-  final $Res Function(CreateTaskState) _then;
+  final $Res Function(UploadTaskState) _then;
 }
 
 /// @nodoc
-abstract class $CreateTaskInitialCopyWith<$Res> {
-  factory $CreateTaskInitialCopyWith(
-          CreateTaskInitial value, $Res Function(CreateTaskInitial) then) =
-      _$CreateTaskInitialCopyWithImpl<$Res>;
+abstract class $UploadTaskInitialCopyWith<$Res> {
+  factory $UploadTaskInitialCopyWith(
+          UploadTaskInitial value, $Res Function(UploadTaskInitial) then) =
+      _$UploadTaskInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CreateTaskInitialCopyWithImpl<$Res>
-    extends _$CreateTaskStateCopyWithImpl<$Res>
-    implements $CreateTaskInitialCopyWith<$Res> {
-  _$CreateTaskInitialCopyWithImpl(
-      CreateTaskInitial _value, $Res Function(CreateTaskInitial) _then)
-      : super(_value, (v) => _then(v as CreateTaskInitial));
+class _$UploadTaskInitialCopyWithImpl<$Res>
+    extends _$UploadTaskStateCopyWithImpl<$Res>
+    implements $UploadTaskInitialCopyWith<$Res> {
+  _$UploadTaskInitialCopyWithImpl(
+      UploadTaskInitial _value, $Res Function(UploadTaskInitial) _then)
+      : super(_value, (v) => _then(v as UploadTaskInitial));
 
   @override
-  CreateTaskInitial get _value => super._value as CreateTaskInitial;
+  UploadTaskInitial get _value => super._value as UploadTaskInitial;
 }
 
 /// @nodoc
 
-class _$CreateTaskInitial implements CreateTaskInitial {
-  const _$CreateTaskInitial();
+class _$UploadTaskInitial implements UploadTaskInitial {
+  const _$UploadTaskInitial();
 
   @override
   String toString() {
-    return 'CreateTaskState.initial()';
+    return 'UploadTaskState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is CreateTaskInitial);
+        (other.runtimeType == runtimeType && other is UploadTaskInitial);
   }
 
   @override
@@ -189,10 +189,10 @@ class _$CreateTaskInitial implements CreateTaskInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CreateTaskInitial value) initial,
-    required TResult Function(CreateTaskLoading value) loading,
-    required TResult Function(CreateTaskSuccess value) success,
-    required TResult Function(CreateTaskErrorDetails value) error,
+    required TResult Function(UploadTaskInitial value) initial,
+    required TResult Function(UploadTaskLoading value) loading,
+    required TResult Function(UploadTaskSuccess value) success,
+    required TResult Function(UploadTaskErrorDetails value) error,
   }) {
     return initial(this);
   }
@@ -200,10 +200,10 @@ class _$CreateTaskInitial implements CreateTaskInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CreateTaskInitial value)? initial,
-    TResult Function(CreateTaskLoading value)? loading,
-    TResult Function(CreateTaskSuccess value)? success,
-    TResult Function(CreateTaskErrorDetails value)? error,
+    TResult Function(UploadTaskInitial value)? initial,
+    TResult Function(UploadTaskLoading value)? loading,
+    TResult Function(UploadTaskSuccess value)? success,
+    TResult Function(UploadTaskErrorDetails value)? error,
   }) {
     return initial?.call(this);
   }
@@ -211,10 +211,10 @@ class _$CreateTaskInitial implements CreateTaskInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CreateTaskInitial value)? initial,
-    TResult Function(CreateTaskLoading value)? loading,
-    TResult Function(CreateTaskSuccess value)? success,
-    TResult Function(CreateTaskErrorDetails value)? error,
+    TResult Function(UploadTaskInitial value)? initial,
+    TResult Function(UploadTaskLoading value)? loading,
+    TResult Function(UploadTaskSuccess value)? success,
+    TResult Function(UploadTaskErrorDetails value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -224,43 +224,43 @@ class _$CreateTaskInitial implements CreateTaskInitial {
   }
 }
 
-abstract class CreateTaskInitial implements CreateTaskState {
-  const factory CreateTaskInitial() = _$CreateTaskInitial;
+abstract class UploadTaskInitial implements UploadTaskState {
+  const factory UploadTaskInitial() = _$UploadTaskInitial;
 }
 
 /// @nodoc
-abstract class $CreateTaskLoadingCopyWith<$Res> {
-  factory $CreateTaskLoadingCopyWith(
-          CreateTaskLoading value, $Res Function(CreateTaskLoading) then) =
-      _$CreateTaskLoadingCopyWithImpl<$Res>;
+abstract class $UploadTaskLoadingCopyWith<$Res> {
+  factory $UploadTaskLoadingCopyWith(
+          UploadTaskLoading value, $Res Function(UploadTaskLoading) then) =
+      _$UploadTaskLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CreateTaskLoadingCopyWithImpl<$Res>
-    extends _$CreateTaskStateCopyWithImpl<$Res>
-    implements $CreateTaskLoadingCopyWith<$Res> {
-  _$CreateTaskLoadingCopyWithImpl(
-      CreateTaskLoading _value, $Res Function(CreateTaskLoading) _then)
-      : super(_value, (v) => _then(v as CreateTaskLoading));
+class _$UploadTaskLoadingCopyWithImpl<$Res>
+    extends _$UploadTaskStateCopyWithImpl<$Res>
+    implements $UploadTaskLoadingCopyWith<$Res> {
+  _$UploadTaskLoadingCopyWithImpl(
+      UploadTaskLoading _value, $Res Function(UploadTaskLoading) _then)
+      : super(_value, (v) => _then(v as UploadTaskLoading));
 
   @override
-  CreateTaskLoading get _value => super._value as CreateTaskLoading;
+  UploadTaskLoading get _value => super._value as UploadTaskLoading;
 }
 
 /// @nodoc
 
-class _$CreateTaskLoading implements CreateTaskLoading {
-  const _$CreateTaskLoading();
+class _$UploadTaskLoading implements UploadTaskLoading {
+  const _$UploadTaskLoading();
 
   @override
   String toString() {
-    return 'CreateTaskState.loading()';
+    return 'UploadTaskState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is CreateTaskLoading);
+        (other.runtimeType == runtimeType && other is UploadTaskLoading);
   }
 
   @override
@@ -306,10 +306,10 @@ class _$CreateTaskLoading implements CreateTaskLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CreateTaskInitial value) initial,
-    required TResult Function(CreateTaskLoading value) loading,
-    required TResult Function(CreateTaskSuccess value) success,
-    required TResult Function(CreateTaskErrorDetails value) error,
+    required TResult Function(UploadTaskInitial value) initial,
+    required TResult Function(UploadTaskLoading value) loading,
+    required TResult Function(UploadTaskSuccess value) success,
+    required TResult Function(UploadTaskErrorDetails value) error,
   }) {
     return loading(this);
   }
@@ -317,10 +317,10 @@ class _$CreateTaskLoading implements CreateTaskLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CreateTaskInitial value)? initial,
-    TResult Function(CreateTaskLoading value)? loading,
-    TResult Function(CreateTaskSuccess value)? success,
-    TResult Function(CreateTaskErrorDetails value)? error,
+    TResult Function(UploadTaskInitial value)? initial,
+    TResult Function(UploadTaskLoading value)? loading,
+    TResult Function(UploadTaskSuccess value)? success,
+    TResult Function(UploadTaskErrorDetails value)? error,
   }) {
     return loading?.call(this);
   }
@@ -328,10 +328,10 @@ class _$CreateTaskLoading implements CreateTaskLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CreateTaskInitial value)? initial,
-    TResult Function(CreateTaskLoading value)? loading,
-    TResult Function(CreateTaskSuccess value)? success,
-    TResult Function(CreateTaskErrorDetails value)? error,
+    TResult Function(UploadTaskInitial value)? initial,
+    TResult Function(UploadTaskLoading value)? loading,
+    TResult Function(UploadTaskSuccess value)? success,
+    TResult Function(UploadTaskErrorDetails value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -341,43 +341,43 @@ class _$CreateTaskLoading implements CreateTaskLoading {
   }
 }
 
-abstract class CreateTaskLoading implements CreateTaskState {
-  const factory CreateTaskLoading() = _$CreateTaskLoading;
+abstract class UploadTaskLoading implements UploadTaskState {
+  const factory UploadTaskLoading() = _$UploadTaskLoading;
 }
 
 /// @nodoc
-abstract class $CreateTaskSuccessCopyWith<$Res> {
-  factory $CreateTaskSuccessCopyWith(
-          CreateTaskSuccess value, $Res Function(CreateTaskSuccess) then) =
-      _$CreateTaskSuccessCopyWithImpl<$Res>;
+abstract class $UploadTaskSuccessCopyWith<$Res> {
+  factory $UploadTaskSuccessCopyWith(
+          UploadTaskSuccess value, $Res Function(UploadTaskSuccess) then) =
+      _$UploadTaskSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CreateTaskSuccessCopyWithImpl<$Res>
-    extends _$CreateTaskStateCopyWithImpl<$Res>
-    implements $CreateTaskSuccessCopyWith<$Res> {
-  _$CreateTaskSuccessCopyWithImpl(
-      CreateTaskSuccess _value, $Res Function(CreateTaskSuccess) _then)
-      : super(_value, (v) => _then(v as CreateTaskSuccess));
+class _$UploadTaskSuccessCopyWithImpl<$Res>
+    extends _$UploadTaskStateCopyWithImpl<$Res>
+    implements $UploadTaskSuccessCopyWith<$Res> {
+  _$UploadTaskSuccessCopyWithImpl(
+      UploadTaskSuccess _value, $Res Function(UploadTaskSuccess) _then)
+      : super(_value, (v) => _then(v as UploadTaskSuccess));
 
   @override
-  CreateTaskSuccess get _value => super._value as CreateTaskSuccess;
+  UploadTaskSuccess get _value => super._value as UploadTaskSuccess;
 }
 
 /// @nodoc
 
-class _$CreateTaskSuccess implements CreateTaskSuccess {
-  const _$CreateTaskSuccess();
+class _$UploadTaskSuccess implements UploadTaskSuccess {
+  const _$UploadTaskSuccess();
 
   @override
   String toString() {
-    return 'CreateTaskState.success()';
+    return 'UploadTaskState.success()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is CreateTaskSuccess);
+        (other.runtimeType == runtimeType && other is UploadTaskSuccess);
   }
 
   @override
@@ -423,10 +423,10 @@ class _$CreateTaskSuccess implements CreateTaskSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CreateTaskInitial value) initial,
-    required TResult Function(CreateTaskLoading value) loading,
-    required TResult Function(CreateTaskSuccess value) success,
-    required TResult Function(CreateTaskErrorDetails value) error,
+    required TResult Function(UploadTaskInitial value) initial,
+    required TResult Function(UploadTaskLoading value) loading,
+    required TResult Function(UploadTaskSuccess value) success,
+    required TResult Function(UploadTaskErrorDetails value) error,
   }) {
     return success(this);
   }
@@ -434,10 +434,10 @@ class _$CreateTaskSuccess implements CreateTaskSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CreateTaskInitial value)? initial,
-    TResult Function(CreateTaskLoading value)? loading,
-    TResult Function(CreateTaskSuccess value)? success,
-    TResult Function(CreateTaskErrorDetails value)? error,
+    TResult Function(UploadTaskInitial value)? initial,
+    TResult Function(UploadTaskLoading value)? loading,
+    TResult Function(UploadTaskSuccess value)? success,
+    TResult Function(UploadTaskErrorDetails value)? error,
   }) {
     return success?.call(this);
   }
@@ -445,10 +445,10 @@ class _$CreateTaskSuccess implements CreateTaskSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CreateTaskInitial value)? initial,
-    TResult Function(CreateTaskLoading value)? loading,
-    TResult Function(CreateTaskSuccess value)? success,
-    TResult Function(CreateTaskErrorDetails value)? error,
+    TResult Function(UploadTaskInitial value)? initial,
+    TResult Function(UploadTaskLoading value)? loading,
+    TResult Function(UploadTaskSuccess value)? success,
+    TResult Function(UploadTaskErrorDetails value)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -458,34 +458,34 @@ class _$CreateTaskSuccess implements CreateTaskSuccess {
   }
 }
 
-abstract class CreateTaskSuccess implements CreateTaskState {
-  const factory CreateTaskSuccess() = _$CreateTaskSuccess;
+abstract class UploadTaskSuccess implements UploadTaskState {
+  const factory UploadTaskSuccess() = _$UploadTaskSuccess;
 }
 
 /// @nodoc
-abstract class $CreateTaskErrorDetailsCopyWith<$Res> {
-  factory $CreateTaskErrorDetailsCopyWith(CreateTaskErrorDetails value,
-          $Res Function(CreateTaskErrorDetails) then) =
-      _$CreateTaskErrorDetailsCopyWithImpl<$Res>;
+abstract class $UploadTaskErrorDetailsCopyWith<$Res> {
+  factory $UploadTaskErrorDetailsCopyWith(UploadTaskErrorDetails value,
+          $Res Function(UploadTaskErrorDetails) then) =
+      _$UploadTaskErrorDetailsCopyWithImpl<$Res>;
   $Res call({String error});
 }
 
 /// @nodoc
-class _$CreateTaskErrorDetailsCopyWithImpl<$Res>
-    extends _$CreateTaskStateCopyWithImpl<$Res>
-    implements $CreateTaskErrorDetailsCopyWith<$Res> {
-  _$CreateTaskErrorDetailsCopyWithImpl(CreateTaskErrorDetails _value,
-      $Res Function(CreateTaskErrorDetails) _then)
-      : super(_value, (v) => _then(v as CreateTaskErrorDetails));
+class _$UploadTaskErrorDetailsCopyWithImpl<$Res>
+    extends _$UploadTaskStateCopyWithImpl<$Res>
+    implements $UploadTaskErrorDetailsCopyWith<$Res> {
+  _$UploadTaskErrorDetailsCopyWithImpl(UploadTaskErrorDetails _value,
+      $Res Function(UploadTaskErrorDetails) _then)
+      : super(_value, (v) => _then(v as UploadTaskErrorDetails));
 
   @override
-  CreateTaskErrorDetails get _value => super._value as CreateTaskErrorDetails;
+  UploadTaskErrorDetails get _value => super._value as UploadTaskErrorDetails;
 
   @override
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(CreateTaskErrorDetails(
+    return _then(UploadTaskErrorDetails(
       error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -496,22 +496,22 @@ class _$CreateTaskErrorDetailsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CreateTaskErrorDetails implements CreateTaskErrorDetails {
-  const _$CreateTaskErrorDetails(this.error);
+class _$UploadTaskErrorDetails implements UploadTaskErrorDetails {
+  const _$UploadTaskErrorDetails(this.error);
 
   @override
   final String error;
 
   @override
   String toString() {
-    return 'CreateTaskState.error(error: $error)';
+    return 'UploadTaskState.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CreateTaskErrorDetails &&
+            other is UploadTaskErrorDetails &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
@@ -521,8 +521,8 @@ class _$CreateTaskErrorDetails implements CreateTaskErrorDetails {
 
   @JsonKey(ignore: true)
   @override
-  $CreateTaskErrorDetailsCopyWith<CreateTaskErrorDetails> get copyWith =>
-      _$CreateTaskErrorDetailsCopyWithImpl<CreateTaskErrorDetails>(
+  $UploadTaskErrorDetailsCopyWith<UploadTaskErrorDetails> get copyWith =>
+      _$UploadTaskErrorDetailsCopyWithImpl<UploadTaskErrorDetails>(
           this, _$identity);
 
   @override
@@ -565,10 +565,10 @@ class _$CreateTaskErrorDetails implements CreateTaskErrorDetails {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CreateTaskInitial value) initial,
-    required TResult Function(CreateTaskLoading value) loading,
-    required TResult Function(CreateTaskSuccess value) success,
-    required TResult Function(CreateTaskErrorDetails value) error,
+    required TResult Function(UploadTaskInitial value) initial,
+    required TResult Function(UploadTaskLoading value) loading,
+    required TResult Function(UploadTaskSuccess value) success,
+    required TResult Function(UploadTaskErrorDetails value) error,
   }) {
     return error(this);
   }
@@ -576,10 +576,10 @@ class _$CreateTaskErrorDetails implements CreateTaskErrorDetails {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CreateTaskInitial value)? initial,
-    TResult Function(CreateTaskLoading value)? loading,
-    TResult Function(CreateTaskSuccess value)? success,
-    TResult Function(CreateTaskErrorDetails value)? error,
+    TResult Function(UploadTaskInitial value)? initial,
+    TResult Function(UploadTaskLoading value)? loading,
+    TResult Function(UploadTaskSuccess value)? success,
+    TResult Function(UploadTaskErrorDetails value)? error,
   }) {
     return error?.call(this);
   }
@@ -587,10 +587,10 @@ class _$CreateTaskErrorDetails implements CreateTaskErrorDetails {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CreateTaskInitial value)? initial,
-    TResult Function(CreateTaskLoading value)? loading,
-    TResult Function(CreateTaskSuccess value)? success,
-    TResult Function(CreateTaskErrorDetails value)? error,
+    TResult Function(UploadTaskInitial value)? initial,
+    TResult Function(UploadTaskLoading value)? loading,
+    TResult Function(UploadTaskSuccess value)? success,
+    TResult Function(UploadTaskErrorDetails value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -600,11 +600,11 @@ class _$CreateTaskErrorDetails implements CreateTaskErrorDetails {
   }
 }
 
-abstract class CreateTaskErrorDetails implements CreateTaskState {
-  const factory CreateTaskErrorDetails(String error) = _$CreateTaskErrorDetails;
+abstract class UploadTaskErrorDetails implements UploadTaskState {
+  const factory UploadTaskErrorDetails(String error) = _$UploadTaskErrorDetails;
 
   String get error;
   @JsonKey(ignore: true)
-  $CreateTaskErrorDetailsCopyWith<CreateTaskErrorDetails> get copyWith =>
+  $UploadTaskErrorDetailsCopyWith<UploadTaskErrorDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
