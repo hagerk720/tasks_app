@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tasks_app/core/domain/entities/task_entity.dart';
+import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
 
 class TaskWidget extends StatelessWidget {
-  final TaskEntity task;
+  final GetTaskEntity task;
   const TaskWidget({required this.task});
   @override
   Widget build(BuildContext context) {

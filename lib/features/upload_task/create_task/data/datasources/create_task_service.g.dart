@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_tasks_service.dart';
+part of 'create_task_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,32 +8,30 @@ part of 'get_tasks_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps
 
-class _GetTasksService implements GetTasksService {
-  _GetTasksService(this._dio, {this.baseUrl});
+class _CreateTaskService implements CreateTaskService {
+  _CreateTaskService(this._dio, {this.baseUrl});
 
   final Dio _dio;
 
   String? baseUrl;
 
   @override
-  Future<ResponseModel<List<GetTaskModel>>> getTasks({required token}) async {
+  Future<ResponseModel<dynamic>> createTask(
+      {required token, required uploadTaskModel}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
-    final _data = <String, dynamic>{};
+    final _data = uploadTaskModel;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ResponseModel<List<GetTaskModel>>>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'task/all',
+        _setStreamType<ResponseModel<dynamic>>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, 'task/create',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = ResponseModel<List<GetTaskModel>>.fromJson(
+    final value = ResponseModel<dynamic>.fromJson(
       _result.data!,
-      (json) => (json as List<dynamic>)
-          .map<GetTaskModel>(
-              (i) => GetTaskModel.fromJson(i as Map<String, dynamic>))
-          .toList(),
+      (json) => json as dynamic,
     );
     return value;
   }

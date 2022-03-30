@@ -26,7 +26,7 @@ class _$GetTasksStateTearOff {
     return const GetTasksLoading();
   }
 
-  GetTasksSuccess success(List<TaskEntity> tasksList) {
+  GetTasksSuccess success(List<GetTaskEntity> tasksList) {
     return GetTasksSuccess(
       tasksList,
     );
@@ -48,7 +48,7 @@ mixin _$GetTasksState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> tasksList) success,
+    required TResult Function(List<GetTaskEntity> tasksList) success,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,7 +56,7 @@ mixin _$GetTasksState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> tasksList)? success,
+    TResult Function(List<GetTaskEntity> tasksList)? success,
     TResult Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +64,7 @@ mixin _$GetTasksState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> tasksList)? success,
+    TResult Function(List<GetTaskEntity> tasksList)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -156,7 +156,7 @@ class _$GetTasksInitial implements GetTasksInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> tasksList) success,
+    required TResult Function(List<GetTaskEntity> tasksList) success,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -167,7 +167,7 @@ class _$GetTasksInitial implements GetTasksInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> tasksList)? success,
+    TResult Function(List<GetTaskEntity> tasksList)? success,
     TResult Function(String error)? error,
   }) {
     return initial?.call();
@@ -178,7 +178,7 @@ class _$GetTasksInitial implements GetTasksInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> tasksList)? success,
+    TResult Function(List<GetTaskEntity> tasksList)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -273,7 +273,7 @@ class _$GetTasksLoading implements GetTasksLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> tasksList) success,
+    required TResult Function(List<GetTaskEntity> tasksList) success,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -284,7 +284,7 @@ class _$GetTasksLoading implements GetTasksLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> tasksList)? success,
+    TResult Function(List<GetTaskEntity> tasksList)? success,
     TResult Function(String error)? error,
   }) {
     return loading?.call();
@@ -295,7 +295,7 @@ class _$GetTasksLoading implements GetTasksLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> tasksList)? success,
+    TResult Function(List<GetTaskEntity> tasksList)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -352,7 +352,7 @@ abstract class $GetTasksSuccessCopyWith<$Res> {
   factory $GetTasksSuccessCopyWith(
           GetTasksSuccess value, $Res Function(GetTasksSuccess) then) =
       _$GetTasksSuccessCopyWithImpl<$Res>;
-  $Res call({List<TaskEntity> tasksList});
+  $Res call({List<GetTaskEntity> tasksList});
 }
 
 /// @nodoc
@@ -374,7 +374,7 @@ class _$GetTasksSuccessCopyWithImpl<$Res>
       tasksList == freezed
           ? _value.tasksList
           : tasksList // ignore: cast_nullable_to_non_nullable
-              as List<TaskEntity>,
+              as List<GetTaskEntity>,
     ));
   }
 }
@@ -385,7 +385,7 @@ class _$GetTasksSuccess implements GetTasksSuccess {
   const _$GetTasksSuccess(this.tasksList);
 
   @override
-  final List<TaskEntity> tasksList;
+  final List<GetTaskEntity> tasksList;
 
   @override
   String toString() {
@@ -414,7 +414,7 @@ class _$GetTasksSuccess implements GetTasksSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> tasksList) success,
+    required TResult Function(List<GetTaskEntity> tasksList) success,
     required TResult Function(String error) error,
   }) {
     return success(tasksList);
@@ -425,7 +425,7 @@ class _$GetTasksSuccess implements GetTasksSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> tasksList)? success,
+    TResult Function(List<GetTaskEntity> tasksList)? success,
     TResult Function(String error)? error,
   }) {
     return success?.call(tasksList);
@@ -436,7 +436,7 @@ class _$GetTasksSuccess implements GetTasksSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> tasksList)? success,
+    TResult Function(List<GetTaskEntity> tasksList)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -485,9 +485,10 @@ class _$GetTasksSuccess implements GetTasksSuccess {
 }
 
 abstract class GetTasksSuccess implements GetTasksState {
-  const factory GetTasksSuccess(List<TaskEntity> tasksList) = _$GetTasksSuccess;
+  const factory GetTasksSuccess(List<GetTaskEntity> tasksList) =
+      _$GetTasksSuccess;
 
-  List<TaskEntity> get tasksList;
+  List<GetTaskEntity> get tasksList;
   @JsonKey(ignore: true)
   $GetTasksSuccessCopyWith<GetTasksSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -561,7 +562,7 @@ class _$GetTasksErrorDetails implements GetTasksErrorDetails {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TaskEntity> tasksList) success,
+    required TResult Function(List<GetTaskEntity> tasksList) success,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -572,7 +573,7 @@ class _$GetTasksErrorDetails implements GetTasksErrorDetails {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> tasksList)? success,
+    TResult Function(List<GetTaskEntity> tasksList)? success,
     TResult Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -583,7 +584,7 @@ class _$GetTasksErrorDetails implements GetTasksErrorDetails {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TaskEntity> tasksList)? success,
+    TResult Function(List<GetTaskEntity> tasksList)? success,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
