@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
@@ -5,31 +6,36 @@ import 'package:tasks_app/core/domain/error/error_toast.dart';
 import 'package:tasks_app/core/presentation/validation/validators.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_elevated_button.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_text_form_field.dart';
+import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
 import 'package:tasks_app/features/get_tasks/presentation/screens/task_list_screen.dart';
+import 'package:tasks_app/features/upload_task/core/bloc/upload_task_cubit.dart';
+import 'package:tasks_app/features/upload_task/core/bloc/upload_task_state.dart';
 import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
-import 'package:tasks_app/features/upload_task/create_task/presentation/bloc/create_task_cubit.dart';
-import 'package:tasks_app/features/upload_task/create_task/presentation/bloc/create_task_state.dart';
 import 'package:tasks_app/features/upload_task/create_task/presentation/widgets/custom_drop_down_button_form_field.dart';
 
-class CreateTaskScreen extends StatelessWidget {
-  CreateTaskScreen();
+class UploadTaskScreen extends StatelessWidget {
+  UploadTaskScreen();
   static const routeName = '/create_task';
-  final titleController = TextEditingController();
-  final descriptionController = TextEditingController();
-  final priorities = [
-    'High',
-    'Medium',
-    'Low',
-  ];
+  final priorities = ['High', 'Medium', 'Low'];
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    var titleController = TextEditingController();
+    var descriptionController = TextEditingController();
     String? selectedPriority;
     DateTime selectedTime = DateTime(0);
+    File? attachmentFile;
+    final task = ModalRoute.of(context)!.settings.arguments as GetTaskEntity?;
+    if (task != null) {
+      titleController = TextEditingController(text: task.title);
+      descriptionController = TextEditingController(text: task.description);
+      selectedPriority = task.priority;
+      selectedTime = DateTime.parse('00000000 ${task.period}');
+    }
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Create Task'),
+        title: Text(task == null ? 'Create Task' : 'Update Task'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -86,8 +92,8 @@ class CreateTaskScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Upload',
-                                style: Theme.of(context).textTheme.headline2,
+                                'UPLOAD',
+                                style: Theme.of(context).textTheme.headline5,
                               ),
                               const SizedBox(width: 8),
                               const Icon(
@@ -120,7 +126,7 @@ class CreateTaskScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              BlocBuilder<CreateTaskCubit, CreateTaskState>(
+              BlocBuilder<UploadTaskCubit, UploadTaskState>(
                 builder: (context, state) {
                   bool isLoading = false;
                   state.maybeWhen(
@@ -143,17 +149,24 @@ class CreateTaskScreen extends StatelessWidget {
                       if (_formKey.currentState!.validate()) {
                         final selectedPeriod =
                             selectedTime.toString().substring(11, 16);
-                        BlocProvider.of<CreateTaskCubit>(context).createTask(
-                          UploadTaskEntity(
-                            title: titleController.text,
-                            description: descriptionController.text,
-                            priority: selectedPriority!,
-                            period: selectedPeriod != '00:00'
-                                ? selectedPeriod
-                                : null,
-                            state: 1,
-                          ),
+                        final uploadedTask = UploadTaskEntity(
+                          title: titleController.text,
+                          description: descriptionController.text,
+                          priority: selectedPriority!,
+                          period:
+                              selectedPeriod != '00:00' ? selectedPeriod : null,
+                          state: 1,
+                          attachementFile: attachmentFile,
                         );
+                        if (task == null) {
+                          BlocProvider.of<UploadTaskCubit>(context)
+                              .createTask(uploadTaskEntity: uploadedTask);
+                        } else {
+                          BlocProvider.of<UploadTaskCubit>(context).updateTask(
+                            taskId: task.id,
+                            uploadTaskEntity: uploadedTask,
+                          );
+                        }
                       }
                     },
                     isLoading: isLoading,

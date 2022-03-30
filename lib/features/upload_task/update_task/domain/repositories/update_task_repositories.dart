@@ -4,6 +4,7 @@ import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.
 
 abstract class UpdateTaskRepository {
   Future<Either<Failure, Unit>> updateTask({
+    required int taskId,
     required UploadTaskEntity uploadTaskEntity,
   });
 }

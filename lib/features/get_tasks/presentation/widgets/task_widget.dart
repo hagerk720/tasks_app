@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
+import 'package:tasks_app/features/upload_task/core/screens/upload_task_screen.dart';
 
 class TaskWidget extends StatelessWidget {
   final GetTaskEntity task;
@@ -50,7 +51,13 @@ class TaskWidget extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              const Icon(Icons.edit),
+              IconButton(
+                icon: const Icon(Icons.edit),
+                onPressed: () => Navigator.of(context).pushNamed(
+                  UploadTaskScreen.routeName,
+                  arguments: task,
+                ),
+              ),
             ],
           ),
           Text(
