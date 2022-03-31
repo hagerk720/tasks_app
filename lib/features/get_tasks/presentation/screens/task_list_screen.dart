@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks_app/core/domain/error/error_toast.dart';
-import 'package:tasks_app/core/presentation/theme/my_theme.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:tasks_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:tasks_app/features/auth/presentation/widgets/logout_widget.dart';
 import 'package:tasks_app/features/delete_task/presentation/bloc/cubit/delete_task_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_state.dart';
+import 'package:tasks_app/features/get_tasks/presentation/widgets/switch_left_widget.dart';
+import 'package:tasks_app/features/get_tasks/presentation/widgets/switch_right_widget.dart';
 import 'package:tasks_app/features/get_tasks/presentation/widgets/task_widget.dart';
 import 'package:tasks_app/features/upload_task/core/screens/upload_task_screen.dart';
 
@@ -23,7 +24,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
   Widget build(BuildContext context) {
     BlocProvider.of<GetTasksCubit>(context).getTasks();
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
     final colorTheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
@@ -38,7 +38,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
           ),
         ],
       ),
-      backgroundColor: const Color.fromARGB(250, 249, 246, 246),
       body: BlocBuilder<GetTasksCubit, GetTasksState>(
         builder: (context, state) {
           return state.maybeWhen(
@@ -59,12 +58,8 @@ class _TaskListScreenState extends State<TaskListScreen> {
                                 );
                           }
                         },
-                        background: Container(
-                          color: Colors.green,
-                        ),
-                        secondaryBackground: Container(
-                          color: Colors.red,
-                        ),
+                        background: const SwitchLeft(),
+                        secondaryBackground: const SwitchRight(),
                         child: TaskWidget(
                           task: tasks[index],
                         ),
