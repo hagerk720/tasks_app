@@ -94,7 +94,7 @@ class RegisterScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Already have an account?',
-                    style: textTheme.headline2,
+                    style: textTheme.headline6,
                   ),
                   TextButton(
                     onPressed: () => Navigator.of(context)

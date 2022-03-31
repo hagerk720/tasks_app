@@ -31,7 +31,7 @@ class CustomElevatedButton extends StatelessWidget {
       onPressed: onPressed,
       child: isLoading
           ? const CircularProgressIndicator(
-              color: Colors.black,
+              color: Colors.white,
             )
           : Text(label.toUpperCase()),
     );
