@@ -60,8 +60,15 @@ class RegisterScreen extends StatelessWidget {
                   state.maybeWhen(
                     loading: () => isLoading = true,
                     error: (error) => showErrorToast(errorMessage: error),
-                    success: () => Navigator.of(context).pushReplacementNamed(
-                      TaskListScreen.routeName,
+                    success: () =>
+                        WidgetsBinding.instance!.addPostFrameCallback(
+                      (_) {
+                        Navigator.of(context)
+                            .popUntil((route) => route.isFirst);
+                        Navigator.of(context).pushReplacementNamed(
+                          TaskListScreen.routeName,
+                        );
+                      },
                     ),
                     orElse: () {},
                   );

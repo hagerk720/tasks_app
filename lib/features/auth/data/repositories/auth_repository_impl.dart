@@ -25,7 +25,7 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final token =
           await authService.register(registerModel: registerEntity.toModel());
-      localDataSource.saveToken(token.data.token);
+      await localDataSource.saveToken(token.data.token);
       return right(unit);
     } catch (error) {
       return left(Failure(error));
@@ -40,7 +40,7 @@ class AuthRepositoryImpl implements AuthRepository {
       final token = await authService.login(
         loginModel: loginEntity.toModel(),
       );
-      localDataSource.saveToken(token.data.token);
+      await localDataSource.saveToken(token.data.token);
       return right(unit);
     } catch (error) {
       return left(Failure(error));
@@ -50,7 +50,9 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Either<Failure, Unit>> logout() async {
     try {
-      localDataSource.deleteToken();
+      final token = await localDataSource.getToken();
+      await localDataSource.deleteToken();
+      await authService.logout(token: 'Bearer ${token!}');
       return right(unit);
     } catch (error) {
       return left(Failure(error));

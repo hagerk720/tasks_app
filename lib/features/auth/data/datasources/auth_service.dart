@@ -22,4 +22,9 @@ abstract class AuthService {
   Future<ResponseModel<TokenModel>> login({
     @Body() required LoginModel loginModel,
   });
+
+  @POST('logout')
+  Future<ResponseModel> logout({
+    @Header('Authorization') required String token,
+  });
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks_app/core/domain/error/error_toast.dart';
+import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
+import 'package:tasks_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:tasks_app/features/auth/presentation/widgets/logout_widget.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_state.dart';
 import 'package:tasks_app/features/get_tasks/presentation/widgets/task_widget.dart';
@@ -22,6 +25,14 @@ class _TaskListScreenState extends State<TaskListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Tasks'),
+        actions: [
+          LogoutWidget(
+            onPressed: () {
+              BlocProvider.of<AuthCubit>(context).logout();
+              Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+            },
+          ),
+        ],
       ),
       backgroundColor: const Color.fromARGB(250, 249, 246, 246),
       body: BlocBuilder<GetTasksCubit, GetTasksState>(
@@ -65,9 +76,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
             .pushNamed(
               UploadTaskScreen.routeName,
             )
-            .then(
-              (value) => setState(() {}),
-            ),
+            .then((value) => setState(() {})),
         backgroundColor: colorTheme.primary,
         child: const Icon(Icons.add),
       ),
