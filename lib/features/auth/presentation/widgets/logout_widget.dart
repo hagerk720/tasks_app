@@ -5,11 +5,7 @@ class LogoutWidget extends StatelessWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
-    const textStyle = TextStyle(
-      fontSize: 16,
-      color: Color(0xff3282B8),
-      fontWeight: FontWeight.bold,
-    );
+    final textStyle = Theme.of(context).textTheme.headline2;
     return Padding(
       padding: const EdgeInsets.only(
         right: 12,
@@ -21,14 +17,14 @@ class LogoutWidget extends StatelessWidget {
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),
-                child: const Text(
+                child: Text(
                   'NO',
                   style: textStyle,
                 ),
               ),
               TextButton(
                 onPressed: onPressed,
-                child: const Text(
+                child: Text(
                   'YES',
                   style: textStyle,
                 ),
