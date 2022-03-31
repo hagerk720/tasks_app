@@ -22,10 +22,9 @@ class TaskWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                margin: const EdgeInsets.all(5),
+              Padding(
+                padding: const EdgeInsets.only(left: 8, right: 5),
                 child: Text(
                   task.title,
                   style: textTheme.headline2,
@@ -36,7 +35,7 @@ class TaskWidget extends StatelessWidget {
                 height: 10,
                 decoration: task.priority == "High"
                     ? BoxDecoration(
-                        color: colorTheme.onSurface,
+                        color: colorTheme.secondary,
                         shape: BoxShape.circle,
                       )
                     : task.priority == "Low"
@@ -49,10 +48,13 @@ class TaskWidget extends StatelessWidget {
                             shape: BoxShape.circle,
                           ),
               ),
-              Text(
-                task.priority,
-                style: const TextStyle(
-                  color: Colors.grey,
+              Padding(
+                padding: const EdgeInsets.only(left: 3),
+                child: Text(
+                  task.priority,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                  ),
                 ),
               ),
               const Spacer(),
@@ -65,25 +67,10 @@ class TaskWidget extends StatelessWidget {
               ),
             ],
           ),
-          Text(
-            task.description,
-          ),
-          Align(
-            alignment: FractionalOffset.bottomRight,
-            child: Container(
-              width: 25,
-              height: 25,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(4),
-                ),
-                border: Border.all(color: colorTheme.primary),
-                color: Colors.white,
-              ),
-              child: const Icon(
-                Icons.delete,
-                color: Colors.red,
-              ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8, right: 5, bottom: 5),
+            child: Text(
+              task.description,
             ),
           ),
         ],

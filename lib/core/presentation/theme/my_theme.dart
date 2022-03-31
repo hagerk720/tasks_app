@@ -33,6 +33,7 @@ ThemeData myTheme = ThemeData(
       ),
       backgroundColor: MaterialStateProperty.all(const Color(0xff0b113c)),
       foregroundColor: MaterialStateProperty.all(Colors.white),
+
     ),
   ),
   textButtonTheme: TextButtonThemeData(
