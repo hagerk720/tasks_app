@@ -4,6 +4,7 @@ import 'package:tasks_app/core/domain/error/error_toast.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:tasks_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:tasks_app/features/auth/presentation/widgets/logout_widget.dart';
+import 'package:tasks_app/features/delete_task/presentation/bloc/cubit/delete_task_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_state.dart';
 import 'package:tasks_app/features/get_tasks/presentation/widgets/task_widget.dart';
@@ -44,18 +45,21 @@ class _TaskListScreenState extends State<TaskListScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   return Dismissible(
                     key: ValueKey(tasks[index]),
-                    child: TaskWidget(
-                      task: tasks[index],
-                    ),
                     onDismissed: (direction) {
-                      
+                      if (direction == DismissDirection.endToStart) {
+                        BlocProvider.of<DeleteTaskCubit>(context)
+                            .deleteTask(taskId: tasks[index].id);
+                        BlocProvider.of<GetTasksCubit>(context).getTasks();
+                      }
                     },
                     background: Container(
-                       color: Colors.green,
-                      
+                      color: Colors.green,
                     ),
                     secondaryBackground: Container(
-                     color: Colors.red,
+                      color: Colors.red,
+                    ),
+                    child: TaskWidget(
+                      task: tasks[index],
                     ),
                   );
                 },

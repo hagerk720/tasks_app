@@ -4,6 +4,7 @@ import 'package:tasks_app/core/domain/di/injectable.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:tasks_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:tasks_app/features/auth/presentation/screens/register_screen.dart';
+import 'package:tasks_app/features/delete_task/presentation/bloc/cubit/delete_task_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/screens/task_list_screen.dart';
 import 'package:tasks_app/features/upload_task/core/bloc/upload_task_cubit.dart';
@@ -34,8 +35,9 @@ mixin AppRouter {
             providers: [
               BlocProvider(create: (context) => getIt<GetTasksCubit>()),
               BlocProvider(create: (context) => getIt<UploadTaskCubit>()),
-              //BlocProvider(create: (context) => getIt<GetTasksCubit>()),
+              BlocProvider(create: (context) => getIt<DeleteTaskCubit>()),
               BlocProvider(create: (context) => getIt<AuthCubit>()),
+
             ],
             child: const TaskListScreen(),
           ),
