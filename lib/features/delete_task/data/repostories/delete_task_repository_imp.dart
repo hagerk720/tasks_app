@@ -17,8 +17,8 @@ class DeleteTaskRepositoryImpl implements DeleteTaskRepository {
   @override
   Future<Either<Failure, String>> deleteTask({required int taskId})async {
     try {
-      final token = localDataSource.getToken().toString();
-      final response = await deleteTaskService.deleteTask(token: 'Bearer $token' , taskId: taskId);
+      final token = await localDataSource.getToken();
+      final response = await deleteTaskService.deleteTask(token: 'Bearer ${token!}' , taskId: taskId);
       return right(response.message);
     } catch (error) {
       return left(Failure(error));

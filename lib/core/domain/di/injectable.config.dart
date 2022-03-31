@@ -26,16 +26,18 @@ import '../../../features/delete_task/domain/repositories/delete_task_repository
     as _i22;
 import '../../../features/delete_task/domain/usecases/delete_task_usecase.dart'
     as _i24;
+import '../../../features/delete_task/presentation/bloc/cubit/delete_task_cubit.dart'
+    as _i33;
 import '../../../features/get_tasks/data/datasources/get_tasks_service.dart'
     as _i4;
 import '../../../features/get_tasks/data/repositories/get_tasks_repository_impl.dart'
     as _i26;
 import '../../../features/get_tasks/domain/repositories/get_tasks_repository.dart'
     as _i25;
-import '../../../features/get_tasks/domain/usecases/get_tasks.dart' as _i33;
+import '../../../features/get_tasks/domain/usecases/get_tasks.dart' as _i34;
 import '../../../features/get_tasks/presentation/bloc/get_tasks_cubit.dart'
-    as _i34;
-import '../../../features/upload_task/core/bloc/upload_task_cubit.dart' as _i35;
+    as _i35;
+import '../../../features/upload_task/core/bloc/upload_task_cubit.dart' as _i36;
 import '../../../features/upload_task/create_task/data/datasources/create_task_api_service.dart'
     as _i10;
 import '../../../features/upload_task/create_task/data/datasources/create_task_service_impl.dart'
@@ -62,8 +64,8 @@ import '../../../features/upload_task/update_task/domain/usecases/update_task.da
     as _i30;
 import '../../data/datasources/local_datasource_impl.dart' as _i15;
 import '../datasources/local_datasource.dart' as _i14;
-import 'app_dio.dart' as _i36;
-import 'shared_pref.dart' as _i37; // ignore_for_file: unnecessary_lambdas
+import 'app_dio.dart' as _i37;
+import 'shared_pref.dart' as _i38; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -115,15 +117,17 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       get<_i29.Register>(), get<_i27.Login>(), get<_i28.Logout>()));
   gh.factory<_i32.CreateTask>(
       () => _i32.CreateTask(get<_i20.CreateTaskRepository>()));
-  gh.factory<_i33.GetTasks>(
-      () => _i33.GetTasks(get<_i25.GetTasksRepository>()));
-  gh.factory<_i34.GetTasksCubit>(
-      () => _i34.GetTasksCubit(get<_i33.GetTasks>()));
-  gh.factory<_i35.UploadTaskCubit>(() =>
-      _i35.UploadTaskCubit(get<_i32.CreateTask>(), get<_i30.UpdateTask>()));
+  gh.factory<_i33.DeleteTaskCubit>(
+      () => _i33.DeleteTaskCubit(get<_i24.DeleteTaskUseCase>()));
+  gh.factory<_i34.GetTasks>(
+      () => _i34.GetTasks(get<_i25.GetTasksRepository>()));
+  gh.factory<_i35.GetTasksCubit>(
+      () => _i35.GetTasksCubit(get<_i34.GetTasks>()));
+  gh.factory<_i36.UploadTaskCubit>(() =>
+      _i36.UploadTaskCubit(get<_i32.CreateTask>(), get<_i30.UpdateTask>()));
   return get;
 }
 
-class _$AppDio extends _i36.AppDio {}
+class _$AppDio extends _i37.AppDio {}
 
-class _$CacheHelper extends _i37.CacheHelper {}
+class _$CacheHelper extends _i38.CacheHelper {}

@@ -6,7 +6,7 @@ import 'package:tasks_app/core/domain/usecases/usecase.dart';
 import 'package:tasks_app/features/delete_task/domain/repositories/delete_task_repository.dart';
 
 @injectable
-class DeleteTaskUseCase implements UseCase<String,int> {
+class DeleteTaskUseCase implements UseCase<String, int> {
   DeleteTaskRepository deleteTaskRepository;
   DeleteTaskUseCase(this.deleteTaskRepository);
 
@@ -14,10 +14,9 @@ class DeleteTaskUseCase implements UseCase<String,int> {
   Future<Either<Failure, String>> call(
     int taskId,
   ) {
-
     return deleteTaskRepository.deleteTask(
-        taskId: taskId ,
-      );
+      taskId: taskId,
+    );
   }
 }
 
