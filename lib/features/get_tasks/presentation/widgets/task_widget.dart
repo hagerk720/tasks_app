@@ -16,7 +16,7 @@ class TaskWidget extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(10),
         ),
-        color: Colors.white,
+        color: Color.fromARGB(255, 238, 242, 253),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,7 +35,7 @@ class TaskWidget extends StatelessWidget {
                 height: 10,
                 decoration: task.priority == "High"
                     ? BoxDecoration(
-                        color: colorTheme.secondary,
+                        color: colorTheme.onPrimary,
                         shape: BoxShape.circle,
                       )
                     : task.priority == "Low"
