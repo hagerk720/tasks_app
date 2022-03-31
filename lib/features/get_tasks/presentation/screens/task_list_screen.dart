@@ -36,8 +36,21 @@ class _TaskListScreenState extends State<TaskListScreen> {
             success: (tasks) {
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
-                  return TaskWidget(
-                    task: tasks[index],
+                  return Dismissible(
+                    key: ValueKey(tasks[index]),
+                    child: TaskWidget(
+                      task: tasks[index],
+                    ),
+                    onDismissed: (direction) {
+                      
+                    },
+                    background: Container(
+                       color: Colors.green,
+                      
+                    ),
+                    secondaryBackground: Container(
+                     color: Colors.red,
+                    ),
                   );
                 },
                 itemCount: tasks.length,
