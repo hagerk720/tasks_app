@@ -26,7 +26,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
     final colorTheme = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Tasks'),
+        title: const Text(' Tasks'),
       ),
       backgroundColor: const Color.fromARGB(250, 249, 246, 246),
       body: BlocBuilder<GetTasksCubit, GetTasksState>(
