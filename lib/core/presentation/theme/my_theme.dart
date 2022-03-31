@@ -17,11 +17,12 @@ ThemeData myTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(
       fontSize: 22,
-      color: Colors.white,
+      color: Color(0xff0b113c),
       fontWeight: FontWeight.bold,
     ),
-    backgroundColor: Color(0xff0b113c),
-    foregroundColor: Colors.white,
+    foregroundColor: Color(0xff0b113c),
+    backgroundColor: Colors.white,
+    elevation: 0,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
@@ -33,7 +34,6 @@ ThemeData myTheme = ThemeData(
       ),
       backgroundColor: MaterialStateProperty.all(const Color(0xff0b113c)),
       foregroundColor: MaterialStateProperty.all(Colors.white),
-
     ),
   ),
   textButtonTheme: TextButtonThemeData(
