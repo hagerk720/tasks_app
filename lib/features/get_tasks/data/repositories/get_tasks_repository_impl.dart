@@ -18,7 +18,7 @@ class GetTasksRepositoryImpl implements GetTasksRepository {
   @override
   Future<Either<Failure, List<GetTaskEntity>>> getTasks() async {
     try {
-      final token = localDataSource.getToken().toString();
+      final token = await localDataSource.getToken();
       final tasks = await getTasksService.getTasks(token: 'Bearer $token');
       return right(tasks.data);
     } catch (error) {

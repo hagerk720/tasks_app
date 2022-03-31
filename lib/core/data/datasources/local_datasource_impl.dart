@@ -13,12 +13,12 @@ class LocalDataSourceImpl implements LocalDataSource {
   }
 
   @override
-  String? getToken() {
+  Future<String?> getToken() async {
     return sharedPreferences.getString('token');
   }
 
   @override
-  void deleteToken() {
+  Future<void> deleteToken() async {
     sharedPreferences.remove('token');
   }
 }

@@ -21,9 +21,9 @@ class UpdateTaskRepositoryImpl implements UpdateTaskRepository {
     required UploadTaskEntity uploadTaskEntity,
   }) async {
     try {
-      final token = localDataSource.getToken()!;
+      final token = await localDataSource.getToken();
       await updateTaskService.updateTask(
-        token: 'Bearer $token',
+        token: 'Bearer ${token!}',
         taskId: taskId,
         uploadTaskModel: uploadTaskEntity.toModel(),
       );

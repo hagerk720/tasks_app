@@ -20,9 +20,9 @@ class CreateTaskRepositoryImpl implements CreateTaskRepository {
     required UploadTaskEntity uploadTaskEntity,
   }) async {
     try {
-      final token = localDataSource.getToken()!;
+      final token = await localDataSource.getToken();
       await createTaskService.createTask(
-        token: 'Bearer $token',
+        token: 'Bearer ${token!}',
         uploadTaskModel: uploadTaskEntity.toModel(),
       );
       return right(unit);
