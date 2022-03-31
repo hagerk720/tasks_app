@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:tasks_app/core/presentation/theme/colors.dart';
 
 ThemeData myTheme = ThemeData(
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
-    primary: primaryColor,
-    onPrimary: Colors.black,
-    secondary: secondaryColor,
-    onSecondary: Colors.black,
+    primary: Color(0xff0b113c),
+    onPrimary: Color(0xfff1f2f8),
+    secondary: Color(0xff0b113c),
+    onSecondary: Color(0xffd6f1ff),
     error: Colors.black,
     onError: Colors.black,
     background: Colors.black,
     onBackground: Colors.black,
-    surface: Colors.black,
-    onSurface: Colors.black,
+    surface: Color(0xffffe3c7),
+    onSurface: Color(0xfffeccd1),
   ),
   appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(
@@ -21,7 +20,7 @@ ThemeData myTheme = ThemeData(
       color: Colors.black,
       fontWeight: FontWeight.bold,
     ),
-    backgroundColor: primaryColor,
+    backgroundColor: Color(0xff0b113c),
     foregroundColor: Colors.black,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -32,7 +31,7 @@ ThemeData myTheme = ThemeData(
           fontWeight: FontWeight.bold,
         ),
       ),
-      backgroundColor: MaterialStateProperty.all(primaryColor),
+      backgroundColor: MaterialStateProperty.all(Color(0xff0b113c)),
       foregroundColor: MaterialStateProperty.all(Colors.black),
     ),
   ),
@@ -45,7 +44,7 @@ ThemeData myTheme = ThemeData(
           fontWeight: FontWeight.bold,
         ),
       ),
-      foregroundColor: MaterialStateProperty.all(primaryColor),
+      foregroundColor: MaterialStateProperty.all(Color(0xff0b113c)),
     ),
   ),
   textTheme: const TextTheme(

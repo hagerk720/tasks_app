@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasks_app/core/presentation/theme/my_theme.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
 import 'package:tasks_app/features/upload_task/core/screens/upload_task_screen.dart';
 
@@ -34,15 +35,20 @@ class TaskWidget extends StatelessWidget {
               Container(
                 width: 10,
                 height: 10,
-                decoration: task.priority == "high"
-                    ? const BoxDecoration(
-                        color: Colors.red,
+                decoration: task.priority == "High"
+                    ? BoxDecoration(
+                        color: colorTheme.onSurface,
                         shape: BoxShape.circle,
                       )
-                    : const BoxDecoration(
-                        color: Colors.green,
-                        shape: BoxShape.circle,
-                      ),
+                    : task.priority == "Low"
+                        ? BoxDecoration(
+                            color: colorTheme.onSecondary,
+                            shape: BoxShape.circle,
+                          )
+                        : BoxDecoration(
+                            color: colorTheme.surface,
+                            shape: BoxShape.circle,
+                          ),
               ),
               Text(
                 task.priority,
