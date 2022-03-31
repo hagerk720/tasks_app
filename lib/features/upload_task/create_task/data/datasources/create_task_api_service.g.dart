@@ -39,7 +39,7 @@ class _CreateTaskApiService implements CreateTaskApiService {
     }
     if (attachementFile != null) {
       _data.files.add(MapEntry(
-          'attachementFile',
+          'attachement',
           MultipartFile.fromFileSync(attachementFile.path,
               filename:
                   attachementFile.path.split(Platform.pathSeparator).last)));

@@ -40,7 +40,7 @@ class _UpdateTaskApiService implements UpdateTaskApiService {
     }
     if (attachementFile != null) {
       _data.files.add(MapEntry(
-          'attachementFile',
+          'attachement',
           MultipartFile.fromFileSync(attachementFile.path,
               filename:
                   attachementFile.path.split(Platform.pathSeparator).last)));
