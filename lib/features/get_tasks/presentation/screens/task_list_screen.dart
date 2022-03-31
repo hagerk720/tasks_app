@@ -48,8 +48,10 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     onDismissed: (direction) {
                       if (direction == DismissDirection.endToStart) {
                         BlocProvider.of<DeleteTaskCubit>(context)
-                            .deleteTask(taskId: tasks[index].id);
-                        BlocProvider.of<GetTasksCubit>(context).getTasks();
+                            .deleteTask(taskId: tasks[index].id)
+                            .then((value) =>
+                                BlocProvider.of<GetTasksCubit>(context)
+                                    .getTasks(),);
                       }
                     },
                     background: Container(
