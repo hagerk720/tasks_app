@@ -75,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Don't have an account?",
-                    style: textTheme.headline2,
+                    style: textTheme.headline6,
                   ),
                   TextButton(
                     onPressed: () => Navigator.of(context)

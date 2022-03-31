@@ -2,25 +2,26 @@ import 'package:flutter/material.dart';
 
 ThemeData myTheme = ThemeData(
   colorScheme: const ColorScheme(
-      brightness: Brightness.light,
-      primary: Color(0xff0b113c),
-      onPrimary: Color(0xfff1f2f8),
-      secondary: Color(0xfffeccd1),
-      onSecondary: Color(0xffd6f1ff),
-      error: Colors.black,
-      onError: Colors.black,
-      background: Colors.black,
-      onBackground: Colors.black,
-      surface: Color(0xffffe3c7),
-      onSurface: Colors.black),
+    brightness: Brightness.light,
+    primary: Color(0xff0b113c),
+    onPrimary: Color(0xfff1f2f8),
+    secondary: Color(0xff0b113c),
+    onSecondary: Color(0xffd6f1ff),
+    error: Colors.black,
+    onError: Colors.black,
+    background: Colors.black,
+    onBackground: Colors.black,
+    surface: Color(0xffffe3c7),
+    onSurface: Colors.black,
+  ),
   appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(
       fontSize: 22,
-      color: Colors.black,
+      color: Colors.white,
       fontWeight: FontWeight.bold,
     ),
     backgroundColor: Color(0xff0b113c),
-    foregroundColor: Colors.black,
+    foregroundColor: Colors.white,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
@@ -31,7 +32,8 @@ ThemeData myTheme = ThemeData(
         ),
       ),
       backgroundColor: MaterialStateProperty.all(const Color(0xff0b113c)),
-      foregroundColor: MaterialStateProperty.all(Colors.black),
+      foregroundColor: MaterialStateProperty.all(Colors.white),
+
     ),
   ),
   textButtonTheme: TextButtonThemeData(
@@ -68,6 +70,11 @@ ThemeData myTheme = ThemeData(
     headline5: TextStyle(
       fontSize: 16,
       color: Color.fromARGB(255, 124, 124, 124),
+      fontWeight: FontWeight.bold,
+    ),
+    headline6: TextStyle(
+      fontSize: 18,
+      color: Color.fromARGB(255, 117, 117, 117),
       fontWeight: FontWeight.bold,
     ),
   ),
