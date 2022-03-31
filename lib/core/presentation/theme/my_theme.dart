@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 
 ThemeData myTheme = ThemeData(
   colorScheme: const ColorScheme(
-    brightness: Brightness.light,
-    primary: Color(0xff0b113c),
-    onPrimary: Color(0xfff1f2f8),
-    secondary: Color(0xff0b113c),
-    onSecondary: Color(0xffd6f1ff),
-    error: Colors.black,
-    onError: Colors.black,
-    background: Colors.black,
-    onBackground: Colors.black,
-    surface: Color(0xffffe3c7),
-    onSurface: Color(0xfffeccd1),
-  ),
+      brightness: Brightness.light,
+      primary: Color(0xff0b113c),
+      onPrimary: Color(0xfff1f2f8),
+      secondary: Color(0xfffeccd1),
+      onSecondary: Color(0xffd6f1ff),
+      error: Colors.black,
+      onError: Colors.black,
+      background: Colors.black,
+      onBackground: Colors.black,
+      surface: Color(0xffffe3c7),
+      onSurface: Colors.black),
   appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(
       fontSize: 22,
@@ -31,7 +30,7 @@ ThemeData myTheme = ThemeData(
           fontWeight: FontWeight.bold,
         ),
       ),
-      backgroundColor: MaterialStateProperty.all(Color(0xff0b113c)),
+      backgroundColor: MaterialStateProperty.all(const Color(0xff0b113c)),
       foregroundColor: MaterialStateProperty.all(Colors.black),
     ),
   ),
@@ -44,7 +43,7 @@ ThemeData myTheme = ThemeData(
           fontWeight: FontWeight.bold,
         ),
       ),
-      foregroundColor: MaterialStateProperty.all(Color(0xff0b113c)),
+      foregroundColor: MaterialStateProperty.all(const Color(0xff0b113c)),
     ),
   ),
   textTheme: const TextTheme(
