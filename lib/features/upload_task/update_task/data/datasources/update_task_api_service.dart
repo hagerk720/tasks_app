@@ -21,6 +21,6 @@ abstract class UpdateTaskApiService {
     @Part() required String priority,
     @Part() required int state,
     @Part() String? period,
-    @Part() File? attachementFile,
+    @Part(name: 'attachement') File? attachementFile,
   });
 }

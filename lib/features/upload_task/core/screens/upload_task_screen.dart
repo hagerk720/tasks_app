@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
@@ -7,7 +8,6 @@ import 'package:tasks_app/core/presentation/validation/validators.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_elevated_button.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_text_form_field.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
-import 'package:tasks_app/features/get_tasks/presentation/screens/task_list_screen.dart';
 import 'package:tasks_app/features/upload_task/core/bloc/upload_task_cubit.dart';
 import 'package:tasks_app/features/upload_task/core/bloc/upload_task_state.dart';
 import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
@@ -87,7 +87,8 @@ class UploadTaskScreen extends StatelessWidget {
                             side: const BorderSide(color: Colors.grey),
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          onPressed: () {},
+                          onPressed: () async =>
+                              attachmentFile = await _pickFile(),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -134,12 +135,7 @@ class UploadTaskScreen extends StatelessWidget {
                     error: (error) => showErrorToast(errorMessage: error),
                     success: () =>
                         WidgetsBinding.instance!.addPostFrameCallback(
-                      (_) {
-                        Navigator.of(context)
-                            .popUntil((route) => route.isFirst);
-                        Navigator.of(context)
-                            .pushReplacementNamed(TaskListScreen.routeName);
-                      },
+                      (_) => Navigator.of(context).pop(),
                     ),
                     orElse: () {},
                   );
@@ -155,7 +151,7 @@ class UploadTaskScreen extends StatelessWidget {
                           priority: selectedPriority!,
                           period:
                               selectedPeriod != '00:00' ? selectedPeriod : null,
-                          state: 1,
+                          state: 0,
                           attachementFile: attachmentFile,
                         );
                         if (task == null) {
@@ -178,5 +174,13 @@ class UploadTaskScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<File?> _pickFile() async {
+    final result = await FilePicker.platform.pickFiles();
+    if (result == null) return null;
+    final path = result.files.last.path;
+    if (path == null) return null;
+    return File(path);
   }
 }

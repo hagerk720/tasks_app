@@ -15,13 +15,8 @@ class TaskListScreen extends StatefulWidget {
 
 class _TaskListScreenState extends State<TaskListScreen> {
   @override
-  void initState() {
-    BlocProvider.of<GetTasksCubit>(context).getTasks();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    BlocProvider.of<GetTasksCubit>(context).getTasks();
     final screenWidth = MediaQuery.of(context).size.width;
     final colorTheme = Theme.of(context).colorScheme;
     return Scaffold(
@@ -66,9 +61,13 @@ class _TaskListScreenState extends State<TaskListScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.of(context).pushNamed(
-          UploadTaskScreen.routeName,
-        ),
+        onPressed: () => Navigator.of(context)
+            .pushNamed(
+              UploadTaskScreen.routeName,
+            )
+            .then(
+              (value) => setState(() {}),
+            ),
         backgroundColor: colorTheme.primary,
         child: const Icon(Icons.add),
       ),
