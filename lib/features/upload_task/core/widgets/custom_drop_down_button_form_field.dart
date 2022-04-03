@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tasks_app/core/presentation/theme/my_theme.dart';
 import 'package:tasks_app/features/upload_task/core/widgets/drop_down_shape.dart';
 
 class CustomDropDownButtonFormField extends StatelessWidget {
@@ -15,7 +14,7 @@ class CustomDropDownButtonFormField extends StatelessWidget {
   final String hintText;
   @override
   Widget build(BuildContext context) {
-    List<Image> icons = [
+    final List<Image> icons = [
       Image.asset("assets/images/fire.png"),
       Image.asset("assets/images/med.png"),
       Image.asset("assets/images/low.png"),
@@ -32,7 +31,6 @@ class CustomDropDownButtonFormField extends StatelessWidget {
           value: itemsNames[index],
           child: Row(
             children: [
-              //icons[index],
               DropDownShapeIcons(icon: icons[index], color: colorsIcons[index]),
               Text(itemsNames[index]),
             ],
@@ -57,10 +55,13 @@ class CustomDropDownButtonFormField extends StatelessWidget {
         ],
       ),
       value: value,
-      decoration: const InputDecoration(
+      decoration:const InputDecoration(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(16)),
+          borderRadius: BorderRadius.all(
+            Radius.circular(16),
+          ),
         ),
+       // iconColor: value == "high" ? Colors.amber : Colors.lightBlue,
       ),
     );
   }
