@@ -4,11 +4,17 @@ Features:
 
 Register
 Login
+
 Logout
+
 View user's tasks
+
 Create new task
+
 Edit an existing task
+
 Delete task
+
 Mark task as done
 
 Packages:
