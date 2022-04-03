@@ -16,7 +16,7 @@ class GetTaskEntity extends Equatable {
     required this.description,
     required this.priority,
     required this.state,
-    this.period,
+    required this.period,
     this.attachmentUrl,
     required this.updatedAt,
   });

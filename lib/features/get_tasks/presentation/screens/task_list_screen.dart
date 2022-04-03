@@ -33,6 +33,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
           LogoutWidget(
             onPressed: () {
               BlocProvider.of<AuthCubit>(context).logout();
+              Navigator.popUntil(context, (route) => route.isFirst);
               Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
             },
           ),
@@ -72,9 +73,9 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset("assets/images/relax.png", scale: 1.8),
+                        Image.asset('assets/images/relax.png', scale: 1.8),
                         Text(
-                          "There are no tasks",
+                          'There are no tasks',
                           style: textTheme.headline3,
                           textAlign: TextAlign.center,
                         )

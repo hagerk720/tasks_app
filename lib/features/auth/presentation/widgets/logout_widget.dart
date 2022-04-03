@@ -39,7 +39,7 @@ class LogoutWidget extends StatelessWidget {
         child: const Icon(
           Icons.logout,
           size: 28,
-          color: Colors.white,
+          color: Colors.black,
         ),
       ),
     );
