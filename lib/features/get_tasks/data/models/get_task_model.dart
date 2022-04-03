@@ -18,7 +18,7 @@ class GetTaskModel extends GetTaskEntity {
     required String description,
     required String priority,
     required int state,
-    String? period,
+    required String? period,
     this.attachmentUrl,
     required this.updatedAt,
   }) : super(
