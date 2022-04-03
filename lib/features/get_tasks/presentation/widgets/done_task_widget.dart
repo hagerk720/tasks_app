@@ -11,19 +11,18 @@ class DoneTaskWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        BlocProvider.of<UploadTaskCubit>(context).updateTask(
-          taskId: task.id,
-          uploadTaskEntity: UploadTaskEntity(
-            title: task.title,
-            description: task.description,
-            priority: task.priority,
-            state: 1,
-            period: task.period!,
-          ),
-        );
-        BlocProvider.of<GetTasksCubit>(context).getTasks();
-      },
+      onTap: () => BlocProvider.of<UploadTaskCubit>(context)
+          .updateTask(
+            taskId: task.id,
+            uploadTaskEntity: UploadTaskEntity(
+              title: task.title,
+              description: task.description,
+              priority: task.priority,
+              state: 1,
+              period: task.period!,
+            ),
+          )
+          .then((value) => BlocProvider.of<GetTasksCubit>(context).getTasks()),
       child: Container(
         alignment: Alignment.centerLeft,
         decoration: const BoxDecoration(

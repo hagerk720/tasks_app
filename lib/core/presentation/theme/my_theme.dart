@@ -4,14 +4,14 @@ ThemeData myTheme = ThemeData(
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
     primary: Color(0xff0b113c),
-    onPrimary: Color.fromARGB(255, 217, 105, 105),
+    onPrimary: Color.fromARGB(255, 224, 115, 115),
     secondary: Color(0xff0b113c),
-    onSecondary: Color.fromARGB(255, 168, 205, 223),
+    onSecondary: Color.fromARGB(255, 175, 211, 228),
     error: Colors.black,
     onError: Colors.black,
     background: Colors.black,
     onBackground: Color.fromARGB(255, 240, 240, 240),
-    surface: Color.fromARGB(255, 245, 202, 160),
+    surface: Color.fromARGB(255, 244, 206, 168),
     onSurface: Colors.black,
   ),
   scaffoldBackgroundColor: Colors.white,
@@ -82,12 +82,18 @@ ThemeData myTheme = ThemeData(
     subtitle1: TextStyle(
       fontSize: 16,
       color: Colors.black,
+      fontWeight: FontWeight.w500,
     ),
     subtitle2: TextStyle(
       fontSize: 19,
       color: Colors.black,
       fontWeight: FontWeight.bold,
       decoration: TextDecoration.lineThrough,
+    ),
+    caption: TextStyle(
+      fontSize: 18,
+      color: Color.fromARGB(255, 117, 117, 117),
+      fontWeight: FontWeight.bold,
     ),
   ),
 );

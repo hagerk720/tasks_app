@@ -5,7 +5,8 @@ class LogoutWidget extends StatelessWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.headline2;
+    final textTheme = Theme.of(context).textTheme;
+    final headline2 = textTheme.headline2;
     return Padding(
       padding: const EdgeInsets.only(
         right: 12,
@@ -13,20 +14,23 @@ class LogoutWidget extends StatelessWidget {
       child: InkWell(
         onTap: () {
           final dialog = AlertDialog(
-            title: const Text('Are you sure you want to logout?'),
+            title: Text(
+              'Are you sure you want to logout?',
+              style: textTheme.caption,
+            ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),
                 child: Text(
                   'NO',
-                  style: textStyle,
+                  style: headline2,
                 ),
               ),
               TextButton(
                 onPressed: onPressed,
                 child: Text(
                   'YES',
-                  style: textStyle,
+                  style: headline2,
                 ),
               ),
             ],

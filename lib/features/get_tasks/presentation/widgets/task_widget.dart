@@ -16,7 +16,7 @@ class _TaskWidgetState extends State<TaskWidget> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorTheme = Theme.of(context).colorScheme;
-    final dateFormat = DateFormat('M/dd  hh:mm a');
+    final dateFormat = DateFormat('M/dd  hh:mm');
     return InkWell(
       onTap: () => setState(() => isClicked = !isClicked),
       child: isClicked
