@@ -21,6 +21,7 @@ class UploadTaskCubit extends Cubit<UploadTaskState> {
     final result = await _createTaskUseCase(
       CreateTaskData(uploadTaskEntity: uploadTaskEntity),
     );
+
     result.fold(
       (error) => emit(UploadTaskErrorDetails(error.toString())),
       (_) => emit(const UploadTaskSuccess()),

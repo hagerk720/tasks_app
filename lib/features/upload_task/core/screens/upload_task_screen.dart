@@ -13,21 +13,12 @@ import 'package:tasks_app/features/upload_task/core/bloc/upload_task_state.dart'
 import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
 import 'package:tasks_app/features/upload_task/core/widgets/custom_drop_down_button_form_field.dart';
 
-class UploadTaskScreen extends StatefulWidget {
+class UploadTaskScreen extends StatelessWidget {
   UploadTaskScreen();
   static const routeName = '/create_task';
-
-  @override
-  State<UploadTaskScreen> createState() => _UploadTaskScreenState();
-}
-
-class _UploadTaskScreenState extends State<UploadTaskScreen> {
   final priorities = ['High', 'Medium', 'Low'];
-
   Color iconColor = Colors.white;
-
   final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     var titleController = TextEditingController();
@@ -80,31 +71,16 @@ class _UploadTaskScreenState extends State<UploadTaskScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(16),
-                            ),
-                            color: iconColor,
-                          ),
-                          child: CustomDropDownButtonFormField(
-                            itemsNames: priorities,
-                            value: selectedPriority,
-                            onChanged: (value) {
-                              if (value != null) {
-                                setState(() {
-                                  value == "High"
-                                      ? iconColor = const Color(0xfffeccd1)
-                                      : value == "Medium"
-                                          ? iconColor = const Color(0xfffee2c6)
-                                          : iconColor = const Color(0xffd6f1ff);
-                                });
-
-                                selectedPriority = value;
-                              }
-                            },
-                            hintText: 'Priority',
-                          ),
+                        CustomDropDownButtonFormField(
+                          itemsNames: priorities,
+                          value: selectedPriority,
+                          onChanged: (value) {
+                            if (value != null) {
+                             
+                              selectedPriority = value;
+                            }
+                          },
+                          hintText: 'Priority',
                         ),
                         const SizedBox(height: 12),
                         MaterialButton(
