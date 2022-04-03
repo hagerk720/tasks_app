@@ -1,4 +1,4 @@
-# Tasks app using Clean Architecture(TDD) and BLoC state management
+# Tasks app using Clean Architecture(TDD)
 
 ## Features:
 
