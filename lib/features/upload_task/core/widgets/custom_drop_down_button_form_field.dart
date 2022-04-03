@@ -61,9 +61,7 @@ class CustomDropDownButtonFormField extends StatelessWidget {
             Radius.circular(16),
           ),
         ),
-        // iconColor: value == "high" ? Colors.amber : Colors.lightBlue,
       ),
-      focusColor: Colors.amber,
       
     );
   }
