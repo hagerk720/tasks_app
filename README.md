@@ -1,6 +1,6 @@
-Tasks app using Clean Architecture(TDD) and BLoC state management
+##Tasks app using Clean Architecture(TDD) and BLoC state management
 
-Features:
+#Features:
 
 Register,
 Login,
@@ -11,7 +11,7 @@ Edit an existing task,
 Delete task,
 Mark task as done,
 
-Packages:
+#Packages:
 
 dio,
 dartz,
