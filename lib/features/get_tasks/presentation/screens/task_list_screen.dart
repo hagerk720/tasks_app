@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:tasks_app/core/domain/error/error_toast.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:tasks_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:tasks_app/features/auth/presentation/widgets/logout_widget.dart';
-import 'package:tasks_app/features/delete_task/presentation/bloc/cubit/delete_task_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_state.dart';
-import 'package:tasks_app/features/get_tasks/presentation/widgets/switch_left_widget.dart';
-import 'package:tasks_app/features/get_tasks/presentation/widgets/switch_right_widget.dart';
+import 'package:tasks_app/features/get_tasks/presentation/widgets/delete_task_widget.dart';
+import 'package:tasks_app/features/get_tasks/presentation/widgets/done_task_widget.dart';
 import 'package:tasks_app/features/get_tasks/presentation/widgets/task_widget.dart';
 import 'package:tasks_app/features/upload_task/core/screens/upload_task_screen.dart';
 
@@ -43,29 +43,29 @@ class _TaskListScreenState extends State<TaskListScreen> {
           return state.maybeWhen(
             loading: () => const Center(child: CircularProgressIndicator()),
             success: (tasks) => tasks.isNotEmpty
-                ? ListView.builder(
+                ? ListView.separated(
                     itemBuilder: (BuildContext context, int index) {
-                      return Dismissible(
+                      return Slidable(
                         key: ValueKey(tasks[index]),
-                        onDismissed: (direction) {
-                          if (direction == DismissDirection.endToStart) {
-                            BlocProvider.of<DeleteTaskCubit>(context)
-                                .deleteTask(taskId: tasks[index].id)
-                                .then(
-                                  (value) =>
-                                      BlocProvider.of<GetTasksCubit>(context)
-                                          .getTasks(),
-                                );
-                          }
-                        },
-                        background: const SwitchLeft(),
-                        secondaryBackground: const SwitchRight(),
+                        endActionPane: ActionPane(
+                          motion: const ScrollMotion(),
+                          children: [
+                            Expanded(child: DoneTaskWidget(tasks[index])),
+                          ],
+                        ),
+                        startActionPane: ActionPane(
+                          motion: const ScrollMotion(),
+                          children: [
+                            Expanded(child: DeleteTaskWidget(tasks[index])),
+                          ],
+                        ),
                         child: TaskWidget(
                           task: tasks[index],
                         ),
                       );
                     },
                     itemCount: tasks.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 10),
                     padding: EdgeInsets.all(screenWidth / 20),
                   )
                 : Center(
@@ -96,7 +96,10 @@ class _TaskListScreenState extends State<TaskListScreen> {
             )
             .then((value) => setState(() {})),
         backgroundColor: colorTheme.primary,
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+          size: 28,
+        ),
       ),
     );
   }

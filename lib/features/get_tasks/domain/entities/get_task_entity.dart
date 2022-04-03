@@ -8,7 +8,7 @@ class GetTaskEntity extends Equatable {
   final int state;
   final String? period;
   final String? attachmentUrl;
-  final String updatedAt;
+  final DateTime updatedAt;
 
   const GetTaskEntity({
     required this.id,

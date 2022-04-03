@@ -10,7 +10,7 @@ class GetTaskModel extends GetTaskEntity {
   final String? attachmentUrl;
   @override
   @JsonKey(name: 'updated_at')
-  final String updatedAt;
+  final DateTime updatedAt;
 
   const GetTaskModel({
     required int id,

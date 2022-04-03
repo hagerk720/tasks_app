@@ -10,10 +10,11 @@ ThemeData myTheme = ThemeData(
     error: Colors.black,
     onError: Colors.black,
     background: Colors.black,
-    onBackground: Colors.black,
+    onBackground: Color.fromARGB(255, 240, 240, 240),
     surface: Color(0xffffe3c7),
     onSurface: Colors.black,
   ),
+  scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(
       fontSize: 22,

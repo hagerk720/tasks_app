@@ -11,7 +11,7 @@ import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dar
 import 'package:tasks_app/features/upload_task/core/bloc/upload_task_cubit.dart';
 import 'package:tasks_app/features/upload_task/core/bloc/upload_task_state.dart';
 import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
-import 'package:tasks_app/features/upload_task/create_task/presentation/widgets/custom_drop_down_button_form_field.dart';
+import 'package:tasks_app/features/upload_task/core/widgets/custom_drop_down_button_form_field.dart';
 
 class UploadTaskScreen extends StatelessWidget {
   UploadTaskScreen();
@@ -149,8 +149,7 @@ class UploadTaskScreen extends StatelessWidget {
                           title: titleController.text,
                           description: descriptionController.text,
                           priority: selectedPriority!,
-                          period:
-                              selectedPeriod != '00:00' ? selectedPeriod : null,
+                          period: selectedPeriod,
                           state: 0,
                           attachementFile: attachmentFile,
                         );
