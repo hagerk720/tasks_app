@@ -10,10 +10,9 @@ class DeleteTaskWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        BlocProvider.of<DeleteTaskCubit>(context).deleteTask(taskId: task.id);
-        BlocProvider.of<GetTasksCubit>(context).getTasks();
-      },
+      onTap: () => BlocProvider.of<DeleteTaskCubit>(context)
+          .deleteTask(taskId: task.id)
+          .then((_) => BlocProvider.of<GetTasksCubit>(context).getTasks()),
       child: Container(
         alignment: Alignment.centerRight,
         decoration: const BoxDecoration(

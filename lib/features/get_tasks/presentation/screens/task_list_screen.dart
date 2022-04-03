@@ -92,14 +92,13 @@ class _TaskListScreenState extends State<TaskListScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.of(context)
-            .pushNamed(
-              UploadTaskScreen.routeName,
-            )
+            .pushNamed(UploadTaskScreen.routeName)
             .then((value) => setState(() {})),
         backgroundColor: colorTheme.primary,
         child: const Icon(
           Icons.add,
-          size: 28,
+          size: 30,
+          color: Colors.white,
         ),
       ),
     );

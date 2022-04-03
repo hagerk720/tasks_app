@@ -141,8 +141,10 @@ class UploadTaskScreen extends StatelessWidget {
                   );
                   return CustomElevatedButton(
                     label: 'submit',
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
+                        final uploadTaskCubit =
+                            BlocProvider.of<UploadTaskCubit>(context);
                         final selectedPeriod =
                             selectedTime.toString().substring(11, 16);
                         final uploadedTask = UploadTaskEntity(
@@ -154,10 +156,11 @@ class UploadTaskScreen extends StatelessWidget {
                           attachementFile: attachmentFile,
                         );
                         if (task == null) {
-                          BlocProvider.of<UploadTaskCubit>(context)
-                              .createTask(uploadTaskEntity: uploadedTask);
+                          uploadTaskCubit.createTask(
+                            uploadTaskEntity: uploadedTask,
+                          );
                         } else {
-                          BlocProvider.of<UploadTaskCubit>(context).updateTask(
+                          uploadTaskCubit.updateTask(
                             taskId: task.id,
                             uploadTaskEntity: uploadedTask,
                           );
