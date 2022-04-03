@@ -4,14 +4,14 @@ ThemeData myTheme = ThemeData(
   colorScheme: const ColorScheme(
     brightness: Brightness.light,
     primary: Color(0xff0b113c),
-    onPrimary: Color(0xfff1f2f8),
+    onPrimary: Color.fromARGB(255, 217, 105, 105),
     secondary: Color(0xff0b113c),
-    onSecondary: Color(0xffd6f1ff),
+    onSecondary: Color.fromARGB(255, 168, 205, 223),
     error: Colors.black,
     onError: Colors.black,
     background: Colors.black,
     onBackground: Color.fromARGB(255, 240, 240, 240),
-    surface: Color(0xffffe3c7),
+    surface: Color.fromARGB(255, 245, 202, 160),
     onSurface: Colors.black,
   ),
   scaffoldBackgroundColor: Colors.white,
@@ -56,7 +56,7 @@ ThemeData myTheme = ThemeData(
       fontWeight: FontWeight.bold,
     ),
     headline2: TextStyle(
-      fontSize: 18,
+      fontSize: 19,
       color: Colors.black,
       fontWeight: FontWeight.bold,
     ),
@@ -66,7 +66,8 @@ ThemeData myTheme = ThemeData(
       fontWeight: FontWeight.bold,
     ),
     headline4: TextStyle(
-      fontSize: 12,
+      fontSize: 14,
+      color: Colors.grey,
     ),
     headline5: TextStyle(
       fontSize: 16,
@@ -74,9 +75,19 @@ ThemeData myTheme = ThemeData(
       fontWeight: FontWeight.bold,
     ),
     headline6: TextStyle(
-      fontSize: 18,
+      fontSize: 16,
       color: Color.fromARGB(255, 117, 117, 117),
       fontWeight: FontWeight.bold,
+    ),
+    subtitle1: TextStyle(
+      fontSize: 16,
+      color: Colors.black,
+    ),
+    subtitle2: TextStyle(
+      fontSize: 19,
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+      decoration: TextDecoration.lineThrough,
     ),
   ),
 );

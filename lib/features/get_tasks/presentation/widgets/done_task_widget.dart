@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
+import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.dart';
 import 'package:tasks_app/features/upload_task/core/bloc/upload_task_cubit.dart';
 import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
 
@@ -10,16 +11,19 @@ class DoneTaskWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => BlocProvider.of<UploadTaskCubit>(context).updateTask(
-        taskId: task.id,
-        uploadTaskEntity: UploadTaskEntity(
-          title: task.title,
-          description: task.description,
-          priority: task.priority,
-          state: 1,
-          period: task.period,
-        ),
-      ),
+      onTap: () {
+        BlocProvider.of<UploadTaskCubit>(context).updateTask(
+          taskId: task.id,
+          uploadTaskEntity: UploadTaskEntity(
+            title: task.title,
+            description: task.description,
+            priority: task.priority,
+            state: 1,
+            period: task.period!,
+          ),
+        );
+        BlocProvider.of<GetTasksCubit>(context).getTasks();
+      },
       child: Container(
         alignment: Alignment.centerLeft,
         decoration: const BoxDecoration(
