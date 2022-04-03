@@ -1,16 +1,31 @@
-# tasks_app
+Tasks app using Clean Architecture(TDD) and BLoC state management
 
-A new Flutter project.
+Features:
 
-## Getting Started
+Register
+Login
+Logout
+View user's tasks
+Create new task
+Edit an existing task
+Delete task
+Mark task as done
 
-This project is a starting point for a Flutter application.
+Packages:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+dio
+dartz
+equatable
+file_picker
+flutter_bloc
+flutter_slidable
+flutter_time_picker_spinner
+fluttertoast
+freezed
+freezed_annotation
+get_it
+injectable
+intl
+json_annotation
+retrofit
+shared_preferences
