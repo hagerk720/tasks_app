@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
 import 'package:tasks_app/features/upload_task/core/screens/upload_task_screen.dart';
 
@@ -9,14 +10,14 @@ class TaskWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorTheme = Theme.of(context).colorScheme;
+    final dateFormat = DateFormat('M/dd  hh:mm');
     return Container(
-      padding: const EdgeInsets.all(5),
-      margin: const EdgeInsets.all(5),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
           Radius.circular(10),
         ),
-        color: Color.fromARGB(255, 238, 242, 253),
+        color: Theme.of(context).colorScheme.onBackground,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +50,7 @@ class TaskWidget extends StatelessWidget {
                           ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 3),
+                padding: const EdgeInsets.only(left: 4),
                 child: Text(
                   task.priority,
                   style: const TextStyle(
@@ -69,8 +70,14 @@ class TaskWidget extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 8, right: 5, bottom: 5),
-            child: Text(
-              task.description,
+            child: Row(
+              children: [
+                Text(
+                  task.description,
+                ),
+                const Spacer(),
+                Text(dateFormat.format(task.updatedAt)),
+              ],
             ),
           ),
         ],
