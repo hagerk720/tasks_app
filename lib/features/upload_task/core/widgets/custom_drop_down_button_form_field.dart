@@ -55,14 +55,16 @@ class CustomDropDownButtonFormField extends StatelessWidget {
         ],
       ),
       value: value,
-      decoration:const InputDecoration(
+      decoration: const InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(16),
           ),
         ),
-       // iconColor: value == "high" ? Colors.amber : Colors.lightBlue,
+        // iconColor: value == "high" ? Colors.amber : Colors.lightBlue,
       ),
+      focusColor: Colors.amber,
+      
     );
   }
 }
