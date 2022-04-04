@@ -45,7 +45,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                     description: widget.task.description,
                     priority: widget.task.priority,
                     state: 1,
-                    period: widget.task.period!,
+                    period: widget.task.period,
                   ),
                 );
               } else {
@@ -56,7 +56,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                     description: widget.task.description,
                     priority: widget.task.priority,
                     state: 0,
-                    period: widget.task.period!,
+                    period: widget.task.period,
                   ),
                 );
               }
