@@ -8,9 +8,6 @@ class GetTaskModel extends GetTaskEntity {
   @override
   @JsonKey(name: 'attachement')
   final String? attachmentUrl;
-  @override
-  @JsonKey(name: 'updated_at')
-  final DateTime updatedAt;
 
   const GetTaskModel({
     required int id,
@@ -20,7 +17,6 @@ class GetTaskModel extends GetTaskEntity {
     required int state,
     required String? period,
     this.attachmentUrl,
-    required this.updatedAt,
   }) : super(
           id: id,
           title: title,
@@ -29,7 +25,6 @@ class GetTaskModel extends GetTaskEntity {
           state: state,
           period: period,
           attachmentUrl: attachmentUrl,
-          updatedAt: updatedAt,
         );
 
   factory GetTaskModel.fromJson(Map<String, dynamic> json) =>

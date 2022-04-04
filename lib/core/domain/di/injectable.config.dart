@@ -26,7 +26,7 @@ import '../../../features/delete_task/domain/repositories/delete_task_repository
     as _i22;
 import '../../../features/delete_task/domain/usecases/delete_task_usecase.dart'
     as _i24;
-import '../../../features/delete_task/presentation/bloc/cubit/delete_task_cubit.dart'
+import '../../../features/delete_task/presentation/bloc/delete_task_cubit.dart'
     as _i33;
 import '../../../features/get_tasks/data/datasources/get_tasks_service.dart'
     as _i4;

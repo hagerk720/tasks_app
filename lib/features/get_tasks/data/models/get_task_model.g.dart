@@ -14,7 +14,6 @@ GetTaskModel _$GetTaskModelFromJson(Map<String, dynamic> json) => GetTaskModel(
       state: json['state'] as int,
       period: json['period'] as String?,
       attachmentUrl: json['attachement'] as String?,
-      updatedAt: DateTime.parse(json['updated_at'] as String),
     );
 
 Map<String, dynamic> _$GetTaskModelToJson(GetTaskModel instance) =>
@@ -26,5 +25,4 @@ Map<String, dynamic> _$GetTaskModelToJson(GetTaskModel instance) =>
       'state': instance.state,
       'period': instance.period,
       'attachement': instance.attachmentUrl,
-      'updated_at': instance.updatedAt.toIso8601String(),
     };

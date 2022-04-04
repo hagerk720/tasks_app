@@ -18,20 +18,22 @@ class UploadTaskScreen extends StatelessWidget {
   static const routeName = '/create_task';
   final priorities = ['High', 'Medium', 'Low'];
   final _formKey = GlobalKey<FormState>();
+  var titleController = TextEditingController();
+  var descriptionController = TextEditingController();
+  String? selectedPriority;
+  DateTime selectedTime = DateTime.now();
+  File? attachmentFile;
+  Color iconColor = Colors.white;
+  DateTime selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    var titleController = TextEditingController();
-    var descriptionController = TextEditingController();
-    String? selectedPriority;
-    DateTime selectedTime = DateTime(0);
-    File? attachmentFile;
     final task = ModalRoute.of(context)!.settings.arguments as GetTaskEntity?;
-    Color iconColor = Colors.white;
+    final screenHeight = MediaQuery.of(context).size.height;
     if (task != null) {
       titleController = TextEditingController(text: task.title);
       descriptionController = TextEditingController(text: task.description);
       selectedPriority = task.priority;
-      selectedTime = DateTime.parse('00000000 ${task.period}');
+      selectedTime = DateTime.parse('${task.period}');
     }
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -67,77 +69,80 @@ class UploadTaskScreen extends StatelessWidget {
               const SizedBox(height: 12),
               Row(
                 children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        StatefulBuilder(
-                          builder: (
-                            BuildContext context,
-                            void Function(void Function()) setState,
-                          ) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(16),
-                                ),
-                                color: iconColor,
-                              ),
-                              child: CustomDropDownButtonFormField(
-                                itemsNames: priorities,
-                                value: selectedPriority,
-                                onChanged: (value) {
-                                  if (value != null) {
-                                    setState(() {
-                                      value == 'High'
-                                          ? iconColor = const Color(0xfffeccd1)
-                                          : value == 'Medium'
-                                              ? iconColor =
-                                                  const Color(0xfffee2c6)
-                                              : iconColor =
-                                                  const Color(0xffd6f1ff);
-                                    });
-                                    selectedPriority = value;
-                                  }
-                                },
-                                hintText: 'Priority',
-                              ),
-                            );
-                          },
+                  StatefulBuilder(
+                    builder: (
+                      BuildContext context,
+                      void Function(void Function()) setState,
+                    ) {
+                      return Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(16),
+                            ),
+                            color: iconColor,
+                          ),
+                          child: CustomDropDownButtonFormField(
+                            itemsNames: priorities,
+                            value: selectedPriority,
+                            onChanged: (value) {
+                              if (value != null) {
+                                setState(() {
+                                  value == 'High'
+                                      ? iconColor = const Color(0xfffeccd1)
+                                      : value == 'Medium'
+                                          ? iconColor = const Color(0xfffee2c6)
+                                          : iconColor = const Color(0xffd6f1ff);
+                                });
+                                selectedPriority = value;
+                              }
+                            },
+                            hintText: 'Priority',
+                          ),
                         ),
-                        const SizedBox(height: 12),
-                      ],
-                    ),
+                      );
+                    },
                   ),
-                  const SizedBox(width: 20),
-                  const Expanded(
-                    child: DueDateButton(),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: StatefulBuilder(
+                      builder: (context, setState) => DueDateButton(
+                        selectedDate: selectedDate,
+                        onChanged: () async {
+                          final DateTime? pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: selectedDate,
+                            firstDate: DateTime.now(),
+                            lastDate: DateTime.now().add(
+                              const Duration(days: 100),
+                            ),
+                          );
+                          if (pickedDate != null &&
+                              pickedDate != selectedDate) {
+                            setState(() => selectedDate = pickedDate);
+                          }
+                        },
+                      ),
+                    ),
                   ),
                 ],
               ),
               const SizedBox(height: 16),
               Row(
                 children: [
-                  MaterialButton(
-                    height: 50,
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    onPressed: () async => attachmentFile = await _pickFile(),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'UPLOAD',
-                          style: Theme.of(context).textTheme.headline5,
-                        ),
-                        const SizedBox(width: 8),
-                        const Icon(
-                          Icons.attachment,
-                          color: Colors.grey,
-                        ),
-                      ],
+                  Expanded(
+                    flex: 2,
+                    child: MaterialButton(
+                      height: .07 * screenHeight,
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      onPressed: () async => attachmentFile = await _pickFile(),
+                      child: const Icon(
+                        Icons.attachment,
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -161,13 +166,11 @@ class UploadTaskScreen extends StatelessWidget {
                             if (_formKey.currentState!.validate()) {
                               final uploadTaskCubit =
                                   BlocProvider.of<UploadTaskCubit>(context);
-                              final selectedPeriod =
-                                  selectedTime.toString().substring(11, 16);
                               final uploadedTask = UploadTaskEntity(
                                 title: titleController.text,
                                 description: descriptionController.text,
                                 priority: selectedPriority!,
-                                period: selectedPeriod,
+                                period: selectedTime.toString(),
                                 state: 0,
                                 attachementFile: attachmentFile,
                               );

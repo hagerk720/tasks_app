@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 class DropDownShapeIcons extends StatelessWidget {
-  final Image? icon;
-  final Color? color;
+  final Image icon;
+  final Color color;
   const DropDownShapeIcons({
-    Key? key,
     required this.icon,
     required this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,6 @@ class DropDownShapeIcons extends StatelessWidget {
             ),
             color: color,
           ),
-          // child: icon,
         ),
         SizedBox(
           width: 30,

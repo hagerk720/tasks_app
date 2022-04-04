@@ -25,7 +25,6 @@ class CustomDropDownButtonFormField extends StatelessWidget {
       Color(0xffd6f1ff)
     ];
     return DropdownButtonFormField<String>(
-    
       items: List.generate(
         itemsNames.length,
         (index) => DropdownMenuItem(
@@ -60,11 +59,9 @@ class CustomDropDownButtonFormField extends StatelessWidget {
       decoration: const InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(16),
+            Radius.circular(20),
           ),
         ),
-
-
       ),
     );
   }

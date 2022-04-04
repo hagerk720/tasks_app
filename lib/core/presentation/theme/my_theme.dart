@@ -86,9 +86,9 @@ ThemeData myTheme = ThemeData(
       fontWeight: FontWeight.w500,
     ),
     subtitle2: TextStyle(
-      fontSize: 19,
-      color: Colors.black,
-      fontWeight: FontWeight.bold,
+      fontSize: 18,
+      color: Color(0xff0b113c),
+      fontWeight: FontWeight.w700,
       decoration: TextDecoration.lineThrough,
     ),
     caption: TextStyle(
@@ -99,7 +99,7 @@ ThemeData myTheme = ThemeData(
     overline: TextStyle(
       fontSize: 18,
       color: Color(0xff0b113c),
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w700,
     ),
   ),
 );
