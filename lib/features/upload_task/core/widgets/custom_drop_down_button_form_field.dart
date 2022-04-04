@@ -32,6 +32,7 @@ class CustomDropDownButtonFormField extends StatelessWidget {
           child: Row(
             children: [
               DropDownShapeIcons(icon: icons[index], color: colorsIcons[index]),
+              const SizedBox(width: 9),
               Text(itemsNames[index]),
             ],
           ),
@@ -62,7 +63,6 @@ class CustomDropDownButtonFormField extends StatelessWidget {
           ),
         ),
       ),
-      
     );
   }
 }
