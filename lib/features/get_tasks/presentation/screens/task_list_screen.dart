@@ -101,6 +101,9 @@ class _TaskListScreenState extends State<TaskListScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+        ),
         onPressed: () => Navigator.of(context)
             .pushNamed(UploadTaskScreen.routeName)
             .then((value) => setState(() {})),
