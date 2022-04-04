@@ -58,7 +58,7 @@ class _DueDateButtonState extends State<DueDateButton> {
         child: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(9),
               decoration: BoxDecoration(
                 color: colorScheme.onTertiary,
                 borderRadius: const BorderRadius.all(Radius.circular(16)),
