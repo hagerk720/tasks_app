@@ -88,8 +88,6 @@ class UploadTaskScreen extends StatelessWidget {
                                 value: selectedPriority,
                                 onChanged: (value) {
                                   if (value != null) {
-                                    print("colorrrrr $iconColor");
-
                                     setState(() {
                                       value == "High"
                                           ? iconColor = const Color(0xfffeccd1)
@@ -98,7 +96,6 @@ class UploadTaskScreen extends StatelessWidget {
                                                   const Color(0xfffee2c6)
                                               : iconColor =
                                                   const Color(0xffd6f1ff);
-                                      print("colorrrrr $iconColor");
                                     });
                                     selectedPriority = value;
                                   }
