@@ -26,6 +26,7 @@ class UploadTaskScreen extends StatelessWidget {
     DateTime selectedTime = DateTime(0);
     File? attachmentFile;
     final task = ModalRoute.of(context)!.settings.arguments as GetTaskEntity?;
+    Color iconColor = Colors.white;
     if (task != null) {
       titleController = TextEditingController(text: task.title);
       descriptionController = TextEditingController(text: task.description);
@@ -70,15 +71,42 @@ class UploadTaskScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomDropDownButtonFormField(
-                          itemsNames: priorities,
-                          value: selectedPriority,
-                          onChanged: (value) {
-                            if (value != null) {
-                              selectedPriority = value;
-                            }
+                        StatefulBuilder(
+                          builder: (
+                            BuildContext context,
+                            void Function(void Function()) setState,
+                          ) {
+                            return Container(
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(16),
+                                ),
+                                color: iconColor,
+                              ),
+                              child: CustomDropDownButtonFormField(
+                                itemsNames: priorities,
+                                value: selectedPriority,
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    print("colorrrrr $iconColor");
+
+                                    setState(() {
+                                      value == "High"
+                                          ? iconColor = const Color(0xfffeccd1)
+                                          : value == "Medium"
+                                              ? iconColor =
+                                                  const Color(0xfffee2c6)
+                                              : iconColor =
+                                                  const Color(0xffd6f1ff);
+                                      print("colorrrrr $iconColor");
+                                    });
+                                    selectedPriority = value;
+                                  }
+                                },
+                                hintText: 'Priority',
+                              ),
+                            );
                           },
-                          hintText: 'Priority',
                         ),
                         const SizedBox(height: 12),
                         MaterialButton(
