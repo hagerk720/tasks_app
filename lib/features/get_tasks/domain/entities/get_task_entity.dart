@@ -8,7 +8,6 @@ class GetTaskEntity extends Equatable {
   final int state;
   final String? period;
   final String? attachmentUrl;
-  final DateTime updatedAt;
 
   const GetTaskEntity({
     required this.id,
@@ -18,7 +17,6 @@ class GetTaskEntity extends Equatable {
     required this.state,
     required this.period,
     this.attachmentUrl,
-    required this.updatedAt,
   });
 
   @override

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tasks_app/core/domain/di/injectable.dart';
+import 'package:tasks_app/features/delete_task/presentation/bloc/delete_task_cubit.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
-import 'package:tasks_app/features/upload_task/core/screens/upload_task_screen.dart';
+import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.dart';
+import 'package:tasks_app/features/get_tasks/presentation/widgets/task_details_bottom_sheet.dart';
+import 'package:tasks_app/features/upload_task/core/bloc/upload_task_cubit.dart';
+import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
 
 class TaskWidget extends StatefulWidget {
   final GetTaskEntity task;
@@ -11,164 +16,95 @@ class TaskWidget extends StatefulWidget {
 }
 
 class _TaskWidgetState extends State<TaskWidget> {
-  bool isClicked = false;
+  bool isDone = false;
+  @override
+  void initState() {
+    if (widget.task.state == 1) {
+      isDone = true;
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorTheme = Theme.of(context).colorScheme;
-    final dateFormat = DateFormat('M/dd  hh:mm');
-    return InkWell(
-      onTap: () => setState(() => isClicked = !isClicked),
-      child: isClicked
-          ? Container(
-              padding: const EdgeInsets.only(
-                right: 8,
-                left: 16,
-                top: 8,
-                bottom: 8,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(10),
-                ),
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 10,
-                        height: 10,
-                        margin: const EdgeInsets.only(right: 12),
-                        decoration: widget.task.priority == 'High'
-                            ? BoxDecoration(
-                                color: colorTheme.onPrimary,
-                                shape: BoxShape.circle,
-                              )
-                            : widget.task.priority == 'Low'
-                                ? BoxDecoration(
-                                    color: colorTheme.onSecondary,
-                                    shape: BoxShape.circle,
-                                  )
-                                : BoxDecoration(
-                                    color: colorTheme.surface,
-                                    shape: BoxShape.circle,
-                                  ),
-                      ),
-                      if (widget.task.state == 0)
-                        Text(
-                          widget.task.title,
-                          style: textTheme.headline2,
-                        )
-                      else
-                        Text(
-                          widget.task.title,
-                          style: textTheme.subtitle2,
-                        ),
-                      const Spacer(),
-                      IconButton(
-                        icon: const Icon(Icons.edit),
-                        onPressed: () => Navigator.of(context)
-                            .pushNamed(
-                              UploadTaskScreen.routeName,
-                              arguments: widget.task,
-                            )
-                            .then((_) => setState(() {})),
-                      ),
-                    ],
+    final screenWidth = MediaQuery.of(context).size.width;
+    return Row(
+      children: [
+        InkWell(
+          onTap: () => setState(
+            () {
+              final uploadTaskCubit = BlocProvider.of<UploadTaskCubit>(context);
+              isDone = !isDone;
+              if (widget.task.state == 0) {
+                uploadTaskCubit.updateTask(
+                  taskId: widget.task.id,
+                  uploadTaskEntity: UploadTaskEntity(
+                    title: widget.task.title,
+                    description: widget.task.description,
+                    priority: widget.task.priority,
+                    state: 1,
+                    period: widget.task.period!,
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 24, right: 5, bottom: 5),
-                    child: Row(
-                      children: [
-                        Text(
-                          widget.task.description,
-                          style: textTheme.subtitle1,
-                        ),
-                        const Spacer(),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              '${widget.task.period!.substring(1, 6)} h',
-                              style: textTheme.headline4,
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              dateFormat.format(widget.task.updatedAt),
-                              style: textTheme.headline4,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                );
+              } else {
+                uploadTaskCubit.updateTask(
+                  taskId: widget.task.id,
+                  uploadTaskEntity: UploadTaskEntity(
+                    title: widget.task.title,
+                    description: widget.task.description,
+                    priority: widget.task.priority,
+                    state: 0,
+                    period: widget.task.period!,
                   ),
-                ],
-              ),
-            )
-          : Container(
-              padding: const EdgeInsets.only(
-                left: 16,
-                top: 20,
-                bottom: 20,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(10),
-                ),
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      if (widget.task.state == 1)
-                        const Padding(
-                          padding: EdgeInsets.only(right: 12),
-                          child: Icon(
-                            Icons.done,
-                            color: Colors.green,
-                          ),
-                        )
-                      else
-                        Container(
-                          width: 10,
-                          height: 10,
-                          margin: const EdgeInsets.only(right: 12),
-                          decoration: widget.task.priority == 'High'
-                              ? BoxDecoration(
-                                  color: colorTheme.onPrimary,
-                                  shape: BoxShape.circle,
-                                )
-                              : widget.task.priority == 'Low'
-                                  ? BoxDecoration(
-                                      color: colorTheme.onSecondary,
-                                      shape: BoxShape.circle,
-                                    )
-                                  : BoxDecoration(
-                                      color: colorTheme.surface,
-                                      shape: BoxShape.circle,
-                                    ),
-                        ),
-                      if (widget.task.state == 0)
-                        Text(
-                          widget.task.title,
-                          style: textTheme.headline2,
-                        )
-                      else
-                        Text(
-                          widget.task.title,
-                          style: textTheme.subtitle2,
-                        ),
-                    ],
-                  ),
-                ],
-              ),
+                );
+              }
+            },
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(width: 3),
             ),
+            child: isDone
+                ? CircleAvatar(
+                    radius: 14,
+                    backgroundColor: colorTheme.primary,
+                    child: const Icon(
+                      Icons.done,
+                      color: Colors.white,
+                    ),
+                  )
+                : const CircleAvatar(
+                    radius: 14,
+                    backgroundColor: Colors.white,
+                  ),
+          ),
+        ),
+        SizedBox(width: screenWidth * .06),
+        InkWell(
+          onTap: showTaskDetails,
+          child: Text(
+            widget.task.title,
+            style: isDone ? textTheme.subtitle2 : textTheme.overline,
+          ),
+        )
+      ],
     );
   }
+
+  void showTaskDetails() => showModalBottomSheet(
+        context: context,
+        builder: (context) => BlocProvider(
+          create: (context) => getIt<DeleteTaskCubit>(),
+          child: TaskDetailsBottomSheet(widget.task),
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20),
+            topLeft: Radius.circular(20),
+          ),
+        ),
+      ).then((_) => BlocProvider.of<GetTasksCubit>(context).getTasks());
 }
