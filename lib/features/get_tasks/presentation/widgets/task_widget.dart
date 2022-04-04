@@ -70,10 +70,12 @@ class _TaskWidgetState extends State<TaskWidget> {
                       const Spacer(),
                       IconButton(
                         icon: const Icon(Icons.edit),
-                        onPressed: () => Navigator.of(context).pushNamed(
-                          UploadTaskScreen.routeName,
-                          arguments: widget.task,
-                        ),
+                        onPressed: () => Navigator.of(context)
+                            .pushNamed(
+                              UploadTaskScreen.routeName,
+                              arguments: widget.task,
+                            )
+                            .then((_) => setState(() {})),
                       ),
                     ],
                   ),
