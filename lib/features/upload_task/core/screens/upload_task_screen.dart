@@ -76,7 +76,6 @@ class UploadTaskScreen extends StatelessWidget {
                           value: selectedPriority,
                           onChanged: (value) {
                             if (value != null) {
-                             
                               selectedPriority = value;
                             }
                           },
