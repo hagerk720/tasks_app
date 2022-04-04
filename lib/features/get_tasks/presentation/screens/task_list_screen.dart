@@ -9,7 +9,7 @@ import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.d
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_state.dart';
 import 'package:tasks_app/features/get_tasks/presentation/widgets/delete_task_widget.dart';
 import 'package:tasks_app/features/get_tasks/presentation/widgets/done_task_widget.dart';
-import 'package:tasks_app/features/get_tasks/presentation/widgets/task_widget.dart';
+import 'package:tasks_app/features/get_tasks/presentation/widgets/radio_task_widget.dart';
 import 'package:tasks_app/features/upload_task/core/screens/upload_task_screen.dart';
 
 class TaskListScreen extends StatefulWidget {
@@ -60,14 +60,24 @@ class _TaskListScreenState extends State<TaskListScreen> {
                             Expanded(child: DeleteTaskWidget(tasks[index])),
                           ],
                         ),
-                        child: TaskWidget(
+                        child: RadioTaskWidget(
                           task: tasks[index],
                         ),
                       );
                     },
                     itemCount: tasks.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: 10),
-                    padding: EdgeInsets.all(screenWidth / 20),
+                    separatorBuilder: (_, __) => Divider(
+                      indent: screenWidth * .15,
+                      endIndent: screenWidth * .1,
+                      thickness: 1,
+                      height: 24,
+                      color: const Color.fromARGB(255, 213, 213, 213),
+                    ),
+                    padding: EdgeInsets.only(
+                      right: screenWidth / 14,
+                      left: screenWidth / 14,
+                      top: screenWidth / 30,
+                    ),
                   )
                 : Center(
                     child: Column(

@@ -2,12 +2,12 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:tasks_app/core/domain/error/error_toast.dart';
 import 'package:tasks_app/core/presentation/validation/validators.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_elevated_button.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_text_form_field.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
+import 'package:tasks_app/features/get_tasks/presentation/widgets/due_date_button.dart';
 import 'package:tasks_app/features/upload_task/core/bloc/upload_task_cubit.dart';
 import 'package:tasks_app/features/upload_task/core/bloc/upload_task_state.dart';
 import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
@@ -17,7 +17,6 @@ class UploadTaskScreen extends StatelessWidget {
   UploadTaskScreen();
   static const routeName = '/create_task';
   final priorities = ['High', 'Medium', 'Low'];
-  Color iconColor = Colors.white;
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -109,21 +108,24 @@ class UploadTaskScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 20),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 4),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(16)),
-                      ),
-                      child: TimePickerSpinner(
-                        itemHeight: 40,
-                        itemWidth: 40,
-                        onTimeChange: (newValue) => selectedTime = newValue,
-                        time: selectedTime,
-                      ),
-                    ),
+                  const Expanded(
+                    child:
+                        //  Container(
+                        //   padding: const EdgeInsets.symmetric(vertical: 4),
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(color: Colors.grey),
+                        //     borderRadius:
+                        //         const BorderRadius.all(Radius.circular(16)),
+                        //   ),
+                        //   child:
+                        //   TimePickerSpinner(
+                        //     itemHeight: 40,
+                        //     itemWidth: 40,
+                        //     onTimeChange: (newValue) => selectedTime = newValue,
+                        //     time: selectedTime,
+                        //   ),
+                        // ),
+                        DueDateButton(),
                   ),
                 ],
               ),

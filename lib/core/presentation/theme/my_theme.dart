@@ -13,6 +13,7 @@ ThemeData myTheme = ThemeData(
     onBackground: Color.fromARGB(255, 240, 240, 240),
     surface: Color.fromARGB(255, 244, 206, 168),
     onSurface: Colors.black,
+    onTertiary: Color(0xffF1F2F8),
   ),
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
@@ -94,6 +95,11 @@ ThemeData myTheme = ThemeData(
       fontSize: 18,
       color: Color.fromARGB(255, 117, 117, 117),
       fontWeight: FontWeight.bold,
+    ),
+    overline: TextStyle(
+      fontSize: 18,
+      color: Color(0xff0b113c),
+      fontWeight: FontWeight.w600,
     ),
   ),
 );
