@@ -13,7 +13,7 @@ ThemeData myTheme = ThemeData(
     onBackground: Color.fromARGB(255, 240, 240, 240),
     surface: Color.fromARGB(255, 244, 206, 168),
     onSurface: Colors.black,
-    onTertiary: Color(0xffF1F2F8),
+    onTertiary: Color.fromARGB(255, 233, 234, 236),
   ),
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(

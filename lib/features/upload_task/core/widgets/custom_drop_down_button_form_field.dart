@@ -15,9 +15,9 @@ class CustomDropDownButtonFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Image> icons = [
-      Image.asset("assets/images/fire.png"),
-      Image.asset("assets/images/med.png"),
-      Image.asset("assets/images/low.png"),
+      Image.asset('assets/images/fire.png'),
+      Image.asset('assets/images/med.png'),
+      Image.asset('assets/images/low.png'),
     ];
     const List<Color> colorsIcons = [
       Color(0xfffeccd1),

@@ -89,9 +89,9 @@ class UploadTaskScreen extends StatelessWidget {
                                 onChanged: (value) {
                                   if (value != null) {
                                     setState(() {
-                                      value == "High"
+                                      value == 'High'
                                           ? iconColor = const Color(0xfffeccd1)
-                                          : value == "Medium"
+                                          : value == 'Medium'
                                               ? iconColor =
                                                   const Color(0xfffee2c6)
                                               : iconColor =
@@ -106,98 +106,89 @@ class UploadTaskScreen extends StatelessWidget {
                           },
                         ),
                         const SizedBox(height: 12),
-                        MaterialButton(
-                          height: 50,
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          onPressed: () async =>
-                              attachmentFile = await _pickFile(),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'UPLOAD',
-                                style: Theme.of(context).textTheme.headline5,
-                              ),
-                              const SizedBox(width: 8),
-                              const Icon(
-                                Icons.attachment,
-                                color: Colors.grey,
-                              ),
-                            ],
-                          ),
-                        ),
                       ],
                     ),
                   ),
                   const SizedBox(width: 20),
                   const Expanded(
-                    child:
-                        //  Container(
-                        //   padding: const EdgeInsets.symmetric(vertical: 4),
-                        //   decoration: BoxDecoration(
-                        //     border: Border.all(color: Colors.grey),
-                        //     borderRadius:
-                        //         const BorderRadius.all(Radius.circular(16)),
-                        //   ),
-                        //   child:
-                        //   TimePickerSpinner(
-                        //     itemHeight: 40,
-                        //     itemWidth: 40,
-                        //     onTimeChange: (newValue) => selectedTime = newValue,
-                        //     time: selectedTime,
-                        //   ),
-                        // ),
-                        DueDateButton(),
+                    child: DueDateButton(),
                   ),
                 ],
               ),
               const SizedBox(height: 16),
-              BlocBuilder<UploadTaskCubit, UploadTaskState>(
-                builder: (context, state) {
-                  bool isLoading = false;
-                  state.maybeWhen(
-                    loading: () => isLoading = true,
-                    error: (error) => showErrorToast(errorMessage: error),
-                    success: () =>
-                        WidgetsBinding.instance!.addPostFrameCallback(
-                      (_) => Navigator.of(context).pop(),
+              Row(
+                children: [
+                  MaterialButton(
+                    height: 50,
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(16),
                     ),
-                    orElse: () {},
-                  );
-                  return CustomElevatedButton(
-                    label: 'submit',
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        final uploadTaskCubit =
-                            BlocProvider.of<UploadTaskCubit>(context);
-                        final selectedPeriod =
-                            selectedTime.toString().substring(11, 16);
-                        final uploadedTask = UploadTaskEntity(
-                          title: titleController.text,
-                          description: descriptionController.text,
-                          priority: selectedPriority!,
-                          period: selectedPeriod,
-                          state: 0,
-                          attachementFile: attachmentFile,
-                        );
-                        if (task == null) {
-                          uploadTaskCubit.createTask(
-                            uploadTaskEntity: uploadedTask,
-                          );
-                        } else {
-                          uploadTaskCubit.updateTask(
-                            taskId: task.id,
-                            uploadTaskEntity: uploadedTask,
-                          );
-                        }
-                      }
+                    onPressed: () async => attachmentFile = await _pickFile(),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'UPLOAD',
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                        const SizedBox(width: 8),
+                        const Icon(
+                          Icons.attachment,
+                          color: Colors.grey,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  BlocBuilder<UploadTaskCubit, UploadTaskState>(
+                    builder: (context, state) {
+                      bool isLoading = false;
+                      state.maybeWhen(
+                        loading: () => isLoading = true,
+                        error: (error) => showErrorToast(errorMessage: error),
+                        success: () =>
+                            WidgetsBinding.instance!.addPostFrameCallback(
+                          (_) => Navigator.of(context).pop(),
+                        ),
+                        orElse: () {},
+                      );
+                      return Expanded(
+                        flex: 7,
+                        child: CustomElevatedButton(
+                          label: 'submit',
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              final uploadTaskCubit =
+                                  BlocProvider.of<UploadTaskCubit>(context);
+                              final selectedPeriod =
+                                  selectedTime.toString().substring(11, 16);
+                              final uploadedTask = UploadTaskEntity(
+                                title: titleController.text,
+                                description: descriptionController.text,
+                                priority: selectedPriority!,
+                                period: selectedPeriod,
+                                state: 0,
+                                attachementFile: attachmentFile,
+                              );
+                              if (task == null) {
+                                uploadTaskCubit.createTask(
+                                  uploadTaskEntity: uploadedTask,
+                                );
+                              } else {
+                                uploadTaskCubit.updateTask(
+                                  taskId: task.id,
+                                  uploadTaskEntity: uploadedTask,
+                                );
+                              }
+                            }
+                          },
+                          isLoading: isLoading,
+                        ),
+                      );
                     },
-                    isLoading: isLoading,
-                  );
-                },
+                  ),
+                ],
               ),
             ],
           ),
