@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks_app/features/delete_task/presentation/bloc/delete_task_cubit.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
+import 'package:tasks_app/features/get_tasks/presentation/screens/attachment_viewer_screen.dart';
 import 'package:tasks_app/features/upload_task/core/screens/upload_task_screen.dart';
 
 class TaskDetailsBottomSheet extends StatelessWidget {
@@ -67,7 +68,7 @@ class TaskDetailsBottomSheet extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  task.period!,
+                  task.period,
                   style: textTheme.headline5,
                 ),
               ],
@@ -109,6 +110,20 @@ class TaskDetailsBottomSheet extends StatelessWidget {
                     },
                   ),
                 ),
+                const SizedBox(height: 8),
+                if (task.attachmentUrl.isNotEmpty)
+                  IconButton(
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            AttachmentViewerScreen(task.attachmentUrl),
+                      ),
+                    ),
+                    icon: const Icon(
+                      Icons.attach_file,
+                      size: 28,
+                    ),
+                  ),
               ],
             ),
           ),

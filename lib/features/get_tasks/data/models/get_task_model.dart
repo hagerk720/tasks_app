@@ -7,7 +7,7 @@ part 'get_task_model.g.dart';
 class GetTaskModel extends GetTaskEntity {
   @override
   @JsonKey(name: 'attachement')
-  final String? attachmentUrl;
+  final String attachmentUrl;
 
   const GetTaskModel({
     required int id,
@@ -15,8 +15,8 @@ class GetTaskModel extends GetTaskEntity {
     required String description,
     required String priority,
     required int state,
-    required String? period,
-    this.attachmentUrl,
+    required String period,
+    required this.attachmentUrl,
   }) : super(
           id: id,
           title: title,

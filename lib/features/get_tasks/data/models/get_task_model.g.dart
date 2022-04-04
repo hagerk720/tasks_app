@@ -12,8 +12,8 @@ GetTaskModel _$GetTaskModelFromJson(Map<String, dynamic> json) => GetTaskModel(
       description: json['description'] as String,
       priority: json['priority'] as String,
       state: json['state'] as int,
-      period: json['period'] as String?,
-      attachmentUrl: json['attachement'] as String?,
+      period: json['period'] as String,
+      attachmentUrl: json['attachement'] as String,
     );
 
 Map<String, dynamic> _$GetTaskModelToJson(GetTaskModel instance) =>

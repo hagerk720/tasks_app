@@ -33,7 +33,7 @@ class UploadTaskScreen extends StatelessWidget {
       titleController = TextEditingController(text: task.title);
       descriptionController = TextEditingController(text: task.description);
       selectedPriority = task.priority;
-      selectedTime = DateTime.parse('${task.period}');
+      selectedTime = DateTime.parse(task.period);
     }
     return Scaffold(
       resizeToAvoidBottomInset: false,
