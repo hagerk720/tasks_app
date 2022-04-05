@@ -18,16 +18,16 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$DeleteTaskStateTearOff {
   const _$DeleteTaskStateTearOff();
 
-  _Initial initial() {
-    return const _Initial();
+  DeleteTaskInitial initial() {
+    return const DeleteTaskInitial();
   }
 
-  deleteTaskLoading loading() {
-    return const deleteTaskLoading();
+  DeleteTaskLoading loading() {
+    return const DeleteTaskLoading();
   }
 
-  deleteTaskSuccess success() {
-    return const deleteTaskSuccess();
+  DeleteTaskSuccess success() {
+    return const DeleteTaskSuccess();
   }
 
   DeleteTaskErrorDetails error(String error) {
@@ -69,25 +69,25 @@ mixin _$DeleteTaskState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(deleteTaskLoading value) loading,
-    required TResult Function(deleteTaskSuccess value) success,
+    required TResult Function(DeleteTaskInitial value) initial,
+    required TResult Function(DeleteTaskLoading value) loading,
+    required TResult Function(DeleteTaskSuccess value) success,
     required TResult Function(DeleteTaskErrorDetails value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(deleteTaskLoading value)? loading,
-    TResult Function(deleteTaskSuccess value)? success,
+    TResult Function(DeleteTaskInitial value)? initial,
+    TResult Function(DeleteTaskLoading value)? loading,
+    TResult Function(DeleteTaskSuccess value)? success,
     TResult Function(DeleteTaskErrorDetails value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(deleteTaskLoading value)? loading,
-    TResult Function(deleteTaskSuccess value)? success,
+    TResult Function(DeleteTaskInitial value)? initial,
+    TResult Function(DeleteTaskLoading value)? loading,
+    TResult Function(DeleteTaskSuccess value)? success,
     TResult Function(DeleteTaskErrorDetails value)? error,
     required TResult orElse(),
   }) =>
@@ -112,25 +112,28 @@ class _$DeleteTaskStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class $DeleteTaskInitialCopyWith<$Res> {
+  factory $DeleteTaskInitialCopyWith(
+          DeleteTaskInitial value, $Res Function(DeleteTaskInitial) then) =
+      _$DeleteTaskInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$DeleteTaskStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class _$DeleteTaskInitialCopyWithImpl<$Res>
+    extends _$DeleteTaskStateCopyWithImpl<$Res>
+    implements $DeleteTaskInitialCopyWith<$Res> {
+  _$DeleteTaskInitialCopyWithImpl(
+      DeleteTaskInitial _value, $Res Function(DeleteTaskInitial) _then)
+      : super(_value, (v) => _then(v as DeleteTaskInitial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  DeleteTaskInitial get _value => super._value as DeleteTaskInitial;
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$DeleteTaskInitial implements DeleteTaskInitial {
+  const _$DeleteTaskInitial();
 
   @override
   String toString() {
@@ -140,7 +143,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is DeleteTaskInitial);
   }
 
   @override
@@ -186,9 +189,9 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(deleteTaskLoading value) loading,
-    required TResult Function(deleteTaskSuccess value) success,
+    required TResult Function(DeleteTaskInitial value) initial,
+    required TResult Function(DeleteTaskLoading value) loading,
+    required TResult Function(DeleteTaskSuccess value) success,
     required TResult Function(DeleteTaskErrorDetails value) error,
   }) {
     return initial(this);
@@ -197,9 +200,9 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(deleteTaskLoading value)? loading,
-    TResult Function(deleteTaskSuccess value)? success,
+    TResult Function(DeleteTaskInitial value)? initial,
+    TResult Function(DeleteTaskLoading value)? loading,
+    TResult Function(DeleteTaskSuccess value)? success,
     TResult Function(DeleteTaskErrorDetails value)? error,
   }) {
     return initial?.call(this);
@@ -208,9 +211,9 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(deleteTaskLoading value)? loading,
-    TResult Function(deleteTaskSuccess value)? success,
+    TResult Function(DeleteTaskInitial value)? initial,
+    TResult Function(DeleteTaskLoading value)? loading,
+    TResult Function(DeleteTaskSuccess value)? success,
     TResult Function(DeleteTaskErrorDetails value)? error,
     required TResult orElse(),
   }) {
@@ -221,33 +224,33 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements DeleteTaskState {
-  const factory _Initial() = _$_Initial;
+abstract class DeleteTaskInitial implements DeleteTaskState {
+  const factory DeleteTaskInitial() = _$DeleteTaskInitial;
 }
 
 /// @nodoc
-abstract class $deleteTaskLoadingCopyWith<$Res> {
-  factory $deleteTaskLoadingCopyWith(
-          deleteTaskLoading value, $Res Function(deleteTaskLoading) then) =
-      _$deleteTaskLoadingCopyWithImpl<$Res>;
+abstract class $DeleteTaskLoadingCopyWith<$Res> {
+  factory $DeleteTaskLoadingCopyWith(
+          DeleteTaskLoading value, $Res Function(DeleteTaskLoading) then) =
+      _$DeleteTaskLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$deleteTaskLoadingCopyWithImpl<$Res>
+class _$DeleteTaskLoadingCopyWithImpl<$Res>
     extends _$DeleteTaskStateCopyWithImpl<$Res>
-    implements $deleteTaskLoadingCopyWith<$Res> {
-  _$deleteTaskLoadingCopyWithImpl(
-      deleteTaskLoading _value, $Res Function(deleteTaskLoading) _then)
-      : super(_value, (v) => _then(v as deleteTaskLoading));
+    implements $DeleteTaskLoadingCopyWith<$Res> {
+  _$DeleteTaskLoadingCopyWithImpl(
+      DeleteTaskLoading _value, $Res Function(DeleteTaskLoading) _then)
+      : super(_value, (v) => _then(v as DeleteTaskLoading));
 
   @override
-  deleteTaskLoading get _value => super._value as deleteTaskLoading;
+  DeleteTaskLoading get _value => super._value as DeleteTaskLoading;
 }
 
 /// @nodoc
 
-class _$deleteTaskLoading implements deleteTaskLoading {
-  const _$deleteTaskLoading();
+class _$DeleteTaskLoading implements DeleteTaskLoading {
+  const _$DeleteTaskLoading();
 
   @override
   String toString() {
@@ -257,7 +260,7 @@ class _$deleteTaskLoading implements deleteTaskLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is deleteTaskLoading);
+        (other.runtimeType == runtimeType && other is DeleteTaskLoading);
   }
 
   @override
@@ -303,9 +306,9 @@ class _$deleteTaskLoading implements deleteTaskLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(deleteTaskLoading value) loading,
-    required TResult Function(deleteTaskSuccess value) success,
+    required TResult Function(DeleteTaskInitial value) initial,
+    required TResult Function(DeleteTaskLoading value) loading,
+    required TResult Function(DeleteTaskSuccess value) success,
     required TResult Function(DeleteTaskErrorDetails value) error,
   }) {
     return loading(this);
@@ -314,9 +317,9 @@ class _$deleteTaskLoading implements deleteTaskLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(deleteTaskLoading value)? loading,
-    TResult Function(deleteTaskSuccess value)? success,
+    TResult Function(DeleteTaskInitial value)? initial,
+    TResult Function(DeleteTaskLoading value)? loading,
+    TResult Function(DeleteTaskSuccess value)? success,
     TResult Function(DeleteTaskErrorDetails value)? error,
   }) {
     return loading?.call(this);
@@ -325,9 +328,9 @@ class _$deleteTaskLoading implements deleteTaskLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(deleteTaskLoading value)? loading,
-    TResult Function(deleteTaskSuccess value)? success,
+    TResult Function(DeleteTaskInitial value)? initial,
+    TResult Function(DeleteTaskLoading value)? loading,
+    TResult Function(DeleteTaskSuccess value)? success,
     TResult Function(DeleteTaskErrorDetails value)? error,
     required TResult orElse(),
   }) {
@@ -338,33 +341,33 @@ class _$deleteTaskLoading implements deleteTaskLoading {
   }
 }
 
-abstract class deleteTaskLoading implements DeleteTaskState {
-  const factory deleteTaskLoading() = _$deleteTaskLoading;
+abstract class DeleteTaskLoading implements DeleteTaskState {
+  const factory DeleteTaskLoading() = _$DeleteTaskLoading;
 }
 
 /// @nodoc
-abstract class $deleteTaskSuccessCopyWith<$Res> {
-  factory $deleteTaskSuccessCopyWith(
-          deleteTaskSuccess value, $Res Function(deleteTaskSuccess) then) =
-      _$deleteTaskSuccessCopyWithImpl<$Res>;
+abstract class $DeleteTaskSuccessCopyWith<$Res> {
+  factory $DeleteTaskSuccessCopyWith(
+          DeleteTaskSuccess value, $Res Function(DeleteTaskSuccess) then) =
+      _$DeleteTaskSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$deleteTaskSuccessCopyWithImpl<$Res>
+class _$DeleteTaskSuccessCopyWithImpl<$Res>
     extends _$DeleteTaskStateCopyWithImpl<$Res>
-    implements $deleteTaskSuccessCopyWith<$Res> {
-  _$deleteTaskSuccessCopyWithImpl(
-      deleteTaskSuccess _value, $Res Function(deleteTaskSuccess) _then)
-      : super(_value, (v) => _then(v as deleteTaskSuccess));
+    implements $DeleteTaskSuccessCopyWith<$Res> {
+  _$DeleteTaskSuccessCopyWithImpl(
+      DeleteTaskSuccess _value, $Res Function(DeleteTaskSuccess) _then)
+      : super(_value, (v) => _then(v as DeleteTaskSuccess));
 
   @override
-  deleteTaskSuccess get _value => super._value as deleteTaskSuccess;
+  DeleteTaskSuccess get _value => super._value as DeleteTaskSuccess;
 }
 
 /// @nodoc
 
-class _$deleteTaskSuccess implements deleteTaskSuccess {
-  const _$deleteTaskSuccess();
+class _$DeleteTaskSuccess implements DeleteTaskSuccess {
+  const _$DeleteTaskSuccess();
 
   @override
   String toString() {
@@ -374,7 +377,7 @@ class _$deleteTaskSuccess implements deleteTaskSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is deleteTaskSuccess);
+        (other.runtimeType == runtimeType && other is DeleteTaskSuccess);
   }
 
   @override
@@ -420,9 +423,9 @@ class _$deleteTaskSuccess implements deleteTaskSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(deleteTaskLoading value) loading,
-    required TResult Function(deleteTaskSuccess value) success,
+    required TResult Function(DeleteTaskInitial value) initial,
+    required TResult Function(DeleteTaskLoading value) loading,
+    required TResult Function(DeleteTaskSuccess value) success,
     required TResult Function(DeleteTaskErrorDetails value) error,
   }) {
     return success(this);
@@ -431,9 +434,9 @@ class _$deleteTaskSuccess implements deleteTaskSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(deleteTaskLoading value)? loading,
-    TResult Function(deleteTaskSuccess value)? success,
+    TResult Function(DeleteTaskInitial value)? initial,
+    TResult Function(DeleteTaskLoading value)? loading,
+    TResult Function(DeleteTaskSuccess value)? success,
     TResult Function(DeleteTaskErrorDetails value)? error,
   }) {
     return success?.call(this);
@@ -442,9 +445,9 @@ class _$deleteTaskSuccess implements deleteTaskSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(deleteTaskLoading value)? loading,
-    TResult Function(deleteTaskSuccess value)? success,
+    TResult Function(DeleteTaskInitial value)? initial,
+    TResult Function(DeleteTaskLoading value)? loading,
+    TResult Function(DeleteTaskSuccess value)? success,
     TResult Function(DeleteTaskErrorDetails value)? error,
     required TResult orElse(),
   }) {
@@ -455,8 +458,8 @@ class _$deleteTaskSuccess implements deleteTaskSuccess {
   }
 }
 
-abstract class deleteTaskSuccess implements DeleteTaskState {
-  const factory deleteTaskSuccess() = _$deleteTaskSuccess;
+abstract class DeleteTaskSuccess implements DeleteTaskState {
+  const factory DeleteTaskSuccess() = _$DeleteTaskSuccess;
 }
 
 /// @nodoc
@@ -562,9 +565,9 @@ class _$DeleteTaskErrorDetails implements DeleteTaskErrorDetails {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(deleteTaskLoading value) loading,
-    required TResult Function(deleteTaskSuccess value) success,
+    required TResult Function(DeleteTaskInitial value) initial,
+    required TResult Function(DeleteTaskLoading value) loading,
+    required TResult Function(DeleteTaskSuccess value) success,
     required TResult Function(DeleteTaskErrorDetails value) error,
   }) {
     return error(this);
@@ -573,9 +576,9 @@ class _$DeleteTaskErrorDetails implements DeleteTaskErrorDetails {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(deleteTaskLoading value)? loading,
-    TResult Function(deleteTaskSuccess value)? success,
+    TResult Function(DeleteTaskInitial value)? initial,
+    TResult Function(DeleteTaskLoading value)? loading,
+    TResult Function(DeleteTaskSuccess value)? success,
     TResult Function(DeleteTaskErrorDetails value)? error,
   }) {
     return error?.call(this);
@@ -584,9 +587,9 @@ class _$DeleteTaskErrorDetails implements DeleteTaskErrorDetails {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(deleteTaskLoading value)? loading,
-    TResult Function(deleteTaskSuccess value)? success,
+    TResult Function(DeleteTaskInitial value)? initial,
+    TResult Function(DeleteTaskLoading value)? loading,
+    TResult Function(DeleteTaskSuccess value)? success,
     TResult Function(DeleteTaskErrorDetails value)? error,
     required TResult orElse(),
   }) {

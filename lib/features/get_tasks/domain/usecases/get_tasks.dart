@@ -7,11 +7,11 @@ import 'package:tasks_app/features/get_tasks/domain/repositories/get_tasks_repos
 
 @injectable
 class GetTasks implements UseCase<List<GetTaskEntity>, NoParams> {
-  GetTasksRepository getTasksRepository;
-  GetTasks(this.getTasksRepository);
+  final GetTasksRepository _getTasksRepository;
+  GetTasks(this._getTasksRepository);
 
   @override
   Future<Either<Failure, List<GetTaskEntity>>> call(NoParams noParams) async {
-    return getTasksRepository.getTasks();
+    return _getTasksRepository.getTasks();
   }
 }

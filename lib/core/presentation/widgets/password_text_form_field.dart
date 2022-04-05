@@ -35,6 +35,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
+          errorStyle: const TextStyle(fontSize: 13),
         ),
         obscureText: isObscure,
         autocorrect: false,

@@ -18,7 +18,7 @@ import '../../../features/auth/domain/usecases/login.dart' as _i27;
 import '../../../features/auth/domain/usecases/logout.dart' as _i28;
 import '../../../features/auth/domain/usecases/register.dart' as _i29;
 import '../../../features/auth/presentation/bloc/auth_cubit.dart' as _i31;
-import '../../../features/delete_task/data/datasourses/delete_services.dart'
+import '../../../features/delete_task/data/datasources/delete_services.dart'
     as _i13;
 import '../../../features/delete_task/data/repostories/delete_task_repository_imp.dart'
     as _i23;
@@ -101,13 +101,11 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.factory<_i20.CreateTaskRepository>(() => _i21.CreateTaskRepositoryImpl(
       get<_i11.CreateTaskService>(), get<_i14.LocalDataSource>()));
   gh.factory<_i22.DeleteTaskRepository>(() => _i23.DeleteTaskRepositoryImpl(
-      deleteTaskService: get<_i13.DeleteTasksService>(),
-      localDataSource: get<_i14.LocalDataSource>()));
+      get<_i13.DeleteTasksService>(), get<_i14.LocalDataSource>()));
   gh.factory<_i24.DeleteTaskUseCase>(
       () => _i24.DeleteTaskUseCase(get<_i22.DeleteTaskRepository>()));
   gh.factory<_i25.GetTasksRepository>(() => _i26.GetTasksRepositoryImpl(
-      getTasksService: get<_i4.GetTasksService>(),
-      localDataSource: get<_i14.LocalDataSource>()));
+      get<_i4.GetTasksService>(), get<_i14.LocalDataSource>()));
   gh.factory<_i27.Login>(() => _i27.Login(get<_i18.AuthRepository>()));
   gh.factory<_i28.Logout>(() => _i28.Logout(get<_i18.AuthRepository>()));
   gh.factory<_i29.Register>(() => _i29.Register(get<_i18.AuthRepository>()));

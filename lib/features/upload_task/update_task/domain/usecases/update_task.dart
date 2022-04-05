@@ -8,14 +8,14 @@ import 'package:tasks_app/features/upload_task/update_task/domain/repositories/u
 
 @injectable
 class UpdateTask implements UseCase<Unit, UpdateTaskData> {
-  UpdateTaskRepository updateTaskRepository;
-  UpdateTask(this.updateTaskRepository);
+  final UpdateTaskRepository _updateTaskRepository;
+  UpdateTask(this._updateTaskRepository);
 
   @override
   Future<Either<Failure, Unit>> call(
     UpdateTaskData updateTaskData,
   ) =>
-      updateTaskRepository.updateTask(
+      _updateTaskRepository.updateTask(
         taskId: updateTaskData.taskId,
         uploadTaskEntity: updateTaskData.uploadTaskEntity,
       );
