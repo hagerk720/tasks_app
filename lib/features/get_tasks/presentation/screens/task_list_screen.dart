@@ -7,7 +7,7 @@ import 'package:tasks_app/features/auth/presentation/widgets/logout_widget.dart'
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_state.dart';
 import 'package:tasks_app/features/get_tasks/presentation/widgets/task_widget.dart';
-import 'package:tasks_app/features/upload_task/core/screens/upload_task_screen.dart';
+import 'package:tasks_app/features/upload_task/core/presentation/screens/upload_task_screen.dart';
 
 class TaskListScreen extends StatefulWidget {
   const TaskListScreen();

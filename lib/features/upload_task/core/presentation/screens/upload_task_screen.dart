@@ -8,10 +8,10 @@ import 'package:tasks_app/core/presentation/widgets/custom_elevated_button.dart'
 import 'package:tasks_app/core/presentation/widgets/custom_text_form_field.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
 import 'package:tasks_app/features/get_tasks/presentation/widgets/due_date_button.dart';
-import 'package:tasks_app/features/upload_task/core/bloc/upload_task_cubit.dart';
-import 'package:tasks_app/features/upload_task/core/bloc/upload_task_state.dart';
-import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
-import 'package:tasks_app/features/upload_task/core/widgets/custom_drop_down_button_form_field.dart';
+import 'package:tasks_app/features/upload_task/core/domain/entities/upload_task_entity.dart';
+import 'package:tasks_app/features/upload_task/core/presentation/bloc/upload_task_cubit.dart';
+import 'package:tasks_app/features/upload_task/core/presentation/bloc/upload_task_state.dart';
+import 'package:tasks_app/features/upload_task/core/presentation/widgets/custom_drop_down_button_form_field.dart';
 
 // ignore: must_be_immutable
 class UploadTaskScreen extends StatelessWidget {
@@ -22,9 +22,9 @@ class UploadTaskScreen extends StatelessWidget {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
   String? selectedPriority;
-  DateTime selectedTime = DateTime.now();
   File? attachmentFile;
   Color iconColor = Colors.white;
+  DateTime selectedTime = DateTime.now();
   DateTime selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
@@ -72,8 +72,8 @@ class UploadTaskScreen extends StatelessWidget {
                 children: [
                   StatefulBuilder(
                     builder: (
-                      BuildContext context,
-                      void Function(void Function()) setState,
+                      context,
+                      setState,
                     ) {
                       return Expanded(
                         child: Container(

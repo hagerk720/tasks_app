@@ -6,8 +6,8 @@ import 'package:tasks_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:tasks_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/screens/task_list_screen.dart';
-import 'package:tasks_app/features/upload_task/core/bloc/upload_task_cubit.dart';
-import 'package:tasks_app/features/upload_task/core/screens/upload_task_screen.dart';
+import 'package:tasks_app/features/upload_task/core/presentation/bloc/upload_task_cubit.dart';
+import 'package:tasks_app/features/upload_task/core/presentation/screens/upload_task_screen.dart';
 
 mixin AppRouter {
   static Route<MaterialPageRoute>? onGenerateRoute(

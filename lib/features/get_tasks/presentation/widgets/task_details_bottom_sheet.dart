@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasks_app/features/delete_task/presentation/bloc/delete_task_cubit.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
 import 'package:tasks_app/features/get_tasks/presentation/screens/attachment_viewer_screen.dart';
-import 'package:tasks_app/features/upload_task/core/screens/upload_task_screen.dart';
+import 'package:tasks_app/features/upload_task/core/presentation/screens/upload_task_screen.dart';
 
 class TaskDetailsBottomSheet extends StatelessWidget {
   const TaskDetailsBottomSheet(this.task);
@@ -110,7 +110,7 @@ class TaskDetailsBottomSheet extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
                 if (task.attachmentUrl.isNotEmpty)
                   IconButton(
                     onPressed: () => Navigator.of(context).push(

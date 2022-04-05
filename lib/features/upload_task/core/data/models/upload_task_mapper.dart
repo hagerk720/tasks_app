@@ -1,5 +1,6 @@
-import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
-import 'package:tasks_app/features/upload_task/core/models/upload_task_model.dart';
+
+import 'package:tasks_app/features/upload_task/core/data/models/upload_task_model.dart';
+import 'package:tasks_app/features/upload_task/core/domain/entities/upload_task_entity.dart';
 
 extension Mapper on UploadTaskEntity {
   UploadTaskModel toModel() => UploadTaskModel(

@@ -5,8 +5,8 @@ import 'package:tasks_app/features/delete_task/presentation/bloc/delete_task_cub
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.dart';
 import 'package:tasks_app/features/get_tasks/presentation/widgets/task_details_bottom_sheet.dart';
-import 'package:tasks_app/features/upload_task/core/bloc/upload_task_cubit.dart';
-import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
+import 'package:tasks_app/features/upload_task/core/domain/entities/upload_task_entity.dart';
+import 'package:tasks_app/features/upload_task/core/presentation/bloc/upload_task_cubit.dart';
 
 class TaskWidget extends StatefulWidget {
   final GetTaskEntity task;
