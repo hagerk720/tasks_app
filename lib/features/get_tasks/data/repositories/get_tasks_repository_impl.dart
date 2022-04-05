@@ -8,18 +8,18 @@ import 'package:tasks_app/features/get_tasks/domain/repositories/get_tasks_repos
 
 @Injectable(as: GetTasksRepository)
 class GetTasksRepositoryImpl implements GetTasksRepository {
-  GetTasksService getTasksService;
-  LocalDataSource localDataSource;
-  GetTasksRepositoryImpl({
-    required this.getTasksService,
-    required this.localDataSource,
-  });
+  final GetTasksService _getTasksService;
+  final LocalDataSource _localDataSource;
+  GetTasksRepositoryImpl(
+    this._getTasksService,
+    this._localDataSource,
+  );
 
   @override
   Future<Either<Failure, List<GetTaskEntity>>> getTasks() async {
     try {
-      final token = await localDataSource.getToken();
-      final tasks = await getTasksService.getTasks(token: 'Bearer $token');
+      final token = await _localDataSource.getToken();
+      final tasks = await _getTasksService.getTasks(token: 'Bearer $token');
       return right(tasks.data);
     } catch (error) {
       return left(Failure(error));

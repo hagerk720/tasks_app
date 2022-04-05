@@ -25,6 +25,7 @@ class CustomTextFormField extends StatelessWidget {
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
+          errorStyle: const TextStyle(fontSize: 13),
         ),
         autocorrect: false,
         keyboardType: keyboardType,

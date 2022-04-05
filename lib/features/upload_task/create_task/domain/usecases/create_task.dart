@@ -8,14 +8,14 @@ import 'package:tasks_app/features/upload_task/create_task/domain/repositories/c
 
 @injectable
 class CreateTask implements UseCase<Unit, CreateTaskData> {
-  CreateTaskRepository createTaskRepository;
-  CreateTask(this.createTaskRepository);
+  final CreateTaskRepository _createTaskRepository;
+  CreateTask(this._createTaskRepository);
 
   @override
   Future<Either<Failure, Unit>> call(
     CreateTaskData createTaskData,
   ) =>
-      createTaskRepository.createTask(
+      _createTaskRepository.createTask(
         uploadTaskEntity: createTaskData.uploadTaskEntity,
       );
 }

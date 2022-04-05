@@ -1,4 +1,3 @@
-// ignore_for_file: overridden_fields
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
 part 'get_task_model.g.dart';
@@ -7,6 +6,7 @@ part 'get_task_model.g.dart';
 class GetTaskModel extends GetTaskEntity {
   @override
   @JsonKey(name: 'attachement')
+  // ignore: overridden_fields
   final String attachmentUrl;
 
   const GetTaskModel({

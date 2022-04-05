@@ -13,13 +13,14 @@ import 'package:tasks_app/features/upload_task/core/bloc/upload_task_state.dart'
 import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
 import 'package:tasks_app/features/upload_task/core/widgets/custom_drop_down_button_form_field.dart';
 
+// ignore: must_be_immutable
 class UploadTaskScreen extends StatelessWidget {
   UploadTaskScreen();
   static const routeName = '/create_task';
   final priorities = ['High', 'Medium', 'Low'];
   final _formKey = GlobalKey<FormState>();
-  var titleController = TextEditingController();
-  var descriptionController = TextEditingController();
+  final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
   String? selectedPriority;
   DateTime selectedTime = DateTime.now();
   File? attachmentFile;
@@ -30,8 +31,8 @@ class UploadTaskScreen extends StatelessWidget {
     final task = ModalRoute.of(context)!.settings.arguments as GetTaskEntity?;
     final screenHeight = MediaQuery.of(context).size.height;
     if (task != null) {
-      titleController = TextEditingController(text: task.title);
-      descriptionController = TextEditingController(text: task.description);
+      titleController.text = task.title;
+      descriptionController.text = task.description;
       selectedPriority = task.priority;
       selectedTime = DateTime.parse(task.period);
     }

@@ -9,11 +9,11 @@ import 'package:tasks_app/features/upload_task/update_task/domain/repositories/u
 
 @Injectable(as: UpdateTaskRepository)
 class UpdateTaskRepositoryImpl implements UpdateTaskRepository {
-  UpdateTaskService updateTaskService;
-  LocalDataSource localDataSource;
+  final UpdateTaskService _updateTaskService;
+  final LocalDataSource _localDataSource;
   UpdateTaskRepositoryImpl(
-    this.updateTaskService,
-    this.localDataSource,
+    this._updateTaskService,
+    this._localDataSource,
   );
   @override
   Future<Either<Failure, Unit>> updateTask({
@@ -21,8 +21,8 @@ class UpdateTaskRepositoryImpl implements UpdateTaskRepository {
     required UploadTaskEntity uploadTaskEntity,
   }) async {
     try {
-      final token = await localDataSource.getToken();
-      await updateTaskService.updateTask(
+      final token = await _localDataSource.getToken();
+      await _updateTaskService.updateTask(
         token: 'Bearer ${token!}',
         taskId: taskId,
         uploadTaskModel: uploadTaskEntity.toModel(),

@@ -13,6 +13,6 @@ abstract class DeleteTasksService {
   @POST('task/delete/{id}')
   Future<ResponseModel> deleteTask({
     @Header('Authorization') required String token,
-    @Path("id") required int taskId , 
-  } );
+    @Path('id') required int taskId,
+  });
 }

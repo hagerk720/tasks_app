@@ -94,7 +94,7 @@ class TaskDetailsBottomSheet extends StatelessWidget {
                       .deleteTask(taskId: task.id),
                   icon: BlocConsumer<DeleteTaskCubit, DeleteTaskState>(
                     listener: (context, state) {
-                      if (state is deleteTaskSuccess) {
+                      if (state is DeleteTaskSuccess) {
                         Navigator.pop(context);
                       }
                     },

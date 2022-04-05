@@ -9,19 +9,19 @@ import 'package:tasks_app/features/upload_task/create_task/domain/repositories/c
 
 @Injectable(as: CreateTaskRepository)
 class CreateTaskRepositoryImpl implements CreateTaskRepository {
-  CreateTaskService createTaskService;
-  LocalDataSource localDataSource;
+  final CreateTaskService _createTaskService;
+  final LocalDataSource _localDataSource;
   CreateTaskRepositoryImpl(
-    this.createTaskService,
-    this.localDataSource,
+    this._createTaskService,
+    this._localDataSource,
   );
   @override
   Future<Either<Failure, Unit>> createTask({
     required UploadTaskEntity uploadTaskEntity,
   }) async {
     try {
-      final token = await localDataSource.getToken();
-      await createTaskService.createTask(
+      final token = await _localDataSource.getToken();
+      await _createTaskService.createTask(
         token: 'Bearer ${token!}',
         uploadTaskModel: uploadTaskEntity.toModel(),
       );
