@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tasks_app/core/domain/error/failure.dart';
 import 'package:tasks_app/core/domain/usecases/usecase.dart';
-import 'package:tasks_app/features/upload_task/core/entities/upload_task_entity.dart';
+import 'package:tasks_app/features/upload_task/core/domain/entities/upload_task_entity.dart';
 import 'package:tasks_app/features/upload_task/create_task/domain/repositories/create_task_repository.dart';
 
 @injectable

@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:tasks_app/core/data/models/response_model/response_model.dart';
-import 'package:tasks_app/features/upload_task/core/models/upload_task_model.dart';
+import 'package:tasks_app/features/upload_task/core/data/models/upload_task_model.dart';
 import 'package:tasks_app/features/upload_task/update_task/data/datasources/update_task_api_service.dart';
 import 'package:tasks_app/features/upload_task/update_task/domain/datasources/update_task_service.dart';
 

@@ -37,7 +37,8 @@ import '../../../features/get_tasks/domain/repositories/get_tasks_repository.dar
 import '../../../features/get_tasks/domain/usecases/get_tasks.dart' as _i34;
 import '../../../features/get_tasks/presentation/bloc/get_tasks_cubit.dart'
     as _i35;
-import '../../../features/upload_task/core/bloc/upload_task_cubit.dart' as _i36;
+import '../../../features/upload_task/core/presentation/bloc/upload_task_cubit.dart'
+    as _i36;
 import '../../../features/upload_task/create_task/data/datasources/create_task_api_service.dart'
     as _i10;
 import '../../../features/upload_task/create_task/data/datasources/create_task_service_impl.dart'

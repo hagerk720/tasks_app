@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasks_app/features/upload_task/core/widgets/drop_down_shape.dart';
+import 'package:tasks_app/features/upload_task/core/presentation/widgets/drop_down_shape.dart';
 
 class CustomDropDownButtonFormField extends StatelessWidget {
   const CustomDropDownButtonFormField({
@@ -62,6 +62,7 @@ class CustomDropDownButtonFormField extends StatelessWidget {
             Radius.circular(20),
           ),
         ),
+        errorStyle: TextStyle(fontSize: 13),
       ),
     );
   }
