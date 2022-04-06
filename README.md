@@ -25,6 +25,6 @@
 * shared_preferences
 * json_serializable
 * flutter_slidable
-* flutter_time_picker_spinner
+* syncfusion_flutter_pdfviewer
 * fluttertoast
 * intl
