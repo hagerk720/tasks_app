@@ -28,3 +28,5 @@
 * syncfusion_flutter_pdfviewer
 * fluttertoast
 * intl
+
+API: https://github.com/esraa898/Mega_api_trust
