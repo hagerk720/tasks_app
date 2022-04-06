@@ -23,8 +23,8 @@
 * get_it
 * injectable
 * shared_preferences
+* cached_network_image
 * json_serializable
-* flutter_slidable
 * syncfusion_flutter_pdfviewer
 * fluttertoast
 * intl
