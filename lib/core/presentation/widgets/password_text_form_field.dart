@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tasks_app/core/presentation/validation/validators.dart';
 
 class PasswordTextFormField extends StatefulWidget {
@@ -12,8 +13,8 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
   late bool isObscure;
   @override
   void initState() {
-    isObscure = true;
     super.initState();
+    isObscure = true;
   }
 
   @override
@@ -22,7 +23,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
       padding: const EdgeInsets.only(top: 12),
       child: TextFormField(
         decoration: InputDecoration(
-          hintText: 'Password',
+          hintText: AppLocalizations.of(context)!.password,
           prefixIcon: const Icon(Icons.lock_outline),
           suffixIcon: IconButton(
             icon: Icon(
@@ -41,7 +42,10 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
         autocorrect: false,
         enableSuggestions: false,
         controller: widget.controller,
-        validator: (value) => passwordValidator(value),
+        validator: (password) => passwordValidator(
+          context: context,
+          password: password,
+        ),
       ),
     );
   }

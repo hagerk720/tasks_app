@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasks_app/core/data/constants/constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tasks_app/core/presentation/util/error_toast.dart';
 import 'package:tasks_app/core/presentation/validation/validators.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_elevated_button.dart';
@@ -26,8 +26,11 @@ class _UploadTaskScreenState extends State<UploadTaskScreen> {
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
+  late AppLocalizations appLocalizations;
+
   @override
   void didChangeDependencies() {
+    super.didChangeDependencies();
     task = ModalRoute.of(context)!.settings.arguments as GetTaskEntity?;
     if (task != null) {
       titleController.text = task!.title;
@@ -35,10 +38,16 @@ class _UploadTaskScreenState extends State<UploadTaskScreen> {
       selectedPriority = task!.priority;
       selectedTime = DateTime.parse(task!.period);
     }
-    super.didChangeDependencies();
+    appLocalizations = AppLocalizations.of(context)!;
+    priorities = [
+      appLocalizations.high,
+      appLocalizations.medium,
+      appLocalizations.low,
+    ];
   }
 
-  late String selectedPriority;
+  late List<String> priorities;
+  String? selectedPriority;
   File? attachmentFile;
   Color iconColor = Colors.white;
   DateTime selectedTime = DateTime.now();
@@ -48,7 +57,11 @@ class _UploadTaskScreenState extends State<UploadTaskScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(task == null ? 'Create Task' : 'Update Task'),
+        title: Text(
+          task == null
+              ? appLocalizations.createTask
+              : appLocalizations.editTask,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -58,22 +71,24 @@ class _UploadTaskScreenState extends State<UploadTaskScreen> {
             children: [
               CustomTextFormField(
                 controller: titleController,
-                hintText: 'Title',
+                hintText: appLocalizations.title,
                 prefixIcon: Icons.title,
                 keyboardType: TextInputType.text,
-                validator: (value) => generalValidator(
-                  value: value,
-                  fieldName: 'Title',
+                validator: (title) => generalValidator(
+                  context: context,
+                  value: title,
+                  fieldName: appLocalizations.title,
                 ),
               ),
               CustomTextFormField(
                 controller: descriptionController,
-                hintText: 'Description',
+                hintText: appLocalizations.description,
                 prefixIcon: Icons.description,
                 keyboardType: TextInputType.text,
-                validator: (value) => generalValidator(
-                  value: value,
-                  fieldName: 'Description',
+                validator: (description) => generalValidator(
+                  context: context,
+                  value: description,
+                  fieldName: appLocalizations.description,
                 ),
               ),
               const SizedBox(height: 12),
@@ -84,36 +99,35 @@ class _UploadTaskScreenState extends State<UploadTaskScreen> {
                       context,
                       setState,
                     ) {
-                      return Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(16),
-                            ),
-                            color: iconColor,
+                      return Container(
+                        width: MediaQuery.of(context).size.width * .46,
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(16),
                           ),
-                          child: CustomDropDownButtonFormField(
-                            itemsNames: priorities,
-                            value: selectedPriority,
-                            onChanged: (value) {
-                              if (value != null) {
-                                setState(() {
-                                  value == priorities[0]
-                                      ? iconColor = const Color(0xfffeccd1)
-                                      : value == priorities[1]
-                                          ? iconColor = const Color(0xfffee2c6)
-                                          : iconColor = const Color(0xffd6f1ff);
-                                });
-                                selectedPriority = value;
-                              }
-                            },
-                            hintText: 'Priority',
-                          ),
+                          color: iconColor,
+                        ),
+                        child: CustomDropDownButtonFormField(
+                          itemsNames: priorities,
+                          value: selectedPriority,
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() {
+                                value == priorities[0]
+                                    ? iconColor = const Color(0xfffeccd1)
+                                    : value == priorities[1]
+                                        ? iconColor = const Color(0xfffee2c6)
+                                        : iconColor = const Color(0xffd6f1ff);
+                              });
+                              selectedPriority = value;
+                            }
+                          },
+                          hintText: appLocalizations.priority,
                         ),
                       );
                     },
                   ),
-                  const SizedBox(width: 16),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: StatefulBuilder(
                       builder: (context, setState) => DueDateButton(
@@ -171,7 +185,7 @@ class _UploadTaskScreenState extends State<UploadTaskScreen> {
                       return Expanded(
                         flex: 7,
                         child: CustomElevatedButton(
-                          label: 'submit',
+                          label: appLocalizations.submit,
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
                               final uploadTaskCubit =
@@ -179,7 +193,7 @@ class _UploadTaskScreenState extends State<UploadTaskScreen> {
                               final uploadedTask = UploadTaskEntity(
                                 title: titleController.text,
                                 description: descriptionController.text,
-                                priority: selectedPriority,
+                                priority: selectedPriority!,
                                 period: selectedTime.toString(),
                                 state: 0,
                                 attachementFile: attachmentFile,

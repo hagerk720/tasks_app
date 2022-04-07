@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tasks_app/core/presentation/util/error_toast.dart';
 import 'package:tasks_app/core/presentation/validation/validators.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_elevated_button.dart';
@@ -19,10 +20,13 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late TextTheme textTheme;
+  late AppLocalizations appLocalizations;
+
   @override
   void didChangeDependencies() {
-    textTheme = Theme.of(context).textTheme;
     super.didChangeDependencies();
+    textTheme = Theme.of(context).textTheme;
+    appLocalizations = AppLocalizations.of(context)!;
   }
 
   final _formKey = GlobalKey<FormState>();
@@ -41,15 +45,18 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'LOGIN',
+                appLocalizations.login,
                 style: textTheme.headline1,
               ),
               CustomTextFormField(
                 controller: emailController,
-                hintText: 'Email Address',
+                hintText: appLocalizations.emailAddress,
                 prefixIcon: Icons.email_outlined,
                 keyboardType: TextInputType.emailAddress,
-                validator: (value) => emailValidator(value),
+                validator: (email) => emailValidator(
+                  context: context,
+                  email: email,
+                ),
               ),
               PasswordTextFormField(controller: passwordController),
               const SizedBox(height: 16),
@@ -68,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     orElse: () {},
                   );
                   return CustomElevatedButton(
-                    label: 'login',
+                    label: appLocalizations.login,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         BlocProvider.of<AuthCubit>(context).login(
@@ -85,13 +92,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Don't have an account?",
+                    appLocalizations.doNotHaveAnAccount,
                     style: textTheme.headline6,
                   ),
                   TextButton(
                     onPressed: () => Navigator.of(context)
                         .pushReplacementNamed(RegisterScreen.routeName),
-                    child: const Text('REGISTER'),
+                    child: Text(appLocalizations.register),
                   ),
                 ],
               ),

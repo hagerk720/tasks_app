@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LogoutWidget extends StatelessWidget {
   const LogoutWidget({required this.onPressed});
@@ -7,6 +8,7 @@ class LogoutWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final headline2 = textTheme.headline2;
+    final appLocalization = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.only(
         right: 12,
@@ -15,21 +17,21 @@ class LogoutWidget extends StatelessWidget {
         onTap: () {
           final dialog = AlertDialog(
             title: Text(
-              'Are you sure you want to logout?',
+              appLocalization.areYouSureYouWantToLogout,
               style: textTheme.caption,
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),
                 child: Text(
-                  'NO',
+                  appLocalization.no,
                   style: headline2,
                 ),
               ),
               TextButton(
                 onPressed: onPressed,
                 child: Text(
-                  'YES',
+                  appLocalization.yes,
                   style: headline2,
                 ),
               ),

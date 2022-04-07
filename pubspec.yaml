@@ -1,5 +1,5 @@
 name: tasks_app
-description: A new Flutter project.
+description: Flutter Tasks app
 publish_to: 'none'
 version: 1.0.0+1
 environment:
@@ -15,6 +15,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  flutter_localizations:
+    sdk: flutter
   fluttertoast: ^8.0.9
   freezed: ^1.1.1
   freezed_annotation: ^1.1.0
@@ -36,6 +38,7 @@ dev_dependencies:
   retrofit_generator: ^4.0.1
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     - assets/images/
