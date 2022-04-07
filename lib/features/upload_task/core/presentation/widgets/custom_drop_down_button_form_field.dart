@@ -10,7 +10,7 @@ class CustomDropDownButtonFormField extends StatelessWidget {
     required this.hintText,
   });
   final List<String> itemsNames;
-  final String value;
+  final String? value;
   final Function(String?)? onChanged;
   final String hintText;
   @override

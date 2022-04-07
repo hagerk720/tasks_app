@@ -68,7 +68,7 @@ class TaskDetailsBottomSheet extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  task.period,
+                  task.period.substring(0, 11),
                   style: textTheme.headline5,
                 ),
               ],

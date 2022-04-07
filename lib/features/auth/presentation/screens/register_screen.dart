@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tasks_app/core/presentation/util/error_toast.dart';
 import 'package:tasks_app/core/presentation/validation/validators.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_elevated_button.dart';
@@ -20,10 +21,13 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   late TextTheme textTheme;
+  late AppLocalizations appLocalizations;
+
   @override
   void didChangeDependencies() {
-    textTheme = Theme.of(context).textTheme;
     super.didChangeDependencies();
+    textTheme = Theme.of(context).textTheme;
+    appLocalizations = AppLocalizations.of(context)!;
   }
 
   final _formKey = GlobalKey<FormState>();
@@ -43,25 +47,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'REGISTER',
+                appLocalizations.register,
                 style: textTheme.headline1,
               ),
               CustomTextFormField(
                 controller: nameController,
-                hintText: 'Full name',
+                hintText: appLocalizations.userName,
                 prefixIcon: Icons.person_outline,
                 keyboardType: TextInputType.name,
-                validator: (value) => generalValidator(
-                  value: value,
-                  fieldName: 'Name',
+                validator: (name) => generalValidator(
+                  context: context,
+                  value: name,
+                  fieldName: appLocalizations.name,
                 ),
               ),
               CustomTextFormField(
                 controller: emailController,
-                hintText: 'Email Address',
+                hintText: appLocalizations.emailAddress,
                 prefixIcon: Icons.email_outlined,
                 keyboardType: TextInputType.emailAddress,
-                validator: (value) => emailValidator(value),
+                validator: (email) => emailValidator(
+                  context: context,
+                  email: email,
+                ),
               ),
               PasswordTextFormField(controller: passwordController),
               const SizedBox(height: 16),
@@ -84,7 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     orElse: () {},
                   );
                   return CustomElevatedButton(
-                    label: 'register',
+                    label: appLocalizations.register,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         BlocProvider.of<AuthCubit>(context).register(
@@ -104,13 +112,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Already have an account?',
+                    appLocalizations.alreadyHaveAnAccount,
                     style: textTheme.headline6,
                   ),
                   TextButton(
                     onPressed: () => Navigator.of(context)
                         .pushReplacementNamed(LoginScreen.routeName),
-                    child: const Text('LOGIN'),
+                    child: Text(appLocalizations.login),
                   ),
                 ],
               ),

@@ -8,14 +8,16 @@ class AttachmentViewerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: url.endsWith('pdf')
-            ? SfPdfViewer.network(url)
-            : CachedNetworkImage(
-                imageUrl: url,
-                placeholder: (_, __) => const CircularProgressIndicator(),
-                errorWidget: (_, __, error) => const Icon(Icons.error),
-              ),
+      body: Center(
+        child: Container(
+          child: url.endsWith('pdf')
+              ? SfPdfViewer.network(url)
+              : CachedNetworkImage(
+                  imageUrl: url,
+                  placeholder: (_, __) => const CircularProgressIndicator(),
+                  errorWidget: (_, __, error) => const Icon(Icons.error),
+                ),
+        ),
       ),
     );
   }

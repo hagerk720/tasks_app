@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasks_app/core/domain/di/injectable.dart';
+import 'package:tasks_app/di/injectable.dart';
 import 'package:tasks_app/features/delete_task/presentation/bloc/delete_task_cubit.dart';
 import 'package:tasks_app/features/get_tasks/domain/entities/get_task_entity.dart';
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.dart';

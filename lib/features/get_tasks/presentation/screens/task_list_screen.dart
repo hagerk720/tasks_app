@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tasks_app/core/data/constants/constants.dart';
+import 'package:tasks_app/core/presentation/bloc/localization_cubit/localization_cubit.dart';
 import 'package:tasks_app/core/presentation/util/error_toast.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:tasks_app/features/auth/presentation/screens/login_screen.dart';
@@ -8,6 +11,7 @@ import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_cubit.d
 import 'package:tasks_app/features/get_tasks/presentation/bloc/get_tasks_state.dart';
 import 'package:tasks_app/features/get_tasks/presentation/widgets/task_widget.dart';
 import 'package:tasks_app/features/upload_task/core/presentation/screens/upload_task_screen.dart';
+import 'package:tasks_app/features/upload_task/core/presentation/widgets/custom_drop_down_button_form_field.dart';
 
 class TaskListScreen extends StatefulWidget {
   const TaskListScreen();
@@ -19,20 +23,39 @@ class TaskListScreen extends StatefulWidget {
 class _TaskListScreenState extends State<TaskListScreen> {
   late ThemeData theme;
   late double screenWidth;
+  late AppLocalizations appLocalizations;
+
   @override
   void didChangeDependencies() {
+    super.didChangeDependencies();
     screenWidth = MediaQuery.of(context).size.width;
     theme = Theme.of(context);
-    super.didChangeDependencies();
+    appLocalizations = AppLocalizations.of(context)!;
   }
 
+  String selectedLang = 'en';
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<GetTasksCubit>(context).getTasks();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Tasks'),
+        title: Text(appLocalizations.myTasks),
         actions: [
+          SizedBox(
+            height: 150,
+            width: 150,
+            child: CustomDropDownButtonFormField(
+              itemsNames: localizationLangs,
+              value: selectedLang,
+              onChanged: (newLang) {
+                if (newLang != null) {
+                  BlocProvider.of<LocalizationCubit>(context)
+                      .changeLanguage(newLang);
+                }
+              },
+              hintText: 'Language',
+            ),
+          ),
           LogoutWidget(
             onPressed: () {
               BlocProvider.of<AuthCubit>(context).logout();
@@ -70,7 +93,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                       children: [
                         Image.asset('assets/images/relax.png', scale: 1.8),
                         Text(
-                          'There are no tasks',
+                          appLocalizations.thereAreNoTasks,
                           style: theme.textTheme.headline3,
                           textAlign: TextAlign.center,
                         )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 
 class DueDateButton extends StatelessWidget {
@@ -55,7 +56,7 @@ class DueDateButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Due date',
+                  AppLocalizations.of(context)!.dueDate,
                   style: textTheme.headline4,
                 ),
                 const SizedBox(height: 3),
