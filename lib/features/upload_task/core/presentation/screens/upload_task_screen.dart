@@ -2,7 +2,8 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasks_app/core/domain/error/error_toast.dart';
+import 'package:tasks_app/core/data/constants/constants.dart';
+import 'package:tasks_app/core/presentation/util/error_toast.dart';
 import 'package:tasks_app/core/presentation/validation/validators.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_elevated_button.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_text_form_field.dart';
@@ -13,29 +14,37 @@ import 'package:tasks_app/features/upload_task/core/presentation/bloc/upload_tas
 import 'package:tasks_app/features/upload_task/core/presentation/bloc/upload_task_state.dart';
 import 'package:tasks_app/features/upload_task/core/presentation/widgets/custom_drop_down_button_form_field.dart';
 
-// ignore: must_be_immutable
-class UploadTaskScreen extends StatelessWidget {
-  UploadTaskScreen();
+class UploadTaskScreen extends StatefulWidget {
+  const UploadTaskScreen();
   static const routeName = '/create_task';
-  final priorities = ['High', 'Medium', 'Low'];
+  @override
+  State<UploadTaskScreen> createState() => _UploadTaskScreenState();
+}
+
+class _UploadTaskScreenState extends State<UploadTaskScreen> {
+  GetTaskEntity? task;
   final _formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
-  String? selectedPriority;
+  @override
+  void didChangeDependencies() {
+    task = ModalRoute.of(context)!.settings.arguments as GetTaskEntity?;
+    if (task != null) {
+      titleController.text = task!.title;
+      descriptionController.text = task!.description;
+      selectedPriority = task!.priority;
+      selectedTime = DateTime.parse(task!.period);
+    }
+    super.didChangeDependencies();
+  }
+
+  late String selectedPriority;
   File? attachmentFile;
   Color iconColor = Colors.white;
   DateTime selectedTime = DateTime.now();
   DateTime selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    final task = ModalRoute.of(context)!.settings.arguments as GetTaskEntity?;
-    final screenHeight = MediaQuery.of(context).size.height;
-    if (task != null) {
-      titleController.text = task.title;
-      descriptionController.text = task.description;
-      selectedPriority = task.priority;
-      selectedTime = DateTime.parse(task.period);
-    }
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -89,9 +98,9 @@ class UploadTaskScreen extends StatelessWidget {
                             onChanged: (value) {
                               if (value != null) {
                                 setState(() {
-                                  value == 'High'
+                                  value == priorities[0]
                                       ? iconColor = const Color(0xfffeccd1)
-                                      : value == 'Medium'
+                                      : value == priorities[1]
                                           ? iconColor = const Color(0xfffee2c6)
                                           : iconColor = const Color(0xffd6f1ff);
                                 });
@@ -134,7 +143,7 @@ class UploadTaskScreen extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: MaterialButton(
-                      height: .07 * screenHeight,
+                      height: MediaQuery.of(context).size.height * .07,
                       shape: RoundedRectangleBorder(
                         side: const BorderSide(color: Colors.grey),
                         borderRadius: BorderRadius.circular(20),
@@ -170,7 +179,7 @@ class UploadTaskScreen extends StatelessWidget {
                               final uploadedTask = UploadTaskEntity(
                                 title: titleController.text,
                                 description: descriptionController.text,
-                                priority: selectedPriority!,
+                                priority: selectedPriority,
                                 period: selectedTime.toString(),
                                 state: 0,
                                 attachementFile: attachmentFile,
@@ -181,7 +190,7 @@ class UploadTaskScreen extends StatelessWidget {
                                 );
                               } else {
                                 uploadTaskCubit.updateTask(
-                                  taskId: task.id,
+                                  taskId: task!.id,
                                   uploadTaskEntity: uploadedTask,
                                 );
                               }

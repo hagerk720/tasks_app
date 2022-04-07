@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasks_app/core/domain/error/error_toast.dart';
+import 'package:tasks_app/core/presentation/util/error_toast.dart';
 import 'package:tasks_app/core/presentation/validation/validators.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_elevated_button.dart';
 import 'package:tasks_app/core/presentation/widgets/custom_text_form_field.dart';
@@ -11,16 +11,27 @@ import 'package:tasks_app/features/auth/presentation/bloc/auth_state.dart';
 import 'package:tasks_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:tasks_app/features/get_tasks/presentation/screens/task_list_screen.dart';
 
-class RegisterScreen extends StatelessWidget {
-  RegisterScreen();
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen();
   static const routeName = 'register';
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  late TextTheme textTheme;
+  @override
+  void didChangeDependencies() {
+    textTheme = Theme.of(context).textTheme;
+    super.didChangeDependencies();
+  }
+
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Form(

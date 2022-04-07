@@ -2,8 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tasks_app/features/upload_task/core/domain/entities/upload_task_entity.dart';
 import 'package:tasks_app/features/upload_task/core/presentation/bloc/upload_task_state.dart';
-import 'package:tasks_app/features/upload_task/create_task/domain/usecases/create_task.dart';
-import 'package:tasks_app/features/upload_task/update_task/domain/usecases/update_task.dart';
+import 'package:tasks_app/features/upload_task/create_task/domain/usecases/create_task_use_case.dart';
+import 'package:tasks_app/features/upload_task/update_task/domain/usecases/update_task_use_case.dart';
 
 @injectable
 class UploadTaskCubit extends Cubit<UploadTaskState> {
@@ -11,8 +11,8 @@ class UploadTaskCubit extends Cubit<UploadTaskState> {
     this._createTaskUseCase,
     this._updateTaskUseCase,
   ) : super(const UploadTaskInitial());
-  final CreateTask _createTaskUseCase;
-  final UpdateTask _updateTaskUseCase;
+  final CreateTaskUseCase _createTaskUseCase;
+  final UpdateTaskUseCase _updateTaskUseCase;
 
   Future<void> createTask({
     required UploadTaskEntity uploadTaskEntity,
@@ -21,7 +21,6 @@ class UploadTaskCubit extends Cubit<UploadTaskState> {
     final result = await _createTaskUseCase(
       CreateTaskData(uploadTaskEntity: uploadTaskEntity),
     );
-
     result.fold(
       (error) => emit(UploadTaskErrorDetails(error.toString())),
       (_) => emit(const UploadTaskSuccess()),

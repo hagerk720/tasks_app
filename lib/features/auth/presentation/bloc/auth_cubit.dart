@@ -3,9 +3,9 @@ import 'package:injectable/injectable.dart';
 import 'package:tasks_app/core/domain/usecases/usecase.dart';
 import 'package:tasks_app/features/auth/domain/entities/login_entity.dart';
 import 'package:tasks_app/features/auth/domain/entities/register_entity.dart';
-import 'package:tasks_app/features/auth/domain/usecases/login.dart';
-import 'package:tasks_app/features/auth/domain/usecases/logout.dart';
-import 'package:tasks_app/features/auth/domain/usecases/register.dart';
+import 'package:tasks_app/features/auth/domain/usecases/login_use_case.dart';
+import 'package:tasks_app/features/auth/domain/usecases/logout_use_case.dart';
+import 'package:tasks_app/features/auth/domain/usecases/register_use_case.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_state.dart';
 
 @injectable
@@ -15,9 +15,9 @@ class AuthCubit extends Cubit<AuthState> {
     this._loginUseCase,
     this._logout,
   ) : super(const AuthInitial());
-  final Register _registerUserCase;
-  final Login _loginUseCase;
-  final Logout _logout;
+  final RegisterUseCase _registerUserCase;
+  final LoginUseCase _loginUseCase;
+  final LogoutUseCase _logout;
 
   Future<void> register({required RegisterEntity registerEntity}) async {
     emit(const AuthLoading());

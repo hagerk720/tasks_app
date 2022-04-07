@@ -7,8 +7,8 @@ part 'delete_task_cubit.freezed.dart';
 
 @injectable
 class DeleteTaskCubit extends Cubit<DeleteTaskState> {
-  final DeleteTaskUseCase _deleteTaskUseCase;
   DeleteTaskCubit(this._deleteTaskUseCase) : super(const DeleteTaskInitial());
+  final DeleteTaskUseCase _deleteTaskUseCase;
 
   Future<void> deleteTask({
     required int taskId,
