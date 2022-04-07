@@ -21,7 +21,7 @@ class TasksApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: myTheme,
-      onGenerateRoute: AppRouter.onGenerateRoute,
+      onGenerateRoute: onGenerateRoute,
     );
   }
 }

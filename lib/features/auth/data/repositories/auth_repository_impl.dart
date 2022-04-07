@@ -1,34 +1,35 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:tasks_app/core/domain/datasources/local_datasource.dart';
 import 'package:tasks_app/core/domain/error/failure.dart';
-import 'package:tasks_app/features/auth/data/datasources/auth_service.dart';
-import 'package:tasks_app/features/auth/data/models/login_model/login_mapper.dart';
-import 'package:tasks_app/features/auth/data/models/register_model/register_mapper.dart';
+import 'package:tasks_app/features/auth/data/mappers/login_mapper.dart';
+import 'package:tasks_app/features/auth/data/mappers/register_mapper.dart';
+import 'package:tasks_app/features/auth/domain/datasources/local_datasource/auth_local_datasource.dart';
+import 'package:tasks_app/features/auth/domain/datasources/remote_datasource/auth_remote_datasource.dart';
 import 'package:tasks_app/features/auth/domain/entities/login_entity.dart';
 import 'package:tasks_app/features/auth/domain/entities/register_entity.dart';
 import 'package:tasks_app/features/auth/domain/repositories/auth_repository.dart';
 
-@Injectable(as: AuthRepository)
+@LazySingleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
-  AuthService authService;
-  LocalDataSource localDataSource;
-  AuthRepositoryImpl({
-    required this.authService,
-    required this.localDataSource,
-  });
+  final AuthRemoteDataSource _authRemoteDataSource;
+  final AuthLocalDataSource _localDataSource;
+  const AuthRepositoryImpl(
+    this._authRemoteDataSource,
+    this._localDataSource,
+  );
 
   @override
   Future<Either<Failure, Unit>> register({
     required RegisterEntity registerEntity,
   }) async {
     try {
-      final token =
-          await authService.register(registerModel: registerEntity.toModel());
-      await localDataSource.saveToken(token.data.token);
+      final token = await _authRemoteDataSource.register(
+        registerModel: registerEntity.toModel,
+      );
+      await _localDataSource.saveToken(token.data.token);
       return right(unit);
     } catch (error) {
-      return left(Failure(error));
+      return left(const Failure('Error while register'));
     }
   }
 
@@ -37,25 +38,25 @@ class AuthRepositoryImpl implements AuthRepository {
     required LoginEntity loginEntity,
   }) async {
     try {
-      final token = await authService.login(
-        loginModel: loginEntity.toModel(),
+      final token = await _authRemoteDataSource.login(
+        loginModel: loginEntity.toModel,
       );
-      await localDataSource.saveToken(token.data.token);
+      await _localDataSource.saveToken(token.data.token);
       return right(unit);
     } catch (error) {
-      return left(Failure(error));
+      return left(const Failure('Error while login'));
     }
   }
 
   @override
   Future<Either<Failure, Unit>> logout() async {
     try {
-      final token = await localDataSource.getToken();
-      await localDataSource.deleteToken();
-      await authService.logout(token: 'Bearer ${token!}');
+      final token = _localDataSource.getToken();
+      await _localDataSource.deleteToken();
+      await _authRemoteDataSource.logout(token: 'Bearer ${token!}');
       return right(unit);
     } catch (error) {
-      return left(Failure(error));
+      return left(const Failure('Error while logout'));
     }
   }
 }

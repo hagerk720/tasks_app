@@ -5,10 +5,10 @@ import 'package:tasks_app/core/domain/error/failure.dart';
 import 'package:tasks_app/core/domain/usecases/usecase.dart';
 import 'package:tasks_app/features/delete_task/domain/repositories/delete_task_repository.dart';
 
-@injectable
+@lazySingleton
 class DeleteTaskUseCase implements UseCase<Unit, DeleteTaskData> {
   final DeleteTaskRepository _deleteTaskRepository;
-  DeleteTaskUseCase(this._deleteTaskRepository);
+  const DeleteTaskUseCase(this._deleteTaskRepository);
 
   @override
   Future<Either<Failure, Unit>> call(

@@ -19,17 +19,17 @@ class _TaskWidgetState extends State<TaskWidget> {
   bool isDone = false;
   @override
   void initState() {
+    super.initState();
     if (widget.task.state == 1) {
       isDone = true;
     }
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorTheme = Theme.of(context).colorScheme;
-    final screenWidth = MediaQuery.of(context).size.width;
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    final colorTheme = theme.colorScheme;
     return Row(
       children: [
         InkWell(
@@ -82,7 +82,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                   ),
           ),
         ),
-        SizedBox(width: screenWidth * .06),
+        SizedBox(width: MediaQuery.of(context).size.width * .06),
         InkWell(
           onTap: showTaskDetails,
           child: Text(

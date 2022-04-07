@@ -7,7 +7,6 @@ class DropDownShapeIcons extends StatelessWidget {
     required this.icon,
     required this.color,
   });
-
   @override
   Widget build(BuildContext context) {
     return Stack(

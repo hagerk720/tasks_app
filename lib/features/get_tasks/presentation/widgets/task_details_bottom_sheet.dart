@@ -10,11 +10,11 @@ class TaskDetailsBottomSheet extends StatelessWidget {
   final GetTaskEntity task;
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final screenHeight = MediaQuery.of(context).size.height;
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
     return Container(
-      height: screenHeight * .4,
+      height: MediaQuery.of(context).size.height * .4,
       padding: const EdgeInsets.only(
         top: 16,
         left: 32,

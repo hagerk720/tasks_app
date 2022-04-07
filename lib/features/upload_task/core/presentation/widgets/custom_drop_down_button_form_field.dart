@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasks_app/core/data/constants/constants.dart';
 import 'package:tasks_app/features/upload_task/core/presentation/widgets/drop_down_shape.dart';
 
 class CustomDropDownButtonFormField extends StatelessWidget {
@@ -9,7 +10,7 @@ class CustomDropDownButtonFormField extends StatelessWidget {
     required this.hintText,
   });
   final List<String> itemsNames;
-  final String? value;
+  final String value;
   final Function(String?)? onChanged;
   final String hintText;
   @override
@@ -19,11 +20,6 @@ class CustomDropDownButtonFormField extends StatelessWidget {
       Image.asset('assets/images/med.png'),
       Image.asset('assets/images/low.png'),
     ];
-    const List<Color> colorsIcons = [
-      Color(0xfffeccd1),
-      Color(0xfffee2c6),
-      Color(0xffd6f1ff)
-    ];
     return DropdownButtonFormField<String>(
       items: List.generate(
         itemsNames.length,
@@ -31,7 +27,7 @@ class CustomDropDownButtonFormField extends StatelessWidget {
           value: itemsNames[index],
           child: Row(
             children: [
-              DropDownShapeIcons(icon: icons[index], color: colorsIcons[index]),
+              DropDownShapeIcons(icon: icons[index], color: iconsColors[index]),
               const SizedBox(width: 9),
               Text(itemsNames[index]),
             ],

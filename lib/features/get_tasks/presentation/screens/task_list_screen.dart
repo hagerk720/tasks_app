@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasks_app/core/domain/error/error_toast.dart';
+import 'package:tasks_app/core/presentation/util/error_toast.dart';
 import 'package:tasks_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:tasks_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:tasks_app/features/auth/presentation/widgets/logout_widget.dart';
@@ -17,12 +17,18 @@ class TaskListScreen extends StatefulWidget {
 }
 
 class _TaskListScreenState extends State<TaskListScreen> {
+  late ThemeData theme;
+  late double screenWidth;
+  @override
+  void didChangeDependencies() {
+    screenWidth = MediaQuery.of(context).size.width;
+    theme = Theme.of(context);
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<GetTasksCubit>(context).getTasks();
-    final screenWidth = MediaQuery.of(context).size.width;
-    final colorTheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Tasks'),
@@ -65,7 +71,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                         Image.asset('assets/images/relax.png', scale: 1.8),
                         Text(
                           'There are no tasks',
-                          style: textTheme.headline3,
+                          style: theme.textTheme.headline3,
                           textAlign: TextAlign.center,
                         )
                       ],
@@ -86,7 +92,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
         onPressed: () => Navigator.of(context)
             .pushNamed(UploadTaskScreen.routeName)
             .then((value) => setState(() {})),
-        backgroundColor: colorTheme.primary,
+        backgroundColor: theme.colorScheme.primary,
         child: const Icon(
           Icons.add,
           size: 30,

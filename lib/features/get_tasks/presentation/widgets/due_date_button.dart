@@ -13,7 +13,6 @@ class DueDateButton extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
-    final screenHeight = MediaQuery.of(context).size.height;
     final dateFormat = DateFormat('d MMMM');
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 4),
@@ -32,7 +31,7 @@ class DueDateButton extends StatelessWidget {
           fixedSize: MaterialStateProperty.all(
             Size(
               double.infinity,
-              screenHeight * .07,
+              MediaQuery.of(context).size.height * .07,
             ),
           ),
           elevation: MaterialStateProperty.all(0),
